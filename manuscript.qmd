@@ -357,7 +357,7 @@ R/Bioconductor ecosystem.
 
 Several data analytical frameworks are available for microbiome data science,
 each distinguished by its underlying paradigms, user communities, and scope.
-For example, tools such as QIIME2 [@bolyen2019], Anvi'o
+For example, tools such as QIIME 2 [@bolyen2019], Anvi'o
 [@eren2021], and Mothur [@schloss2009] emphasize standardized, modular
 approaches tailored to microbiome analysis. These frameworks provide
 validated and user-friendly solutions, enabling development of efficient
@@ -1009,7 +1009,7 @@ data from common tabular data types, certain non-standard file formats may
 require additional data wrangling. To streamline data
 import, we provide importers for a variety of standard microbiome file
 formats including BIOM [@mcdonald2012], MetaPhlAn/HUMAnN (MetaPhlAn
-v. 2&ndash;4, HUMAnN v. 3) [@mciver2017], Mothur [@schloss2009], QIIME2
+v. 2&ndash;4, HUMAnN v. 3) [@mciver2017], Mothur [@schloss2009], QIIME 2
 [@bolyen2019] and the TAXonomic Profile Aggregation and
 standardization format (taxpasta) [@beber2023]. These importers bridge the gap
 between the raw sequence processing and downstream statistical analysis in R,
@@ -1300,7 +1300,7 @@ association-based approaches are often easier to interpret, they do not
 explicitly account for the fact that microbes operate within complex
 communities. In contrast, latent variable methods such
 as multi-omics factor analysis [@argelaguet2020],
-joint robust PCA [@martino2025] and multiblock partial least
+joint robust PCA [@martino2019] and multiblock partial least
 squares discriminant analysis [@singh2019] model shared latent
 structure across modalities, enabling the discovery and visualization of
 coordinated variation at the community level.
