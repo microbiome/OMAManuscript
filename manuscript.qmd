@@ -1807,6 +1807,10 @@ LL and TB initiated and coordinated the work. All authors contributed
 material, participated in manuscript preparation, and approved the final
 version.
 
+## Competing interests {#sec-interests}
+
+The authors declare no competing interests.
+
 ## Acknowledgments {#sec-acknowledgments}
 
 This project received funding from the European Union’s Horizon 2020
