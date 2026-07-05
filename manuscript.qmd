@@ -623,10 +623,10 @@ and overall interoperability.
 : Key elements of the Bioconductor data containers for microbiome analysis.
 {#tbl-elements tbl-colwidths="[18,62,3,9,8]"}
 
-$^a$ While MAE does not contain conventional slots (with the exception
+$^a$While MAE does not contain conventional slots (with the exception
 of colData), its experiments can include any number of data containers that
-provide those slots. $^b$ altExp samples must match assay samples in a 1-to-1
-mapping. $^c$ The sampleMap supports diverse mappings between samples from
+provide those slots. $^b$altExp samples must match assay samples in a 1-to-1
+mapping. $^c$The sampleMap supports diverse mappings between samples from
 different experiments (1-to-1, 1-to-many, many-to-1 and many-to-many). SE,
 SummarizedExperiment; TreeSE, TreeSummarizedExperiment; MAE, MultiAssayExperiment.
 
@@ -642,18 +642,22 @@ encompass taxonomic and functional profiles from thousands of
 published microbiome studies and tens of thousands samples that can
 be accessed with the available tools for research and educational purposes.
 
-| Data resource                               | Package                                                                  | # studies or datasets | # samples |
-|---------------------------------------------|--------------------------------------------------------------------------|-----------------------|-----------|
-| Curated metagenomic data [@pasolli2017]     | curatedMetagenomicData [@pasolli2017]                                    | 93                    | 22,588    |
-| HoloFood [@rogers2024]                      | HoloFoodR [@holofoodr]                                                   | -                     | 9,990     |
-| MGnify [@gurbich2023]                       | MGnifyR [@mgnifyr]                                                       | 5,129                 | 629,821   |
-| microbiomeDataSets [@microbiomedatasets]    | microbiomeDataSets [@microbiomedatasets]                                 | 6                     | 19,100    |
-| Microbiome Benchmark Data [@gamboa-tuz2025] | MicrobiomeBenchmarkData [@gamboa-tuz2025]                                | 6                     | 1,125     |
-| Human Microbiome Project 2 [@hmp2data]      | HMP2data [@hmp2data]                                                     | 3                     | 11,493    |
-| A compilation of open microbiome datasets   | [https://github.com/microbiome/data](https://github.com/microbiome/data) | 8                     | 18,777    |
+| Data resource           | References                | # Studies  | # Samples |
+|-------------------------|:-------------------------:|-----------:|----------:|
+| MGnifyR                 | [@gurbich2023; @mgnifyr]  | 5,616      | 429,108   |
+| Metalog                 | [@kuhn2026]               | 1,074      | 157,483   |
+| curatedMetagenomicData  | [@pasolli2017]            | 93         | 22,588    |
+| miaData                 | [@benedetti2026]          | 9          | 20,404    |
+| microbiomeDataSets      | [@microbiomedatasets]     | 6          | 19,100    |
+| HMP2data                | [@hmp2data]               | 3          | 11,493    |
+| HoloFoodR$^a$           | [@rogers2024; @holofoodr] | 9          | 9,990     |
+| MicrobiomeBenchmarkData | [@gamboa-tuz2025]         | 6          | 1,125     |
 
-: Auxiliary open microbiome data resources (last accessed on 29/09/2025).
-{#tbl-dataresources tbl-colwidths="[30,40,15,15]"}
+: Open microbiome data resources (last accessed on 05/07/2026).
+{#tbl-dataresources tbl-colwidths="[40,20,20,20]"}
+
+$^a$HoloFood microbiome datasets are deposited in the MGnify database.
+HMP, Human Microbiome Project.
 
 # Data preparation {#sec-process}
 
@@ -998,7 +1002,7 @@ data containers and shared methodological approaches in related research fields
 can significantly expand the transfer of existing toolkits to adjacent or emerging
 disciplines. Importantly, this framework enables integration not only within the Bioconductor ecosystem
 but also with external pipelines, including bioBakery [@navarro2024; @mciver2017], and foreign platforms through language-specific interfaces,
-namely `Rcpp` for C+, `reticulate` for Python, and `JuliaCall` for Julia.
+namely Rcpp for C++, reticulate for Python, and JuliaCall for Julia.
 These connections allow users to combine the
 most suitable tools across multiple frameworks, while ensuring
 cross-language interoperability of structured data through standard containers such as TreeSE and MAE.
@@ -1506,7 +1510,7 @@ benchmark_df <- benchmark_out |>
         (object == "pseq" & N <= beta_threshold[[1]]) |
         (object == "tse" & N <= beta_threshold[[2]]))
 
-# Summarise benchmarking results with mean time and standard deviation
+# Summarize benchmarking results with mean time and standard deviation
 benchmark_df <- benchmark_df |>
     group_by(method, object, N) |>
     summarise(
@@ -1589,7 +1593,7 @@ scientific_10 <- function(y) {
 }
 breaks <- benchmark_df[["N"]][log10(benchmark_df[["N"]]) %% 1 == 0] |> unique()
 
-# Visualise benchmarking results: time
+# Visualize benchmarking results: time
 p1 <- ggplot(benchmark_df, aes(x = N, y = Time, colour = object)) +
     geom_errorbar(aes(ymin = Time - TimeSE, ymax = Time + TimeSE), width = 0) +
     geom_line() +
@@ -1612,7 +1616,7 @@ p1 <- ggplot(benchmark_df, aes(x = N, y = Time, colour = object)) +
         strip.text = element_text(size = 12),
         strip.background = element_blank()
     )
-# Visualise benchmarking results: memory
+# Visualize benchmarking results: memory
 p2 <- ggplot(benchmark_df, aes(x = N, y = Memory / 1e6, colour = object)) +
     geom_line() +
     geom_point() +
@@ -1716,8 +1720,6 @@ we have introduced a comprehensive, interoperable ecosystem
 developed as an extensive community effort. We also provide exhaustive guidance in
 the OMA book, thereby supporting independent learning and reproducible analysis in
 microbiome research and beyond.
-
-
 
 **The Bioconductor community** is widely recognized for
 developing open research software for life sciences. Its

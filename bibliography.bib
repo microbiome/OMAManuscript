@@ -165,6 +165,16 @@
   issn          = {2635-0041},
   abstract      = {Hierarchical data structures are prevalent across several research fields, as they represent an organized and efficient approach to study complex interconnected systems. Their significance is particularly evident in microbiome analysis, where microbial communities are classified at various taxonomic levels using phylogenetic trees. In light of this trend, the R/Bioconductor community has established a reproducible analytical framework for hierarchical data, which relies on the generic and optimized TreeSummarizedExperiment data container. However, this framework requires basic programming skills. To reduce the entry requirements, we developed iSEEtree, an R package, which provides a visual interface for the analysis and exploration of TreeSummarizedExperiment objects, thereby expanding the interactive graphics capabilities of related work to hierarchical structures. This way, users can interactively explore several aspects of their data without the need for an extensive knowledge of R programming. We describe how iSEEtree enables the exploration of hierarchical multi-table data and demonstrate its functionality with applications to microbiome analysis. iSEEtree was implemented in the R programming language and is available on Bioconductor at https://bioconductor.org/packages/iSEEtree under an Artistic 2.0 license.}
 }
+@misc{benedetti2026,
+  author       = {Giulio Benedetti and Leo Lahti and Eetu Tammi and Muluh and Tuomas Borman},
+  title        = {{miaData}},
+  month        = {jul},
+  year         = {2026},
+  publisher    = {Zenodo},
+  version      = {v1.0.0},
+  doi          = {10.5281/zenodo.21198374},
+  url          = {https://doi.org/10.5281/zenodo.21198374}
+}
 @article{berg2020,
   author        = {Gabriele Berg and Daria Rybakova and Doreen Fischer and Tomislav Cernava and Marie-Christine Champomier Verg\`{e}s and Trevor Charles and Xiaoyulong Chen and Luca Cocolin and Kellye Eversole and Gema Herrero Corral and Maria Kazou and Linda Kinkel and Lene Lange and Nelson Lima and Alexander Loy and James A. Macklin and Emmanuelle Maguin and Tim Mauchline and Ryan McClure and Birgit Mitter and Matthew Ryan and Inga Sarand and Hauke Smidt and Bettina Schelkle and Hugo Roume and G. Seghal Kiran and Joseph Selvin and Rafael Soares Correa de Souza and Leo van Overbeek and Brajesh K. Singh and Michael Wagner and Aaron Walsh and Angela Sessitsch and Michael Schloter},
   title         = {Microbiome definition re-visited: old concepts and new challenges},
@@ -222,7 +232,7 @@
   volume        = {13},
   number        = {7},
   pages         = {581--583},
-  month         = jul,
+  month         = {jul},
   year          = {2016},
   issn          = {1548-7105},
   doi           = {10.1038/nmeth.3869}
@@ -268,7 +278,7 @@
   publisher     = {Institute of Mathematical Statistics},
   author        = {Chambers,  John M.},
   year          = {2014},
-  month         = may
+  month         = {may}
 }
 @article{cheng2019,
   title         = {An additive Gaussian process regression model for interpretable non-parametric analysis of longitudinal data},
@@ -309,7 +319,7 @@
   title         = {{Advancing microbiome research with machine learning: key findings from the ML4Microbiome {COST} action}},
   journal       = {Frontiers in Microbiology},
   year          = {2023},
-  month         = 09,
+  month         = {Sep},
   volume        = {14},
   issn          = {1664-302X},
   doi           = {10.3389/fmicb.2023.1257002},
@@ -397,7 +407,7 @@
   doi           = {10.1101/2025.02.13.638109},
   publisher     = {Cold Spring Harbor Laboratory},
   abstract      = {Previous benchmarking of differential abundance (DA) analysis methods in microbiome studies have employed synthetic data, simulations, and {\textquotedblleft}real data{\textquotedblright} examples, but to the best of our knowledge, none have yet employed experimental data with known {\textquotedblleft}ground truth{\textquotedblright} differential abundance. A key debate in the field centers on whether compositional methods are necessary for DA analysis, which is challenging to answer due to the lack of ground truth data. To address this gap, we created the Bioconductor data package MicrobiomeBenchmarkData, featuring three microbiome datasets with established biological ground truths: 1) diverse oral microbiomes from supragingival and subgingival plaques, expected to favor aerobic and anaerobic bacteria, respectively, 2) low-diversity microbiomes from healthy vaginas and bacterial vaginosis, conditions that have been well-characterized through cell culture and microscopy, and 3) a spike-in dataset with constant, known absolute abundances of three bacteria. We benchmarked 17 DA approaches and demonstrated that compositional DA methods are not beneficial but rather lack sensitivity, show increased variability in constant-abundance spike-ins, and, most surprisingly, more frequently produce paradoxical results with DA in the wrong direction for the low-diversity microbiome. Conversely, commonly used methods in microbiome literature, such as LEfSe, the Wilcoxon test, and RNA-seq-derived methods, performed best. We conclude that researchers continue using widely adopted non-parametric or RNA-seq DA methods and that further development of compositional methods includes benchmarking against datasets with known biological ground truth.Competing Interest StatementThe authors have declared no competing interest.},
-  url           = {https://www.biorxiv.org/content/early/2025/02/17/2025.02.13.638109},
+  url           = {https://doi.org/10.1101/2025.02.13.638109},
   eprint        = {https://www.biorxiv.org/content/early/2025/02/17/2025.02.13.638109.full.pdf},
   journal       = {bioRxiv}
 }
@@ -499,7 +509,8 @@
   number        = {6551},
   pages         = {181--186},
   year          = {2021},
-  publisher     = {American Association for the Advancement of Science}
+  publisher     = {American Association for the Advancement of Science},
+  doi           = {10.1126/science.aba5483}
 }
 @article{gupta2019,
   author        = {Gupta, Shashank and Mortensen, Martin S. and Schj{\o}rring, Susanne and Trivedi, Urvish and Vestergaard, Gisle and Stokholm, Jakob and Bisgaard, Hans and Krogfelt, Karen A. and S{\o}rensen, S{\o}ren J.},
@@ -699,6 +710,17 @@
   doi           = {10.1038/s41598-020-78511-y},
   issn          = {2045-2322},
   abstract      = {The commensal microbiome is known to influence a variety of host phenotypes. Microbiome profiling followed by differential abundance analysis has been established as an effective approach to study the mechanisms of host-microbiome interactions. However, it is challenging to interpret the collective functions of the resultant microbe-sets due to the lack of well-organized functional characterization of commensal microbiome. We developed microbe-set enrichment analysis (MSEA) to enable the functional interpretation of microbe-sets by examining the statistical significance of their overlaps with annotated groups of microbes that share common attributes such as biological function or phylogenetic similarity. We then constructed microbe-set libraries by query PubMed to find microbe-mammalian gene associations and disease associations by parsing the Disbiome database. To demonstrate the utility of our novel MSEA methodology, we carried out three case studies using publicly available curated knowledge resource and microbiome profiling datasets focusing on human diseases. We found MSEA not only yields consistent findings with the original studies, but also recovers insights about disease mechanisms that are supported by the literature. Overall, MSEA is a useful knowledge-based computational approach to interpret the functions of microbes, which can be integrated with microbiome profiling pipelines to help reveal the underlying mechanism of host-microbiome interactions.}
+}
+@article{kuhn2026,
+  title         = {Metalog: curated and harmonised contextual data for global metagenomics samples},
+  author        = {Kuhn, Michael and Schmidt, Thomas Sebastian B and Ferretti, Pamela and G{\l}azek, Anna and Robbani, Shahriyar Mahdi and Akanni, Wasiu and Fullam, Anthony and Schudoma, Christian and Cetin, Ela and Hassan, Mariam and others},
+  journal       = {Nucleic Acids Research},
+  volume        = {54},
+  number        = {D1},
+  pages         = {D826--D834},
+  year          = {2026},
+  doi           = {10.1093/nar/gkaf1118},
+  publisher     = {Oxford University Press}
 }
 @article{kullberg2024,
   author        = {Kullberg, Robert F. J. and Wikki, Irina and Haak, Bastiaan W. and Kauko, Anni and Galenkamp, Henrike and Peters-Sengers, Hessel and Butler, Joe M. and Havulinna, Aki S. and Palmu, Joonatan and McDonald, Daniel and Benchraka, Chouaib and Abdel-Aziz, Mahmoud I. and Prins, Maria and Maitland van der Zee, Anke H. and van den Born, Bert-Jan and Jousilahti, Pekka and de Vos, Willem M. and Salomaa, Veikko and Knight, Rob and Lahti, Leo and Nieuwdorp, Max and Niiranen, Teemu and Wiersinga, W. Joost},
