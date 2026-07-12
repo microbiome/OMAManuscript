@@ -400,7 +400,7 @@ SpatialExperiment [@crowell2025] classes.
 #| message: false
 
 if (!require("BiocManager")) {
-    install("BiocManager")
+    install.packages("BiocManager")
     library("BiocManager")
 }
 pkgs <- c("BiocPkgTools", "lubridate", "tidyverse")
@@ -486,7 +486,7 @@ pkgs_date |>
 #|   Some packages added the SE support after their original release."
 
 if (!require("BiocManager")) {
-    install("BiocManager")
+    install.packages("BiocManager")
     library("BiocManager")
 }
 pkgs <- c("tidyverse", "see")
@@ -647,7 +647,7 @@ be accessed with the available tools for research and educational purposes.
 | MGnifyR                 | [@gurbich2023; @mgnifyr]  | 5,616      | 429,108   |
 | Metalog                 | [@kuhn2026]               | 1,074      | 157,483   |
 | curatedMetagenomicData  | [@pasolli2017]            | 93         | 22,588    |
-| miaData                 | [@benedetti2026]          | 9          | 20,404    |
+| miaData                 | [@benedetti2026a]         | 9          | 20,404    |
 | microbiomeDataSets      | [@microbiomedatasets]     | 6          | 19,100    |
 | HMP2data                | [@hmp2data]               | 3          | 11,493    |
 | HoloFoodR$^a$           | [@rogers2024; @holofoodr] | 9          | 9,990     |
@@ -1348,7 +1348,8 @@ microbiome research.
 
 TreeSE also offers
 substantial gains in computing speed and memory efficiency over phyloseq
-(@fig-benchmarking). While speedyseq is faster in certain operations, TreeSE
+(@fig-benchmarking and Supplementary Figure 1). While
+speedyseq is faster in certain operations, TreeSE
 tends to scale more efficiently in terms of execution time (t) and allocated
 memory (m) as sample size (n) increases. This benefits from the built-in support
 for sparse and delayed matrices in SE-based data containers, which can improve
@@ -1386,173 +1387,33 @@ with shared data structures such as (Tree)SummarizedExperiment, further improve
 interoperability between packages.
 
 ```{r}
-#| label: benchmark_analysis
-#| eval: false
-#| echo: false
-#| message: false
-
-# Adapted from https://github.com/microbiome/benchmarking/tree/main/article
-
-# Import libraries
-if (!require("BiocManager")) {
-    install("BiocManager")
-    library("BiocManager")
-}
-pkgs <- c(
-    "bench", "DelayedArray", "mia", "microbiome", "microbiomeDataSets", "philr",
-    "phyloseq", "picante", "tidyverse", "speedyseq"
-)
-temp <- sapply(pkgs, function(pkg) {
-    if (!require(pkg, character.only = TRUE)) {
-        install(pkg)
-        library(pkg, character.only = TRUE)
-    }
-})
-
-# Set seed for reproducibility
-set.seed(123)
-
-# Set benchmarking hyperparameters
-n_iter <- 10
-memory_threshold <- 10000
-beta_threshold <- c(1000, 10000)
-N <- c(10, 100, 1000, 10000)
-
-# Define class names
-classes <- c(tse = "TreeSE", pseq = "phyloseq", spseq = "speedyseq")
-
-# Define method names
-methods <- c(
-    alpha = "Faith diversity",
-    beta = "UniFrac dissimilarity",
-    melt = "Melting",
-    trans = "PhILR transformation",
-    agg = "Family agglomeration"
-)
-
-# Import dataset
-GTSD <- GrieneisenTSData()
-# Agglomerate by Genus to reduce size
-GTSD <- mia::agglomerateByRank(GTSD, rank = "Genus")
-
-# Run benchmark for each sample size
-benchmark_out <- bench::press(
-    N = N,
-    {
-        # Select a random subset of samples
-        tse <- GTSD[, sample(ncol(GTSD), N)]
-        # Convert TreeSE to phyloseq
-        pseq <- mia::convertToPhyloseq(tse)
-
-        # List expressions to benchmark
-        expressions <- list(
-            # Estimate faith from phyloseq
-            alpha_pseq = quote(picante::pd(samp = t(otu_table(pseq)), tree = phy_tree(pseq))[, 1]),
-            # Estimate faith from TreeSE
-            alpha_tse = quote(mia::getAlpha(tse, index = "faith_diversity")),
-            # philr transform phyloseq
-            trans_pseq = quote(philr::philr(t(otu_table(pseq)), tree = phy_tree(pseq), pseudocount = 1)),
-            # philr transform TreeSE
-            trans_tse = quote(mia::transformAssay(tse, method = "philr", MARGIN = 1L, pseudocount = 1)),
-            # Melt phyloseq
-            melt_pseq = quote(phyloseq::psmelt(pseq)),
-            # Melt speedyseq
-            melt_spseq = quote(speedyseq::psmelt(pseq)),
-            # Melt TreeSE
-            melt_tse = quote(mia::meltSE(tse, add.row = TRUE, add.col = TRUE)),
-            # Agglomerate phyloseq
-            agg_pseq = quote(phyloseq::tax_glom(pseq, taxrank = "Family")),
-            # Agglomerate speedyseq
-            agg_spseq = quote(speedyseq::tax_glom(pseq, taxrank = "Family")),
-            # Agglomerate TreeSE
-            agg_tse = quote(mia::agglomerateByRank(tse, rank = "Family"))
-        )
-
-        if (N <= beta_threshold[[1]]) {
-            # Estimate unifrac from phyloseq
-            expressions[["beta_pseq"]] <- quote(
-                phyloseq::UniFrac(pseq)
-            )
-        } else {
-            # Use dummy expression because all results must have the same length
-            expressions[["beta_pseq"]] <- quote(1 + 1)
-        }
-
-        if (N <= beta_threshold[[2]]) {
-            # Estimate unifrac from TreeSE
-            expressions[["beta_tse"]] <- quote(
-                mia::getDissimilarity(tse, method = "unifrac")
-            )
-        } else {
-            # Use dummy expression because all results must have the same length
-            expressions[["beta_tse"]] <- quote(1 + 1)
-        }
-
-        # Run benchmark
-        bench::mark(
-            iterations = n_iter,
-            memory = if (N <= memory_threshold) TRUE else FALSE,
-            check = FALSE,
-            exprs = expressions
-        )
-    }
-)
-
-# Retrieve benchmarking results for each experiment and iteration
-benchmark_df <- benchmark_out |>
-    unnest(c(time, gc)) |>
-    dplyr::select(expression, N, time, gc, mem_alloc) |>
-    separate_wider_delim(
-        cols = expression, delim = "_",
-        names = c("method", "object")
-    ) |>
-    filter(method != "beta" |
-        (object == "pseq" & N <= beta_threshold[[1]]) |
-        (object == "tse" & N <= beta_threshold[[2]]))
-
-# Summarize benchmarking results with mean time and standard deviation
-benchmark_df <- benchmark_df |>
-    group_by(method, object, N) |>
-    summarise(
-        Time = as.numeric(mean(time)), Memory = as.numeric(mean(mem_alloc)),
-        TimeSD = sd(time), TimeSE = TimeSD / sqrt(n_iter),
-        NoGC = sum(gc == "none"), .groups = "drop"
-    ) |>
-    mutate(
-        method = factor(method, levels = names(methods)),
-        object = factor(object, levels = names(classes))
-    )
-
-# Write to file
-benchmark_df |>
-    mutate(Time = as.numeric(Time), Memory = as.numeric(Memory)) |>
-    write.csv(file = file.path("data", "benchmark_results.csv"), row.names = FALSE)
-```
-
-```{r}
 #| label: fig-benchmarking
 #| echo: false
 #| message: false
 #| warning: false
-#| fig-cap: "**Execution time and memory consumption for microbiome data
-#|   containers.** The Bioconductor's TreeSE, phyloseq and speedyseq are
-#|   commonly used data containers in microbiome analysis. We benchmarked them
-#|   for five common operations applied to random subsets of samples from a
-#|   large study on wild baboons [@grieneisen2021] (accessible through the
-#|   microbiomeDataSets package in Bioconductor). Execution time (s) was
-#|   measured as the mean value over 10 iterations, whereas allocated memory
-#|   (MB) was estimated based on a single iteration. The benchmarking was
-#|   conducted in R using the bench library with 8 CPU cores and 32 GB RAM.
-#|   All operations, except for UniFrac dissimilarity with phyloseq, could
-#|   also be performed on a regular laptop (*e.g.*, 4 CPU cores and 16 GB RAM).
-#|   The source code for the benchmarking experiments is available through the
-#|   OMA book."
-#| fig-width: 12
-#| fig-height: 6
+#| fig-cap: "**Execution time and allocated memory for routine microbiome data
+#|   operations.** TreeSE, QIIME 2 and phyloseq&mdash;with its extension
+#|   speedyseq&mdash;are three popular frameworks for microbiome analysis. We
+#|   benchmarked them for five routine operations applied to random subsets of
+#|   features (rows) and samples (columns) from the Metalog database [@kuhn2026].
+#|   Both execution time (s) and allocated memory (MB) were measured as the mean
+#|   value over ten replicates generated. Errorbars show the 95% CI of the estimated
+#|   performance metric. The benchmarking was conducted in R using the bench library
+#|   with 4 CPU cores and 16 GB RAM. The source code for the benchmarking
+#|   analysis is openly available [@benedetti2026b]."
+#| fig-width: 14
+#| fig-height: 14
 
-# Adapted from https://github.com/microbiome/benchmarking/tree/main/article
+# Adapted from https://github.com/microbiome/benchmarking/tree/main/
 
-pkgs <- c("patchwork", "tidyverse")
+# Import libraries
+if (!require("BiocManager")) {
+    install.packages("BiocManager")
+    library("BiocManager")
+}
+
+pkgs <- c("ggplot2", "patchwork", "tools")
+
 temp <- sapply(pkgs, function(pkg) {
     if (!require(pkg, character.only = TRUE)) {
         install(pkg)
@@ -1560,92 +1421,142 @@ temp <- sapply(pkgs, function(pkg) {
     }
 })
 
-classes <- c(tse = "TreeSE", pseq = "phyloseq", spseq = "speedyseq")
+# Define class names
+classes <- c(
+    tse = "TreeSE",
+    qiime = "QIIME 2",
+    pseq = "phyloseq",
+    spseq = "speedyseq"
+)
+
+# Define method names
 methods <- c(
+    trans = "PhILR transformation",
+    agg = "Family agglomeration",
     alpha = "Faith diversity",
     beta = "UniFrac dissimilarity",
-    melt = "Melting",
-    trans = "PhILR transformation",
-    agg = "Family agglomeration"
+    melt = "Melting"
 )
 
 # Import results
-benchmark_df <- read.csv(file.path("data", "benchmark_results.csv")) %>%
-    mutate(method = factor(method, levels = names(methods)),
-           object = factor(object, levels = names(classes)))
+df <- read.table("data/benchmark_results.csv", sep = ",", header = TRUE)
 
-# Select only points from 10, 100, 1000, 10000
-benchmark_df <- benchmark_df[benchmark_df[["N"]] %in% c(10, 100, 1000, 10000), ]
+# Convert object and method vars to factors
+df$object <- factor(df$object, levels = names(classes))
+df$method <- factor(df$method, levels = names(methods))
 
 # Specify plot layouts
 scientific_10 <- function(y) {
     sapply(y, function(z) {
-        if (is.na(z)) {
-            return(NA)
-        } else if (z == 1) {
-            return("1")
-        } else if (z == 10) {
-            return("10")
-        } else {
-            return(parse(text = paste0("10^", log10(z))))
+        if( is.character(z) ){
+            z <- as.numeric(z)
+        }
+        if( is.na(z) ){
+            NA
+        }else if( z %in% c(1, 10) ){
+            as.character(z)
+        }else{
+            paste0("10^", log10(z))
         }
     })
 }
-breaks <- benchmark_df[["N"]][log10(benchmark_df[["N"]]) %% 1 == 0] |> unique()
 
-# Visualize benchmarking results: time
-p1 <- ggplot(benchmark_df, aes(x = N, y = Time, colour = object)) +
-    geom_errorbar(aes(ymin = Time - TimeSE, ymax = Time + TimeSE), width = 0) +
-    geom_line() +
-    geom_point() +
-    scale_x_log10(breaks = breaks, limits = benchmark_df[["N"]] |> range(), labels = scientific_10) +
-    scale_y_log10(labels = scientific_10) +
-    scale_colour_manual(
-        labels = classes,
-        values = c("black", "darkgrey", "lightgrey")
-    ) +
-    facet_grid(. ~ method, labeller = labeller(method = methods)) +
-    labs(x = "# Samples", y = "Execution time (s)", colour = "Object") +
-    theme_bw() +
-    theme(
-        axis.title.x = element_blank(),
-        axis.title.y = element_text(size = 15),
-        axis.text.x = element_blank(),
-        axis.text.y = element_text(size = 12),
-        axis.ticks.x = element_blank(),
-        strip.text = element_text(size = 12),
-        strip.background = element_blank()
+label_scientific <- function(x) parse(text = scientific_10(x))
+
+col.breaks <- unique(df$cols[log10(df$cols) %% 1 == 0])
+
+text_col <- get_theme()$axis.text$colour
+
+cus_theme <- theme(
+    legend.position = "bottom",
+    legend.text = element_text(size = 12),
+    legend.title = element_text(size = 15),
+    legend.key.size = unit(1.2, "cm"),
+    axis.title = element_text(size = 15),
+    axis.text.y.right = element_blank(),
+    axis.ticks.y.right = element_blank(),
+    axis.text = element_text(size = 12),
+    strip.text.x = element_text(size = 15),
+    strip.text.y = element_text(colour = text_col, size = 12, angle = 0),
+    strip.background = element_blank(),
+    plot.tag = element_text(face = "bold")
+)
+
+# Visualise benchmarking results: time
+plot_bench <- function(df, bench.var, error.var = "SE"){
+    
+    var_name <- toTitleCase(bench.var)
+    df$Mean <- df[[var_name]]
+    df$Err <- df[[paste0(var_name, error.var)]]
+    
+    axis_title <- switch(
+        bench.var,
+        time = "Execution time (s)",
+        memory = "Allocated memory (MB)"
     )
-# Visualize benchmarking results: memory
-p2 <- ggplot(benchmark_df, aes(x = N, y = Memory / 1e6, colour = object)) +
-    geom_line() +
-    geom_point() +
-    scale_x_log10(breaks = breaks, limits = benchmark_df[["N"]] |> range(), labels = scientific_10) +
-    scale_y_log10(labels = scientific_10) +
-    scale_colour_manual(
-        labels = classes,
-        values = c("black", "darkgrey", "lightgrey")
-    ) +
-    facet_grid(. ~ method,
-        labeller = labeller(method = methods)
-    ) +
-    labs(x = "Sample size (n)", y = "Allocated memory (MB)", colour = "Object") +
-    theme_bw() +
-    theme(
-        axis.title = element_text(size = 15),
-        axis.text = element_text(size = 12),
-        strip.text = element_blank()
-    ) +
-    guides(colour = "none")
+    
+    y.breaks <- switch(
+        bench.var,
+        time = 10^seq(-1, 3),
+        memory = 10^seq(0, 4)
+    )
+    
+    y.lims <- range(y.breaks)
+    y.lims <- c(min(y.lims[1], min(df$Mean)), max(y.lims[2], max(df$Mean)))
+    
+    row.breaks <- unique(df$rows[log10(df$rows) %% 1 == 0])
+    df$rows <- scientific_10(df$rows)
+    
+    p <- ggplot(df, aes(x = cols, y = Mean, colour = object)) +
+        geom_errorbar(
+            aes(ymin = Mean - Err, ymax = Mean + Err),
+            width = 0, show.legend = TRUE
+        ) +
+        geom_line(show.legend = TRUE) +
+        geom_point(show.legend = TRUE) +
+        scale_x_log10(breaks = col.breaks, limits = range(df$cols), labels = label_scientific) +
+        scale_y_log10(
+            labels = label_scientific,
+            breaks = y.breaks,
+            limits = y.lims,
+            sec.axis = sec_axis(~ ., name = "# Features")) +
+        scale_colour_manual(
+            labels = classes,
+            values = c("black", "darkblue", "firebrick", "tomato"),
+            drop = FALSE
+        )
+    
+    grid_by <- ". ~ method"
+    grid_lab <- list(method = methods)
+    
+    if( length(row.breaks) > 1L ){
+        grid_by <- sub(".", "rows", grid_by, fixed = TRUE)
+        grid_lab[["rows"]] <- label_parsed
+    }
+    
+    p <- p +
+        facet_grid(
+            as.formula(grid_by),
+            labeller = do.call(labeller, grid_lab)
+        )
+    
+    p <- p +
+        labs(x = "# Samples", y = axis_title, colour = "Object") +
+        theme_bw() +
+        cus_theme
+    
+    return(p)
+}
+
+# Visualise benchmarking results
+p1 <- plot_bench(df, "time", "CI")
+p2 <- plot_bench(subset(df, Memory <= 1e3 * 16), "memory", "CI")
+
 # Combine results
 p <- (p1 / p2) +
     plot_layout(guides = "collect") &
-    theme(
-        legend.position = "bottom",
-        legend.text = element_text(size = 12),
-        legend.title = element_text(size = 15),
-        legend.key.size = unit(1.2, "cm")
-    )
+    plot_annotation(tag_levels = "a") &
+    cus_theme
 
 p
 ```
@@ -1804,7 +1715,7 @@ Pralas, Théotime; Ramos, Marcel; Raulo, Aura; Sannikov, Artur; Seraidarian, Ely
 Serizay, Jacques; Shetty, Sudarshan; Shigdel, Rajesh; Suksi, Vilhelm;
 Tammi, Eetu; Valderamma, Benjamin; Waldron, Levi; Yang, Lu.
 
-## Contributions {#sec-contributions}
+## Author contributions {#sec-contributions}
 
 LL and TB initiated and coordinated the work. All authors contributed
 material, participated in manuscript preparation, and approved the final
