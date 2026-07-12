@@ -332,7 +332,7 @@ extend the capacities far beyond the underlying technical framework [@katz2019].
 However, frameworks focused solely on microbiome data science fall short on
 addressing the need to integrate data across multiple modalities, such as
 metagenomics, metabolomics, and host genomics.
-The Bioconductor project integrates the methods of microbiome data science
+The Bioconductor ecosytem integrates the methods of microbiome data science
 into a wider statistical programming framework, where
 interoperable methods and
 workflows for single-cell omics [@amezquita2020], spatial transcriptomics [@crowell2025],
@@ -347,10 +347,10 @@ methods have been extensively tested and distributed through R/Bioconductor
 packages
 ([https://bioconductor.org/packages](https://bioconductor.org/packages)),
 supporting the community-driven development of the framework and integration
-within the broader Bioconductor ecosystem. To promote
-evidence-based best practices, we introduce the online book _Orchestrating
-Microbiome Analysis with Bioconductor_ (OMA), which represents a comprehensive
-compilation of best practices and current trends in microbiome data science using the
+within the broader Bioconductor ecosystem. To promote evidence-based best
+practices, we introduce the online book _Orchestrating Microbiome Analysis with
+Bioconductor_ (OMA), which represents a comprehensive compilation of established
+approaches and emerging trends in microbiome data science using the
 R/Bioconductor ecosystem.
 
 # Data infrastructure {#sec-infra}
@@ -658,6 +658,223 @@ be accessed with the available tools for research and educational purposes.
 
 $^a$HoloFood microbiome datasets are deposited in the MGnify database.
 HMP, Human Microbiome Project.
+
+# Alternative frameworks {#sec-data_frameworks}
+
+The (Tree)SE framework is one of several approaches to microbiome analysis.
+Common alternatives include phyloseq [@mcmurdie2012]&mdash;and its extension
+speedyseq&mdash;, which is also part of Bioconductor, and the command-line
+platforms QIIME 2 [@bolyen2019], Mothur [@schloss2009] and Anvi'o [@eren2021].
+Each of these frameworks was designed to tackle recurring challenges in
+microbiome data science&mdash;a field where no single solution yet provides the
+most complete, coherent, and efficient approach.
+
+Compared to its alternatives, the (Tree)SE framework relies on a more compact,
+efficient data structure that is fully interoperable with the larger
+Bioconductor ecosystem. This way, it provides an evidence-based, accessible
+solution for developing end-to-end microbiome analysis workflows that can
+integrate concurrent development efforts in Bioconductor, without being limited
+exclusively to methods for microbiome data analysis.
+
+This integrative approach to bioinformatics is also found in the Python library
+scikit-bio, which provides general methods for various omics modalities
+[@aton2025]. While relatively efficient, its infrastructure for microbiome
+analysis is not yet as extensive and does not leverage integrative data
+containers such as TreeSE. Nonetheless, certain scikit-bio modules for community
+diversity estimation are available through the larger QIIME 2 framework for
+microbiome analysis.
+
+The (Tree)SE framework provides a substantial gain in performance over alternative
+frameworks (@fig-benchmarking and Supplementary Figure 1). While
+speedyseq is faster in certain operations, TreeSE
+tends to scale more efficiently in terms of execution time (t) and allocated
+memory (m) as sample size (n) increases. This benefits from the built-in support
+for sparse and delayed matrices in SE-based data containers, which can improve
+performance [@huber2015]. Despite these advantages, further optimizing time and
+memory consumption represents a key area for further development in the (Tree)SE
+framework. To facilitate migration from phyloseq, the OMA book provides
+conversion functions between the two data container formats together with a
+mapping table of commonly used functions. These resources enable users to
+incrementally migrate existing phyloseq workflows to the (Tree)SE framework while
+preserving familiar coding patterns and minimizing changes to established
+analysis pipelines. Despite the advantages of the (Tree)SE framework,
+further optimization of time and memory consumption remains an area for future
+development.
+
+```{r}
+#| label: fig-benchmarking
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: "**Execution time and allocated memory for routine microbiome data
+#|   operations.** TreeSE, QIIME 2 and phyloseq&mdash;with its extension
+#|   speedyseq&mdash;are three popular frameworks for microbiome analysis. We
+#|   benchmarked them for five routine operations applied to random subsets of
+#|   features (rows) and samples (columns) from the Metalog database [@kuhn2026].
+#|   Both execution time (s) and allocated memory (MB) were measured as the mean
+#|   value over ten replicates generated. Errorbars show the 95% CI of the estimated
+#|   performance metric. The benchmarking was conducted in R using the bench library
+#|   with 4 CPU cores and 16 GB RAM. The source code for the benchmarking
+#|   analysis is openly available [@benedetti2026b]."
+#| fig-width: 14
+#| fig-height: 14
+
+# Adapted from https://github.com/microbiome/benchmarking/tree/main/
+
+# Import libraries
+if (!require("BiocManager")) {
+    install.packages("BiocManager")
+    library("BiocManager")
+}
+
+pkgs <- c("ggplot2", "patchwork", "tools")
+
+temp <- sapply(pkgs, function(pkg) {
+    if (!require(pkg, character.only = TRUE)) {
+        install(pkg)
+        library(pkg, character.only = TRUE)
+    }
+})
+
+# Define class names
+classes <- c(
+    tse = "TreeSE",
+    qiime = "QIIME 2",
+    pseq = "phyloseq",
+    spseq = "speedyseq"
+)
+
+# Define method names
+methods <- c(
+    trans = "PhILR transformation",
+    agg = "Family agglomeration",
+    alpha = "Faith diversity",
+    beta = "UniFrac dissimilarity",
+    melt = "Melting"
+)
+
+# Import results
+df <- read.table("data/benchmark_results.csv", sep = ",", header = TRUE)
+
+# Convert object and method vars to factors
+df$object <- factor(df$object, levels = names(classes))
+df$method <- factor(df$method, levels = names(methods))
+
+# Specify plot layouts
+scientific_10 <- function(y) {
+    sapply(y, function(z) {
+        if( is.character(z) ){
+            z <- as.numeric(z)
+        }
+        if( is.na(z) ){
+            NA
+        }else if( z %in% c(1, 10) ){
+            as.character(z)
+        }else{
+            paste0("10^", log10(z))
+        }
+    })
+}
+
+label_scientific <- function(x) parse(text = scientific_10(x))
+
+col.breaks <- unique(df$cols[log10(df$cols) %% 1 == 0])
+
+text_col <- get_theme()$axis.text$colour
+
+cus_theme <- theme(
+    legend.position = "bottom",
+    legend.text = element_text(size = 12),
+    legend.title = element_text(size = 15),
+    legend.key.size = unit(1.2, "cm"),
+    axis.title = element_text(size = 15),
+    axis.text.y.right = element_blank(),
+    axis.ticks.y.right = element_blank(),
+    axis.text = element_text(size = 12),
+    strip.text.x = element_text(size = 15),
+    strip.text.y = element_text(colour = text_col, size = 12, angle = 0),
+    strip.background = element_blank(),
+    plot.tag = element_text(face = "bold")
+)
+
+# Visualise benchmarking results: time
+plot_bench <- function(df, bench.var, error.var = "SE"){
+    
+    var_name <- toTitleCase(bench.var)
+    df$Mean <- df[[var_name]]
+    df$Err <- df[[paste0(var_name, error.var)]]
+    
+    axis_title <- switch(
+        bench.var,
+        time = "Execution time (s)",
+        memory = "Allocated memory (MB)"
+    )
+    
+    y.breaks <- switch(
+        bench.var,
+        time = 10^seq(-1, 3),
+        memory = 10^seq(0, 4)
+    )
+    
+    y.lims <- range(y.breaks)
+    y.lims <- c(min(y.lims[1], min(df$Mean)), max(y.lims[2], max(df$Mean)))
+    
+    row.breaks <- unique(df$rows[log10(df$rows) %% 1 == 0])
+    df$rows <- scientific_10(df$rows)
+    
+    p <- ggplot(df, aes(x = cols, y = Mean, colour = object)) +
+        geom_errorbar(
+            aes(ymin = Mean - Err, ymax = Mean + Err),
+            width = 0, show.legend = TRUE
+        ) +
+        geom_line(show.legend = TRUE) +
+        geom_point(show.legend = TRUE) +
+        scale_x_log10(breaks = col.breaks, limits = range(df$cols), labels = label_scientific) +
+        scale_y_log10(
+            labels = label_scientific,
+            breaks = y.breaks,
+            limits = y.lims,
+            sec.axis = sec_axis(~ ., name = "# Features")) +
+        scale_colour_manual(
+            labels = classes,
+            values = c("black", "darkblue", "firebrick", "tomato"),
+            drop = FALSE
+        )
+    
+    grid_by <- ". ~ method"
+    grid_lab <- list(method = methods)
+    
+    if( length(row.breaks) > 1L ){
+        grid_by <- sub(".", "rows", grid_by, fixed = TRUE)
+        grid_lab[["rows"]] <- label_parsed
+    }
+    
+    p <- p +
+        facet_grid(
+            as.formula(grid_by),
+            labeller = do.call(labeller, grid_lab)
+        )
+    
+    p <- p +
+        labs(x = "# Samples", y = axis_title, colour = "Object") +
+        theme_bw() +
+        cus_theme
+    
+    return(p)
+}
+
+# Visualise benchmarking results
+p1 <- plot_bench(df, "time", "CI")
+p2 <- plot_bench(subset(df, Memory <= 1e3 * 16), "memory", "CI")
+
+# Combine results
+p <- (p1 / p2) +
+    plot_layout(guides = "collect") &
+    plot_annotation(tag_levels = "a") &
+    cus_theme
+
+p
+```
 
 # Data preparation {#sec-process}
 
@@ -1281,7 +1498,7 @@ and transparent data wrangling across studies while facilitating method sharing,
 benchmarking, and reproducible comparisons. These capabilities help establish
 community best practices and build consensus while allowing users to flexibly
 select and evaluate methods appropriate for their specific data and research
-questions. The Bioconductor framework naturally aligns with these goals through
+questions. The Bioconductor ecosystem naturally aligns with these goals through
 its open ecosystem of data resources, interoperable software, and educational
 materials. Community building is actively supported through online training
 resources and communication channels, making it easier for both developers and
@@ -1330,236 +1547,6 @@ communication channels, including Bioconductor Zulip, GitHub platform,
 and an email list. The development of the framework is influenced by
 feedback from the user community through these channels, regular
 meetings, and training workshops.
-
-# Alternative frameworks {#sec-data_frameworks}
-
-Several data analytical frameworks are available for microbiome data science,
-each distinguished by its underlying paradigms, user communities, and scope.
-For example, tools such as QIIME 2 [@bolyen2019], Anvi'o
-[@eren2021], and Mothur [@schloss2009] emphasize standardized, modular
-approaches tailored to microbiome analysis. These frameworks provide
-validated and user-friendly solutions, enabling development of efficient
-end-to-end workflows for microbiome research. However, they are typically
-designed around specific data types, which limits flexibility
-when integrating heterogeneous data modalities within a unified analytical
-framework. In contrast, Bioconductor embraces a more exploratory, statistically
-oriented paradigm spanning multiple areas of bioinformatics beyond
-microbiome research.
-
-TreeSE also offers
-substantial gains in computing speed and memory efficiency over phyloseq
-(@fig-benchmarking and Supplementary Figure 1). While
-speedyseq is faster in certain operations, TreeSE
-tends to scale more efficiently in terms of execution time (t) and allocated
-memory (m) as sample size (n) increases. This benefits from the built-in support
-for sparse and delayed matrices in SE-based data containers, which can improve
-performance [@huber2015]. Despite these advantages, further optimizing time and
-memory consumption represents a key area for further development in the (Tree)SE
-framework. To facilitate migration from phyloseq, the OMA book provides
-conversion functions between the two data container formats together with a
-mapping table of commonly used functions. These resources enable users to
-incrementally migrate existing phyloseq workflows to the (Tree)SE framework while
-preserving familiar coding patterns and minimizing changes to established
-analysis pipelines. Despite the advantages of the (Tree)SE framework,
-further optimization of time and memory consumption remains an area for future
-development.
-
-This data analytical paradigm of Bioconductor is similar to scikit-bio's
-[@aton2025]. While scikit-bio as a Python-based ecosystem benefits from rapidly
-evolving machine learning and artificial intelligence tools, Bioconductor’s
-strengths lie in its vast statistical ecosystem dedicated to omics research and
-strong interoperability with other computational environments.
-Another key distinction is community structure: scikit-bio is more
-centralized, whereas Bioconductor packages are developed and maintained by an
-open community, resulting in a broad toolkit and collaboration enabling easy
-reuse of common solutions.
-Although this approach can introduce some challenges, such as dependency management,
-package compatibility, and differences in package stability, these are actively
-addressed through several coordinated mechanisms. First, submitted packages undergo
-peer review, ensuring relevance and adherence to standards such as documentation
-and working examples. Secondly, Bioconductor follows synchronized, semiannual
-release cycle, during which packages are frozen and mutually compatible. Thirdly,
-all packages are continuously tested within Bioconductor's automated build system,
-which ensures that breaking changes are rapidly detected before release. Each package has an active
-maintainer who is notified of failures and resolves them in a timely manner.
-Finally, community guidelines and continuous integration practices, together
-with shared data structures such as (Tree)SummarizedExperiment, further improve
-interoperability between packages.
-
-```{r}
-#| label: fig-benchmarking
-#| echo: false
-#| message: false
-#| warning: false
-#| fig-cap: "**Execution time and allocated memory for routine microbiome data
-#|   operations.** TreeSE, QIIME 2 and phyloseq&mdash;with its extension
-#|   speedyseq&mdash;are three popular frameworks for microbiome analysis. We
-#|   benchmarked them for five routine operations applied to random subsets of
-#|   features (rows) and samples (columns) from the Metalog database [@kuhn2026].
-#|   Both execution time (s) and allocated memory (MB) were measured as the mean
-#|   value over ten replicates generated. Errorbars show the 95% CI of the estimated
-#|   performance metric. The benchmarking was conducted in R using the bench library
-#|   with 4 CPU cores and 16 GB RAM. The source code for the benchmarking
-#|   analysis is openly available [@benedetti2026b]."
-#| fig-width: 14
-#| fig-height: 14
-
-# Adapted from https://github.com/microbiome/benchmarking/tree/main/
-
-# Import libraries
-if (!require("BiocManager")) {
-    install.packages("BiocManager")
-    library("BiocManager")
-}
-
-pkgs <- c("ggplot2", "patchwork", "tools")
-
-temp <- sapply(pkgs, function(pkg) {
-    if (!require(pkg, character.only = TRUE)) {
-        install(pkg)
-        library(pkg, character.only = TRUE)
-    }
-})
-
-# Define class names
-classes <- c(
-    tse = "TreeSE",
-    qiime = "QIIME 2",
-    pseq = "phyloseq",
-    spseq = "speedyseq"
-)
-
-# Define method names
-methods <- c(
-    trans = "PhILR transformation",
-    agg = "Family agglomeration",
-    alpha = "Faith diversity",
-    beta = "UniFrac dissimilarity",
-    melt = "Melting"
-)
-
-# Import results
-df <- read.table("data/benchmark_results.csv", sep = ",", header = TRUE)
-
-# Convert object and method vars to factors
-df$object <- factor(df$object, levels = names(classes))
-df$method <- factor(df$method, levels = names(methods))
-
-# Specify plot layouts
-scientific_10 <- function(y) {
-    sapply(y, function(z) {
-        if( is.character(z) ){
-            z <- as.numeric(z)
-        }
-        if( is.na(z) ){
-            NA
-        }else if( z %in% c(1, 10) ){
-            as.character(z)
-        }else{
-            paste0("10^", log10(z))
-        }
-    })
-}
-
-label_scientific <- function(x) parse(text = scientific_10(x))
-
-col.breaks <- unique(df$cols[log10(df$cols) %% 1 == 0])
-
-text_col <- get_theme()$axis.text$colour
-
-cus_theme <- theme(
-    legend.position = "bottom",
-    legend.text = element_text(size = 12),
-    legend.title = element_text(size = 15),
-    legend.key.size = unit(1.2, "cm"),
-    axis.title = element_text(size = 15),
-    axis.text.y.right = element_blank(),
-    axis.ticks.y.right = element_blank(),
-    axis.text = element_text(size = 12),
-    strip.text.x = element_text(size = 15),
-    strip.text.y = element_text(colour = text_col, size = 12, angle = 0),
-    strip.background = element_blank(),
-    plot.tag = element_text(face = "bold")
-)
-
-# Visualise benchmarking results: time
-plot_bench <- function(df, bench.var, error.var = "SE"){
-    
-    var_name <- toTitleCase(bench.var)
-    df$Mean <- df[[var_name]]
-    df$Err <- df[[paste0(var_name, error.var)]]
-    
-    axis_title <- switch(
-        bench.var,
-        time = "Execution time (s)",
-        memory = "Allocated memory (MB)"
-    )
-    
-    y.breaks <- switch(
-        bench.var,
-        time = 10^seq(-1, 3),
-        memory = 10^seq(0, 4)
-    )
-    
-    y.lims <- range(y.breaks)
-    y.lims <- c(min(y.lims[1], min(df$Mean)), max(y.lims[2], max(df$Mean)))
-    
-    row.breaks <- unique(df$rows[log10(df$rows) %% 1 == 0])
-    df$rows <- scientific_10(df$rows)
-    
-    p <- ggplot(df, aes(x = cols, y = Mean, colour = object)) +
-        geom_errorbar(
-            aes(ymin = Mean - Err, ymax = Mean + Err),
-            width = 0, show.legend = TRUE
-        ) +
-        geom_line(show.legend = TRUE) +
-        geom_point(show.legend = TRUE) +
-        scale_x_log10(breaks = col.breaks, limits = range(df$cols), labels = label_scientific) +
-        scale_y_log10(
-            labels = label_scientific,
-            breaks = y.breaks,
-            limits = y.lims,
-            sec.axis = sec_axis(~ ., name = "# Features")) +
-        scale_colour_manual(
-            labels = classes,
-            values = c("black", "darkblue", "firebrick", "tomato"),
-            drop = FALSE
-        )
-    
-    grid_by <- ". ~ method"
-    grid_lab <- list(method = methods)
-    
-    if( length(row.breaks) > 1L ){
-        grid_by <- sub(".", "rows", grid_by, fixed = TRUE)
-        grid_lab[["rows"]] <- label_parsed
-    }
-    
-    p <- p +
-        facet_grid(
-            as.formula(grid_by),
-            labeller = do.call(labeller, grid_lab)
-        )
-    
-    p <- p +
-        labs(x = "# Samples", y = axis_title, colour = "Object") +
-        theme_bw() +
-        cus_theme
-    
-    return(p)
-}
-
-# Visualise benchmarking results
-p1 <- plot_bench(df, "time", "CI")
-p2 <- plot_bench(subset(df, Memory <= 1e3 * 16), "memory", "CI")
-
-# Combine results
-p <- (p1 / p2) +
-    plot_layout(guides = "collect") &
-    plot_annotation(tag_levels = "a") &
-    cus_theme
-
-p
-```
 
 # Outlook {#sec-discussion}
 
