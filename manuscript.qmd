@@ -662,9 +662,9 @@ HMP, Human Microbiome Project.
 # Alternative frameworks {#sec-data_frameworks}
 
 The (Tree)SE framework is one of several approaches to microbiome analysis.
-Common alternatives include phyloseq [@mcmurdie2012]&mdash;and its extension
+Common alternatives include phyloseq [@mcmurdie2012]&mdash;with its extension
 speedyseq&mdash;, which is also part of Bioconductor, and the command-line
-platforms QIIME 2 [@bolyen2019], Mothur [@schloss2009] and Anvi'o [@eren2021].
+toolkits Mothur [@schloss2009], QIIME 2 [@bolyen2019], and Anvi'o [@eren2021].
 Each of these frameworks was designed to tackle recurring challenges in
 microbiome data science&mdash;a field where no single solution yet provides the
 most complete, coherent, and efficient approach.
@@ -673,7 +673,7 @@ Compared to its alternatives, the (Tree)SE framework relies on a more compact,
 efficient data structure that is fully interoperable with the larger
 Bioconductor ecosystem. This way, it provides an evidence-based, accessible
 solution for developing end-to-end microbiome analysis workflows that can
-integrate concurrent development efforts in Bioconductor, without being limited
+integrate concurrent Bioconductor development efforts, without being limited
 exclusively to methods for microbiome data analysis.
 
 This integrative approach to bioinformatics is also found in the Python library
@@ -684,22 +684,19 @@ containers such as TreeSE. Nonetheless, certain scikit-bio modules for community
 diversity estimation are available through the larger QIIME 2 framework for
 microbiome analysis.
 
-The (Tree)SE framework provides a substantial gain in performance over alternative
-frameworks (@fig-benchmarking and Supplementary Figure 1). While
-speedyseq is faster in certain operations, TreeSE
-tends to scale more efficiently in terms of execution time (t) and allocated
-memory (m) as sample size (n) increases. This benefits from the built-in support
-for sparse and delayed matrices in SE-based data containers, which can improve
-performance [@huber2015]. Despite these advantages, further optimizing time and
-memory consumption represents a key area for further development in the (Tree)SE
-framework. To facilitate migration from phyloseq, the OMA book provides
-conversion functions between the two data container formats together with a
-mapping table of commonly used functions. These resources enable users to
-incrementally migrate existing phyloseq workflows to the (Tree)SE framework while
-preserving familiar coding patterns and minimizing changes to established
-analysis pipelines. Despite the advantages of the (Tree)SE framework,
-further optimization of time and memory consumption remains an area for future
-development.
+Based on an extensive benchmark of routine operations in microbiome analysis
+applied to subsets of the Metalog database [@kuhn2026], the (Tree)SE framework
+shows substantial performance gains over alternatives (@fig-benchmarking and
+Supplementary Figure 1). While speedyseq performs faster in certain operations,
+TreeSE tends to scale more efficiently in terms of execution time and allocated
+memory as feature and sample sizes increase. As most operations exceeded
+resource limits for very large sample subsets, future development will need to
+focus on further optimizing these routine operations in the (Tree)SE framework,
+*e.g.*, by executing costly computations in C++ and by leveraging the built-in
+support for sparse and delayed matrices in SE-based data containers, which can
+significantly improve method efficiency [@huber2015]. To facilitate migration
+from alternative frameworks, the OMA book provides conversion tables and utility
+functions to convert between TreeSE and external formats.
 
 ```{r}
 #| label: fig-benchmarking
@@ -707,15 +704,17 @@ development.
 #| message: false
 #| warning: false
 #| fig-cap: "**Execution time and allocated memory for routine microbiome data
-#|   operations.** TreeSE, QIIME 2 and phyloseq&mdash;with its extension
-#|   speedyseq&mdash;are three popular frameworks for microbiome analysis. We
-#|   benchmarked them for five routine operations applied to random subsets of
-#|   features (rows) and samples (columns) from the Metalog database [@kuhn2026].
-#|   Both execution time (s) and allocated memory (MB) were measured as the mean
-#|   value over ten replicates generated. Errorbars show the 95% CI of the estimated
-#|   performance metric. The benchmarking was conducted in R using the bench library
-#|   with 4 CPU cores and 16 GB RAM. The source code for the benchmarking
-#|   analysis is openly available [@benedetti2026b]."
+#|   operations.** TreeSummarizedExperiment, QIIME 2 and phyloseq&mdash;with its
+#|   extension speedyseq&mdash;are three popular frameworks for microbiome
+#|   analysis. We benchmarked them for five routine operations applied to random
+#|   subsets of features (rows) and samples (columns) from the Metalog database
+#|   [@kuhn2026]. Both execution time (s) and allocated memory (MB) were
+#|   measured as the mean value over ten replicates generated. Errorbars show
+#|   the 95% confidence interval of the performance estimate. The benchmarking
+#|   was conducted in R using the bench library with 4 CPU cores and 16 GB RAM.
+#|   QIIME 2 lacks allocated memory estimates because memory cannot be monitored
+#|   for external processes. The source code for the benchmarking analysis is
+#|   openly available [@benedetti2026b]."
 #| fig-width: 14
 #| fig-height: 14
 
