@@ -375,9 +375,10 @@ data combinations [@huber2015] and are widely adopted by various
 research communities. They have been implemented through specialized
 object-oriented classes that integrate multiple data elements into
 a single structure known as a *data container*
-[@chambers2014]. The SummarizedExperiment (SE) class is
+[@chambers2014]. The SummarizedExperiment (SE) class [@huber2015; @morgan2025] is
 the primary data container underlying the Bioconductor ecosystem
-[@huber2015; @morgan2025]. Its position among the top 1\% most-downloaded
+(Figure \ref{fig:datacontainers} a and @tbl-elements).
+Its position among the top 1\% most-downloaded
 packages in Bioconductor reflects its widespread recognition and
 increasing adoption among developers (@fig-bioc_packages). SE provides a
 standardized solution to store tabular data by linking numeric abundance
@@ -520,7 +521,8 @@ While maintaining interoperability with
 the broader Bioconductor ecosystem, the TreeSummarizedExperiment
 (TreeSE) class [@huang2021] extends the SE and SCE data structures to
 hierarchical datasets by incorporating both feature and sample organizations
-as tree structures (@fig-datacontainers a and @tbl-elements). Moreover, TreeSE supports the
+as tree structures (Figure \ref{fig:datacontainers} b and @tbl-elements).
+Moreover, TreeSE supports the
 storage of other common elements of microbiome data, for example, reference
 sequences, and incorporates results from common analytical procedures such as
 dimensionality reduction, statistical transformations, and agglomeration by
@@ -538,32 +540,27 @@ but also extends to multi-modal datasets encompassing
 parallel taxonomic levels, functional predictions, and resistome, metabolome or
 other profiles and alternative feature representations.
 
-| Data container                                | Target use                                                  |
-|-----------------------------------------------|-------------------------------------------------------------|
-| SummarizedExperiment (SE)[@huber2015]         | generic container linking multiple data tables (assays)     |
-| TreeSummarizedExperiment (TreeSE)[@huang2021] | extension incorporating hierarchical data structures        |
-| MultiAssayExperiment (MAE)[@ramos2017]        | binding omic-specific containers in multi-omics experiments |
-
-: Bioconductor integrative data containers for microbiome analysis.
-{#tbl-containers tbl-colwidths="[50,50]"}
-
-![**Bioconductor data containers for microbiome data.** **(a)
-TreeSummarizedExperiment (TreeSE)** supports hierarchical, multi-table
-microbiome analysis. A data object can accommodate: i) _assays_ that describe
-the abundances of features in each sample (*e.g.* taxonomic units, resistance
-genes, or predicted functions), ii) _colData_ with tabular metadata on each
-sample, iii) _rowData_ with tabular metadata on each feature (*e.g.* taxonomic
-mappings), and iv) tree information describing feature hierarchies, such as
+::: {.figure}
+\begin{center}
+\includegraphics[height=\textheight]{figures/data_containers.png}
+\end{center}
+\captionof{figure}{\textbf{Bioconductor data containers for microbiome data.}
+\textbf{(a) SummarizedExperiment (SE)} \cite{huber2015}.
+\textbf{(b) TreeSummarizedExperiment (TreeSE)} supports hierarchical, multi-table
+microbiome analysis. A data object can accommodate: i) \textit{assays} that describe
+the abundances of features in each sample (\textit{e.g.} taxonomic units, resistance
+genes, or predicted functions), ii) \textit{colData} with tabular metadata on each
+sample, iii) \textit{rowData} with tabular metadata on each feature (\textit{e.g.}, taxonomic mappings), and iv) tree information describing feature hierarchies, such as
 phylogenetic relations between the taxonomic units (rowTree) or host species
 (colTree). TreeSE can thus link multiple numeric abundance tables and their
-derived versions (*e.g.* statistical transformations, different taxonomic
+derived versions (\textit{e.g.}, statistical transformations, different taxonomic
 levels, dimensionality reduction) with tabular and hierarchical side
 information on the features (rows) and samples (columns). Additional slots for
 reference sequences and experiment metadata are available. Adapted from
-[@huang2021]. **(b) MultiAssayExperiment (MAE)** facilitates the integration of
-interlinked datasets that may represent different omics modalities
-linked by potentially non-trivial sample mappings. Adapted from
-[@ramos2017].](figures/data_containers.png){#fig-datacontainers}
+\cite{huang2021}. \textbf{(c) MultiAssayExperiment (MAE)} facilitates the integration of interlinked datasets that may represent different omics modalities
+linked by potentially non-trivial sample mappings. Adapted from \cite{ramos2017}.}
+\label{fig:datacontainers}
+:::
 
 **Multi-assay data structures.** Contemporary microbiome research frequently
 involves data across multiple measurement modalities for enhanced functional
@@ -584,7 +581,8 @@ data modalities into a single object and create flexible sample mappings across 
 The MultiAssayExperiment (MAE) data container [@ramos2017] addresses these
 challenges by introducing a formal mapping layer (sampleMap) that links
 biological samples to their corresponding measurements in each modality
-(@fig-datacontainers b and @tbl-elements). This design supports one-to-one, one-to-many, and
+(Figure \ref{fig:datacontainers} c and @tbl-elements).
+This design supports one-to-one, one-to-many, and
 partially overlapping sample relationships across experiments. Importantly, this
 mapping is also accessible for downstream operations. For instance, when
 subsetting a MAE object
@@ -1096,8 +1094,7 @@ methods are provided by mia, miaViz, and additional single-cell packages
 a common task, and many omics modalities can benefit from shared,
 standardized methods provided by the integrative (Tree)SE framework.
 
-**Differential abundance and mediation analysis.** Differential Abundance
-Analysis (DAA)
+**Association analysis.** Differential Abundance Analysis (DAA)
 and Differential Prevalence Analysis (DPA) methods are used to
 identify indicator microbial features whose abundances vary across study groups
 or continuous gradients, for example in terms of spatial or temporal distance between
@@ -1231,26 +1228,36 @@ cross-language interoperability of structured data through standard containers s
 
 # Load packages
 pkgs <- c("maaslin3", "mia", "miaTime", "microbiomeDataSets")
+
 temp <- sapply(pkgs, function(x) {
     suppressMessages(require(x, character.only = TRUE))
 })
 
 # Load data
 tse <- SprockettTHData()
+
 # Subset by taking only fecal samples from infants
 tse <- tse[ , tse$Sample_Type == "Feces" & tse$Age_Class == "Infant"]
 
-# Agglomerate and apply transformations
-tse <- agglomerateByRanks(tse)
+# Agglomerate by phylum, family and genus
+tse <- agglomerateByRanks(tse, ranks = c("Phylum", "Family", "Genus"))
+
+# Apply relative abundance transformation
 tse <- transformAssay(tse, method = "relabundance", altexp = altExpNames(tse))
+
+# Apply CLR transformation
 tse <- transformAssay(
     tse, method = "clr", pseudocount = TRUE, altexp = altExpNames(tse)
 )
-altExp(tse, "prev_genus") <- subsetByPrevalent(
-    altExp(tse, "Genus"), prevalence = 0.5, detection = 0.001
-)
-rownames(altExp(tse, "prev_genus")) <- gsub(
-    "/| ", "_", rownames(altExp(tse, "prev_genus"))
+
+# Apply z-score transformation
+tse <- transformAssay(
+    tse,
+    MARGIN = "rows",
+    method = "standardize",
+    assay.type = "clr",
+    altexp = altExpNames(tse),
+    name = "z"
 )
 
 # Calculate alpha diversity
@@ -1267,38 +1274,52 @@ tse <- addRDA(
     formula = x ~ Age_Months + Country,
     na.action = na.exclude
 )
+
 # Remove the RDA object as it takes a lot of space
 attr(reducedDim(tse, "RDA"), "obj") <- NULL
 
+# Calculate time divergence
+tse <- addStepwiseDivergence(
+    tse,
+    time.col = "Age_Months",
+    group = "Subject_ID",
+    method = "bray",
+    tree = rowTree(tse)
+)
+
+altExp(tse, "prev_genus") <- subsetByPrevalent(
+    altExp(tse, "Genus"),
+    prevalence = 0.5,
+    detection = 0.001,
+    tree = rowTree(tse)
+)
+
+tse <- swapAltExp(tse, "prev_genus", saved = "main")
+
+rownames(tse) <- gsub("/| ", "_", rownames(tse))
+
 # Perform DAA
 res_full <- maaslin3(
-    input_data = altExp(tse, "prev_genus"),
+    input_data = tse,
     output = "DAA_example",
     formula = "~ Age_Months + Sex + Country",
     normalization = "TSS",
     transform = "LOG",
     verbosity = "ERROR"
 )
-res <- res_full[["fit_data_abundance"]][["results"]]
-res <- res[res[["value"]] == "Age_Months", ]
-signif_feat <- res[
-    !is.na(res[["qval_individual"]]) & res[["qval_individual"]] < 0.05,
-    "feature"
-]
-rowData(altExp(tse, "prev_genus"))[["signif"]] <- rownames(
-    altExp(tse, "prev_genus")
-) %in% signif_feat
 
-# Calculate time divergence
-tse <- addStepwiseDivergence(
-    tse,
-    time.col = "Age_Months",
-    group = "Subject_ID", method = "bray",
-    tree = rowTree(tse)
-)
+# Extract DAA results
+res <- res_full$fit_data_abundance$results
+res <- res[res$value == "Age_Months", ]
 
-# Save object so that it can be used in visualization step without running the
-# analyses
+# Add abundance results to rowData
+rownames(res) <- res$feature
+tax_order <- match(rownames(tse), rownames(res))
+rowData(tse) <- cbind(rowData(tse), res[tax_order, ])
+
+tse <- swapAltExp(tse, "main", saved = "prev_genus")
+
+# Save object to use it in visualization step without running analyses
 saveRDS(tse, file.path("data", "tse.rds"))
 ```
 
@@ -1330,7 +1351,7 @@ saveRDS(tse, file.path("data", "tse.rds"))
 #| fig-height: 10
 
 # Load packages
-pkgs <- c("miaViz", "patchwork", "scater")
+pkgs <- c("ggpubr", "miaViz", "patchwork", "scater")
 temp <- sapply(pkgs, function(x) {
     suppressMessages(require(x, character.only = TRUE))
 })
@@ -1338,7 +1359,7 @@ temp <- sapply(pkgs, function(x) {
 # Load data
 file_path <- file.path("data", "tse.rds")
 if (!file.exists(file_path)) {
-    stop("Run manually the chunk above. '", file_path, "' cannot found.")
+    stop("Run manually the chunk above. '", file_path, "' cannot be found.")
 }
 tse <- readRDS(file_path)
 
@@ -1366,7 +1387,7 @@ p_tree <- plotRowTree(
 p_bar <- plotAbundance(
     altExp(tse, "Phylum"),
     assay.type = "relabundance",
-    col.var = c("Country", "Sex"), facet.cols = TRUE, scales = "free",
+    col.var = c("Country", "Sex"), ncol = 3, facet.cols = TRUE, scales = "free_x",
     order.col.by = "Age_Months"
 ) +
     guides(fill = guide_legend(title = "Phylum")) +
@@ -1392,10 +1413,10 @@ p_alpha <- plotColData(
     )
 
 p_alpha2 <- plotColData(
-    tse,
-    y = "faith", x = "Age_Months"
+    tse, y = "faith", x = "Age_Months", colour_by = "Country"
 ) +
     geom_smooth(method = "lm") +
+    stat_cor(method = "kendall", cor.coef.name = "tau", label.x.npc = 0.9) +
     labs(y = "Faith", x = "Age in months") +
     theme(
         axis.title.x = element_text(size = title_size),
@@ -1427,29 +1448,40 @@ p_rda <- plotRDA(tse, "RDA", colour.by = "Country", add.significance = FALSE) +
         axis.text.y = element_text(size = text_size)
     )
 
-# Visualize abundances vs age
-p_daa <- plotExpression(
-    altExp(tse, "prev_genus"),
-    features = rownames(altExp(tse, "prev_genus"))[rowData(altExp(tse, "prev_genus"))[["signif"]]],
-    assay.type = "relabundance", x = "Age_Months", ncol = 3L,
-) +
-    scale_y_log10() +
-    geom_smooth() +
-    labs(x = "Age in months", y = "Relative abundance") +
+tse_sub <- tse[ , !is.na(tse$time_diff) & tse$time_diff >= 0.8 & tse$time_diff <= 1.2]
+
+# Visualize divergence
+p_divergence <- plotColData(tse_sub, y = "divergence", x = "Age_Months") +
+    geom_smooth(method = "lm") +
+    labs(x = "Age in months", y = expression(Delta ~ "UniFrac" ~ "(N, N-1)")) +
     theme(
+        legend.position = "none",
         axis.title.x = element_text(size = title_size),
         axis.title.y = element_text(size = title_size),
         axis.text.x = element_text(size = text_size),
         axis.text.y = element_text(size = text_size)
     )
 
-# Visualize divergence
-tse_sub <- tse[, !is.na(tse[["time_diff"]]) & tse[["time_diff"]] >= 0.8 & tse[["time_diff"]] <= 1.2]
-p_divergence <- plotColData(tse_sub, y = "divergence", x = "Age_Months") +
-    geom_smooth(method = "lm") +
-    labs(x = "Age in months", y = expression(Delta ~ "UniFrac" ~ "(N, N-1)")) +
+tse <- swapAltExp(tse, "prev_genus", saved = "main")
+
+#p_forest <- plotForest(
+#    tse,
+#    effect.var = "coef",
+#    err.var = "stderr",
+#    pval.var = "qval_individual",
+#    label.by = c("CI", "P-Value")
+#)
+
+# Visualize abundances vs age
+p_daa <- plotExpression(
+    tse,
+    features = rownames(tse)[rowData(tse)$qval_individual < 0.05],
+    assay.type = "relabundance", x = "Age_Months"
+) +
+    scale_y_log10() +
+    geom_smooth() +
+    labs(x = "Age in months", y = "Relative abundance") +
     theme(
-        legend.position = "none",
         axis.title.x = element_text(size = title_size),
         axis.title.y = element_text(size = title_size),
         axis.text.x = element_text(size = text_size),
@@ -1512,8 +1544,8 @@ is an online book published at [https://bioconductor.org/books/release/OMA](http
 that provides a comprehensive guide to the (Tree)SE framework for microbiome
 data science in Bioconductor, including practical guidelines,
 reproducible workflows, and training material for integrative microbiome
-analyses. The book is versioned according to Bioconductor's biannual software
-release cycles. The work incorporates rich feedback from the user community and
+analyses. The book is versioned according to the Bioconductor's biannual
+release cycle. The work incorporates rich feedback from the user community and
 microbiome training courses. The OMA book aligns to a broader Bioconductor convention, where
 prominent data structures [@huber2015; @ramos2017; @huang2021]
 designed for multi-table data integration have been described across several
