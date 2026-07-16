@@ -7,8 +7,11 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg5"
-   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   inkscape:version="1.4.4 (dcaf3e7d, 2026-05-05)"
    sodipodi:docname="TreeSE.svg"
+   inkscape:export-filename="TreeSE.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,17 +27,24 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.26960926"
-     inkscape:cx="-556.36071"
-     inkscape:cy="4131.9055"
-     inkscape:window-width="1920"
-     inkscape:window-height="1030"
+     inkscape:zoom="0.6383929"
+     inkscape:cx="-857.62231"
+     inkscape:cy="2532.1397"
+     inkscape:window-width="2560"
+     inkscape:window-height="1440"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1"
+     inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs2" />
+     id="defs2">
+    <rect
+       x="256.19084"
+       y="2143.2551"
+       width="79.669103"
+       height="140.59254"
+       id="rect1" />
+  </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
@@ -812,42 +822,44 @@
     <text
        class="cls-241"
        id="text2359-9"
-       style="font-size:7.05556px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
+       style="font-size:8.81944px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
        x="-168.6701"
        y="781.12012"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:CourierNewPSMT, 'Courier New';-inkscape-font-specification:'CourierNewPSMT, Courier New';stroke-width:0.329364"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:Courier;-inkscape-font-specification:Courier;stroke-width:0.329364"
          id="tspan86837-7">assays(tse)</tspan></text>
     <text
        class="cls-241"
        id="text2361-3"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:CourierNewPSMT, 'Courier New';-inkscape-font-specification:'CourierNewPSMT, Courier New';isolation:isolate;stroke-width:0.329364"
-       x="-61.924564"
-       y="639.02533">colData(tse)</text>
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:CourierNewPSMT, 'Courier New';-inkscape-font-specification:'CourierNewPSMT, Courier New';isolation:isolate;stroke-width:0.329364"
+       x="-68.274567"
+       y="639.02533"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:Courier;-inkscape-font-specification:Courier"
+         id="tspan1">colData(tse)</tspan></text>
     <text
        class="cls-241"
        id="text2363-6"
-       style="font-size:7.05556px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
+       style="font-size:8.81944px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
        x="-35.142796"
        y="781.12207"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:CourierNewPSMT, 'Courier New';-inkscape-font-specification:'CourierNewPSMT, Courier New';stroke-width:0.329364"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:Courier;-inkscape-font-specification:Courier;stroke-width:0.329364"
          id="tspan85175-1">metadata(tse)</tspan></text>
     <text
        class="cls-241"
        id="text2365-2"
-       style="font-size:7.05556px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
-       x="-262.168"
+       style="font-size:8.81944px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
+       x="-268.5181"
        y="764.3183"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:CourierNewPSMT, 'Courier New';-inkscape-font-specification:'CourierNewPSMT, Courier New';stroke-width:0.329364"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:Courier;-inkscape-font-specification:Courier;stroke-width:0.329364"
          id="tspan88309-9">rowData(tse)</tspan></text>
     <rect
        class="cls-223"
-       x="-384.46841"
-       y="568.75232"
-       width="43.825489"
-       height="28.379587"
-       rx="2.196449"
+       x="-385.52151"
+       y="568.75751"
+       width="45.723557"
+       height="28.369238"
+       rx="2.2915766"
        id="rect2379-3"
-       style="fill:none;stroke:#000000;stroke-width:0.486323px;stroke-miterlimit:10;stroke-dasharray:1.9453, 1.45897" />
+       style="fill:none;stroke:#000000;stroke-width:0.6;stroke-miterlimit:10;stroke-dasharray:2.4000144,1.80000475;stroke-dashoffset:0" />
     <g
        class="cls-242"
        id="g2409-1"
@@ -857,12 +869,12 @@
          class="cls-243"
          transform="rotate(-90,1565.51,488.26)"
          id="text2405-9"
-         style="font-size:29.91px;font-family:ArialMT, Arial;letter-spacing:-0.13em;isolation:isolate">T</text>
+         style="font-size:32.1329px;font-family:ArialMT, Arial;letter-spacing:-0.13em;isolation:isolate">T</text>
       <text
          class="cls-244"
          transform="rotate(-90,1558.03,480.78)"
          id="text2407-4"
-         style="font-size:29.91px;font-family:ArialMT, Arial;isolation:isolate">axa</text>
+         style="font-size:32.1329px;font-family:ArialMT, Arial;isolation:isolate">axa</text>
     </g>
     <rect
        class="cls-223"
@@ -872,12 +884,12 @@
        height="80.897789"
        rx="4.0544415"
        id="rect2411-7"
-       style="fill:none;stroke:#000000;stroke-width:0.658723px;stroke-miterlimit:10;stroke-dasharray:2.63489, 1.97617" />
+       style="fill:none;stroke:#000000;stroke-width:0.65;stroke-miterlimit:10;stroke-dasharray:2.59999812,1.95000094;stroke-dashoffset:0" />
     <text
        class="cls-244"
        transform="rotate(-90)"
        id="text2413-8"
-       style="font-size:9.8512px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
+       style="font-size:10.5833px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
        x="-696.19971"
        y="-412.24973">(Rows)</text>
     <path
@@ -898,10 +910,10 @@
     <text
        class="cls-241"
        id="text2441-3"
-       style="font-size:7.05556px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
-       x="-319.10394"
-       y="764.3183"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:CourierNewPSMT, 'Courier New';-inkscape-font-specification:'CourierNewPSMT, Courier New';stroke-width:0.329364"
+       style="font-size:8.81944px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
+       x="-325.98322"
+       y="774.37262"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:Courier;-inkscape-font-specification:Courier;stroke-width:0.329364"
          id="tspan94015-61">rowLinks(tse)</tspan></text>
     <g
        class="cls-242"
@@ -911,10 +923,10 @@
       <text
          class="cls-241"
          id="text2441-7-6"
-         style="font-size:21.4219px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:1.00001"
-         x="1151.0854"
+         style="font-size:26.7774px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:1.00001"
+         x="1131.8052"
          y="2279.3103"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:CourierNewPSMT, 'Courier New';-inkscape-font-specification:'CourierNewPSMT, Courier New';stroke-width:1.00001"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.7774px;font-family:Courier;-inkscape-font-specification:Courier;stroke-width:1.00001"
            id="tspan94015-6-3">rowTree(tse)</tspan></text>
     </g>
     <path
@@ -1091,7 +1103,7 @@
     <text
        class="cls-244"
        id="text2395-9"
-       style="font-size:9.8512px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
+       style="font-size:10.5833px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
        x="-605.38916"
        y="76.868538"
        transform="rotate(-90)">Samples</text>
@@ -1103,7 +1115,7 @@
        height="28.206528"
        rx="4.0544415"
        id="rect2397-2"
-       style="fill:none;stroke:#000000;stroke-width:0.658723px;stroke-miterlimit:10;stroke-dasharray:2.63489, 1.97617"
+       style="fill:none;stroke:#000000;stroke-width:0.65;stroke-miterlimit:10;stroke-dasharray:2.59999793,1.9500009;stroke-dashoffset:0"
        transform="rotate(-90)" />
     <g
        class="cls-242"
@@ -1116,14 +1128,14 @@
          id="text2401-6"
          x="88.817223"
          y="0"
-         style="font-size:29.91px;font-family:ArialMT, Arial;isolation:isolate"><tspan
+         style="font-size:32.1329px;font-family:ArialMT, Arial;isolation:isolate"><tspan
            xml:space="preserve"
            id="tspan2399-8"
-           style="text-align:center;text-anchor:middle">(Columns)</tspan></text>
+           style="font-size:32.1329px;text-align:center;text-anchor:middle">(Columns)</tspan></text>
     </g>
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
+       style="font-size:8.81944px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
        x="-362.44028"
        y="580.67664"
        id="text194095-0-9"><tspan
@@ -1131,24 +1143,24 @@
          id="tspan194093-4-2"
          x="-362.44028"
          y="580.67664"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583">Taxonomy</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:ArialMT, Arial;-inkscape-font-specification:'ArialMT, Arial';text-align:center;text-anchor:middle;stroke-width:0.264583">Taxonomy</tspan><tspan
          sodipodi:role="line"
          x="-362.44028"
-         y="589.49603"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         y="591.80304"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:ArialMT, Arial;-inkscape-font-specification:'ArialMT, Arial';text-align:center;text-anchor:middle;stroke-width:0.264583"
          id="tspan201538-2-6">Tree</tspan></text>
     <rect
        class="cls-223"
-       x="-259.10303"
-       y="568.75073"
-       width="43.24176"
-       height="28.382812"
-       rx="2.1671937"
+       x="-259.62778"
+       y="568.755"
+       width="44.78376"
+       height="28.374296"
+       rx="2.2444756"
        id="rect2379-29-6"
-       style="fill:none;stroke:#000000;stroke-width:0.4831px;stroke-miterlimit:10;stroke-dasharray:1.93241, 1.44931" />
+       style="fill:none;stroke:#000000;stroke-width:0.6;stroke-miterlimit:10;stroke-dasharray:2.40001703,1.80000971;stroke-dashoffset:0" />
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
+       style="font-size:8.81944px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
        x="-237.37018"
        y="580.67664"
        id="text194095-0-02-4"><tspan
@@ -1156,61 +1168,61 @@
          id="tspan194093-4-8-9"
          x="-237.37018"
          y="580.67664"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583">Taxonomy</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:ArialMT, Arial;-inkscape-font-specification:'ArialMT, Arial';text-align:center;text-anchor:middle;stroke-width:0.264583">Taxonomy</tspan><tspan
          sodipodi:role="line"
          x="-237.37018"
-         y="589.49603"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         y="591.80304"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:ArialMT, Arial;-inkscape-font-specification:'ArialMT, Arial';text-align:center;text-anchor:middle;stroke-width:0.264583"
          id="tspan201538-2-3-5">Table</tspan></text>
     <rect
        class="cls-223"
-       x="-57.600285"
-       y="511.2001"
-       height="28.39706"
-       rx="2.0403178"
+       x="-60.525581"
+       y="512.05438"
+       height="27.518303"
+       rx="2.3403306"
        id="rect2379-29-9-0"
-       style="fill:none;stroke:#000000;stroke-width:0.468863px;stroke-miterlimit:10;stroke-dasharray:1.87546, 1.4066"
-       width="40.709999" />
+       style="fill:none;stroke:#000000;stroke-width:0.6;stroke-miterlimit:10;stroke-dasharray:2.40001013,1.80003552;stroke-dashoffset:0"
+       width="46.696083" />
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
+       style="font-size:8.81944px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
        x="-37.268055"
-       y="523.13318"
+       y="522.604"
        id="text194095-0-02-1-4"><tspan
-         sodipodi:role="line"
          x="-37.268055"
-         y="523.13318"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
-         id="tspan201538-2-3-6-8">Sample</tspan><tspan
-         sodipodi:role="line"
+         y="522.604"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:ArialMT, Arial;-inkscape-font-specification:'ArialMT, Arial';text-align:center;text-anchor:middle;stroke-width:0.264583"
+         id="tspan201538-2-3-6-8"
+         sodipodi:role="line">Sample</tspan><tspan
          x="-37.268055"
-         y="531.95264"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
-         id="tspan422496-7">Metadata</tspan></text>
+         y="533.73041"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:ArialMT, Arial;-inkscape-font-specification:'ArialMT, Arial';text-align:center;text-anchor:middle;stroke-width:0.264583"
+         id="tspan422496-7"
+         sodipodi:role="line">Metadata</tspan></text>
     <rect
        class="cls-223"
-       x="-33.097507"
-       y="657.38013"
-       width="45.199341"
-       height="28.371901"
-       rx="2.2653041"
+       x="-35.283459"
+       y="657.38971"
+       width="48.972466"
+       height="28.252985"
+       rx="2.454406"
        id="rect2379-29-9-9-1"
-       style="fill:none;stroke:#000000;stroke-width:0.493818px;stroke-miterlimit:10;stroke-dasharray:1.97529, 1.48147" />
+       style="fill:none;stroke:#000000;stroke-width:0.6;stroke-miterlimit:10;stroke-dasharray:2.40002092,1.80001869;stroke-dashoffset:0" />
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
+       style="font-size:8.81944px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
        x="-10.759662"
        y="669.3006"
        id="text194095-0-02-1-9-7"><tspan
          sodipodi:role="line"
          x="-10.759662"
          y="669.3006"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:ArialMT, Arial;-inkscape-font-specification:'ArialMT, Arial';text-align:center;text-anchor:middle;stroke-width:0.264583"
          id="tspan201538-2-3-6-3-2">Experiment</tspan><tspan
          sodipodi:role="line"
          x="-10.759662"
-         y="678.12006"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         y="680.427"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:ArialMT, Arial;-inkscape-font-specification:'ArialMT, Arial';text-align:center;text-anchor:middle;stroke-width:0.264583"
          id="tspan422496-6-7">Metadata</tspan></text>
     <rect
        class="cls-223"
@@ -1220,22 +1232,22 @@
        height="28.494022"
        rx="1.2792239"
        id="rect2379-8-0"
-       style="fill:none;stroke:#000000;stroke-width:0.371888px;stroke-miterlimit:10;stroke-dasharray:1.48755, 1.11567" />
+       style="fill:none;stroke:#000000;stroke-width:0.6;stroke-miterlimit:10;stroke-dasharray:2.39999673,1.80000957;stroke-dashoffset:0" />
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
+       style="font-size:8.81944px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
        x="-292.47852"
        y="580.67664"
        id="text194095-0-0-6"><tspan
          sodipodi:role="line"
          x="-292.47852"
          y="580.67664"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle;stroke-width:0.264583"
          id="tspan201538-2-0-1">Row</tspan><tspan
          sodipodi:role="line"
          x="-292.47852"
-         y="589.49603"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         y="591.80304"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle;stroke-width:0.264583"
          id="tspan421935-5">Links</tspan></text>
     <path
        class="cls-198"
@@ -1261,28 +1273,28 @@
        style="fill:#1a1a1a;stroke:#434343;stroke-width:0.329364;stroke-linejoin:round" />
     <rect
        class="cls-223"
-       x="1.7608528"
-       y="511.3541"
-       width="22.426193"
-       height="28.083937"
-       rx="1.1239576"
+       x="0.18228802"
+       y="512.19946"
+       width="25.576826"
+       height="27.223116"
+       rx="1.2818612"
        id="rect2379-8-5-2-2-9"
-       style="fill:none;stroke:#000000;stroke-width:0.600001;stroke-miterlimit:10;stroke-dasharray:2.40001, 1.80001;stroke-dashoffset:0" />
+       style="fill:none;stroke:#000000;stroke-width:0.6;stroke-miterlimit:10;stroke-dasharray:2.40001, 1.80001;stroke-dashoffset:0" />
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.152926"
-       x="12.802284"
+       style="font-size:8.81944px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.152926"
+       x="13.33145"
        y="523.51074"
        id="text194095-0-0-6-6-2-1"><tspan
          sodipodi:role="line"
-         x="12.802284"
+         x="13.33145"
          y="523.51074"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.152926"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:ArialMT, Arial;-inkscape-font-specification:'ArialMT, Arial';text-align:center;text-anchor:middle;stroke-width:0.152926"
          id="tspan201538-2-0-9-6-6-7">Col</tspan><tspan
          sodipodi:role="line"
-         x="12.802284"
-         y="532.3302"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.152926"
+         x="13.33145"
+         y="534.63715"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:ArialMT, Arial;-inkscape-font-specification:'ArialMT, Arial';text-align:center;text-anchor:middle;stroke-width:0.152926"
          id="tspan421935-3-4-1-7">Links</tspan></text>
     <rect
        class="cls-253"
@@ -1326,44 +1338,45 @@
        d="m 39.120738,617.5737 a 2.1478557,2.0761023 0 0 0 2.147845,2.0761 2.1478557,2.0761023 0 0 0 2.147848,-2.0761 2.1478557,2.0761023 0 0 0 -2.147848,-2.0761 2.1478557,2.0761023 0 0 0 -2.147845,2.0761 z" />
     <rect
        class="cls-223"
-       x="27.80542"
-       y="511.1904"
-       width="38.26701"
-       height="28.411306"
-       rx="1.9178689"
+       x="32.544579"
+       y="512.28223"
+       width="41.759132"
+       height="27.325275"
+       rx="2.0928872"
        id="rect2379-7-3"
-       style="fill:none;stroke:#000000;stroke-width:0.600001;stroke-miterlimit:10;stroke-dasharray:2.40001, 1.80001;stroke-dashoffset:0" />
+       style="fill:none;stroke:#000000;stroke-width:0.600007;stroke-miterlimit:10;stroke-dasharray:2.40003, 1.80003;stroke-dashoffset:0"
+       transform="matrix(1,0,-0.0069837,0.99997561,0,0)" />
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
-       x="47.054405"
+       style="font-size:8.81944px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
+       x="49.700241"
        y="523.50812"
        id="text194095-0-1-6"><tspan
          sodipodi:role="line"
          id="tspan194093-4-1-5"
-         x="47.054405"
+         x="49.700241"
          y="523.50812"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583">Hierarchy</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:ArialMT, Arial;-inkscape-font-specification:'ArialMT, Arial';text-align:center;text-anchor:middle;stroke-width:0.264583">Hierarchy</tspan><tspan
          sodipodi:role="line"
-         x="47.054405"
-         y="532.32758"
-         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="49.700241"
+         y="534.63452"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:ArialMT, Arial;-inkscape-font-specification:'ArialMT, Arial';text-align:center;text-anchor:middle;stroke-width:0.264583"
          id="tspan201538-2-59-6">Tree</tspan></text>
     <text
        class="cls-241"
        id="text2361-2-7-3"
-       style="font-size:7.05556px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
-       x="-13.823128"
-       y="648.08685"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:CourierNewPSMT, 'Courier New';-inkscape-font-specification:'CourierNewPSMT, Courier New';stroke-width:0.329364"
+       style="font-size:8.81944px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
+       x="-18.585629"
+       y="649.1452"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:Courier;-inkscape-font-specification:Courier;stroke-width:0.329364"
          id="tspan78949-9">colLinks(tse)</tspan></text>
     <text
        class="cls-241"
        id="text2361-2-7-7-4"
-       style="font-size:7.05556px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
-       x="22.256561"
+       style="font-size:8.81944px;font-family:ArialMT, Arial;isolation:isolate;stroke-width:0.329364"
+       x="17.494057"
        y="638.95294"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:CourierNewPSMT, 'Courier New';-inkscape-font-specification:'CourierNewPSMT, Courier New';stroke-width:0.329364"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:Courier;-inkscape-font-specification:Courier;stroke-width:0.329364"
          id="tspan78949-3-8">colTree(tse)</tspan></text>
     <rect
        class="cls-223"
@@ -2024,5 +2037,10 @@
        d="m -226.41404,1181.8791 h -22.88402 v 151.7341 h 22.88402 z"
        id="path2503-9-9"
        style="fill:#1a81c2;fill-opacity:1;fill-rule:evenodd;stroke-width:0.329999" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);display:inline;fill:#000000" />
   </g>
 </svg>

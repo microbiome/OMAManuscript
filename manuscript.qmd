@@ -544,21 +544,26 @@ other profiles and alternative feature representations.
 \begin{center}
 \includegraphics[height=\textheight]{figures/data_containers.png}
 \end{center}
-\captionof{figure}{\textbf{Bioconductor data containers for microbiome data.}
-\textbf{(a) SummarizedExperiment (SE)} \cite{huber2015}.
-\textbf{(b) TreeSummarizedExperiment (TreeSE)} supports hierarchical, multi-table
-microbiome analysis. A data object can accommodate: i) \textit{assays} that describe
-the abundances of features in each sample (\textit{e.g.} taxonomic units, resistance
-genes, or predicted functions), ii) \textit{colData} with tabular metadata on each
-sample, iii) \textit{rowData} with tabular metadata on each feature (\textit{e.g.}, taxonomic mappings), and iv) tree information describing feature hierarchies, such as
-phylogenetic relations between the taxonomic units (rowTree) or host species
-(colTree). TreeSE can thus link multiple numeric abundance tables and their
-derived versions (\textit{e.g.}, statistical transformations, different taxonomic
-levels, dimensionality reduction) with tabular and hierarchical side
-information on the features (rows) and samples (columns). Additional slots for
-reference sequences and experiment metadata are available. Adapted from
-\cite{huang2021}. \textbf{(c) MultiAssayExperiment (MAE)} facilitates the integration of interlinked datasets that may represent different omics modalities
-linked by potentially non-trivial sample mappings. Adapted from \cite{ramos2017}.}
+\captionof{figure}{\textbf{Integrative Bioconductor containers for microbiome data.}
+\textbf{(a) SummarizedExperiment (SE)} \cite{huber2015} is a generic container
+for single-omics experiments. It accommodates \textit{assays} that describe the
+feature abundances in each sample (\textit{e.g.}, taxonomic units, resistance
+genes, or predicted functions), and tabular side information on each sample
+(\textit{colData}) and feature (\textit{rowData}), \textit{e.g.}, the taxonomic
+classification.
+\textbf{(b) TreeSummarizedExperiment (TreeSE)} \cite{huang2021} supports
+hierarchical, multi-table microbiome analysis. In addition to the SE elements,
+TreeSE incorporates tree information on feature hierarchies, such as
+phylogenetic relations between the taxonomic units (\textit{rowTree}) or host
+species (\textit{colTree}), and results of dimensionality reduction
+(\textit{reducedDims}). TreeSE can thus link multiple abundance tables
+and their transformed versions (\textit{e.g.}, statistical transformation,
+taxonomic agglomeration, or dimensionality reduction) with tabular and
+hierarchical side information on the features (rows) and samples (columns).
+Additional slots for reference sequences and experiment metadata are available.
+\textbf{(c) MultiAssayExperiment (MAE)} \cite{ramos2017} facilitates the
+integration of interlinked datasets representing different omics modalities
+linked by potentially non-trivial sample mappings. Reproduced from \cite{ramos2017}.}
 \label{fig:datacontainers}
 :::
 
@@ -707,12 +712,13 @@ functions to convert between TreeSE and external formats.
 #|   analysis. We benchmarked them for five routine operations applied to random
 #|   subsets of features (rows) and samples (columns) from the Metalog database
 #|   [@kuhn2026]. Both execution time (s) and allocated memory (MB) were
-#|   measured as the mean value over ten replicates generated. Errorbars show
-#|   the 95% confidence interval of the performance estimate. The benchmarking
-#|   was conducted in R using the bench library with 4 CPU cores and 16 GB RAM.
-#|   QIIME 2 lacks allocated memory estimates because memory cannot be monitored
-#|   for external processes. The source code for the benchmarking analysis is
-#|   openly available [@benedetti2026b]."
+#|   measured as the mean value over ten replicates with varying subsets of the
+#|   same dimension. Errorbars show the 95% confidence interval of the
+#|   performance estimate. The benchmarking was conducted in R using the bench
+#|   library with 4 CPU cores and 16 GB RAM. QIIME 2 lacks allocated memory
+#|   estimates because memory cannot be monitored for external processes. The
+#|   source code for the benchmarking analysis is openly available
+#|   [@benedetti2026b]."
 #| fig-width: 12
 #| fig-height: 14
 
@@ -834,7 +840,7 @@ plot_bench <- function(df, bench.var, error.var = "SE"){
             sec.axis = sec_axis(~ ., name = "# Features")) +
         scale_colour_manual(
             labels = classes,
-            values = c("black", "mediumblue", "firebrick", "tomato"),
+            values = c("firebrick", "mediumblue", "black", "darkgrey"),
             drop = FALSE
         )
     
@@ -898,7 +904,7 @@ support modular workflow design for integrating different
 omics data types into the broader Bioconductor ecosystem. This
 mitigates reproducibility challenges posed by rapidly
 evolving reference databases and profiling tools
-(*e.g.*, MetaPhlAn2 vs. MetaPhlAn4) by enabling structured coexistence and
+(*e.g.*, MetaPhlAn) by enabling structured coexistence and
 direct comparison within a unified, coherent framework
 [@blanco2023; @truong2015].
 
@@ -971,12 +977,12 @@ computed metrics [@schloss2024b]. Subsampling data to equal read depth
 [@mcmurdie2014; @schloss2024; @willis2019b]. Our framework supports these and a
 variety of other transformations commonly applied to microbiome data.
 
-**Data enrichment.** Incorporating additional data, such as new versions of
-feature abundance data resulting from data transformations, is a
+**Data enrichment.** Incorporating additional data, such as transformed
+feature abundance tables, is a
 frequent operation in applied data analysis, and it often takes place
 iteratively. The integrative data containers
 support gradual and organized accumulation of interlinked data elements
-including transformations, aggregated data, dimension reduction, and derived
+including transformations, aggregated data, reduced dimensions, and derived
 data on samples and features. We generally recommend
 initializing the data objects at the beginning of the
 workflow, where they can then be gradually enriched as the project advances.
@@ -996,7 +1002,7 @@ data generation and preprocessing (top two panels), the integrative framework
 covers five steps of microbiome data integration and analysis: 1) Data is
 wrapped into a TreeSE data object (Figure~\ref{fig-datacontainers}),
 containing information on the samples (tube icons) and their features
-(\textit{e.g.} taxonomic, functional, or resistome profiles; colored circles).
+(\textit{e.g.}, taxonomic, functional, or resistome profiles; colored circles).
 TreeSE objects can accommodate multiple assay tables as well as additional
 hierarchical structures. 2) The TreeSE data object can then be processed to get
 cleaner data. This can include filtering out low-quality samples and features,
@@ -1094,7 +1100,7 @@ methods are provided by mia, miaViz, and additional single-cell packages
 a common task, and many omics modalities can benefit from shared,
 standardized methods provided by the integrative (Tree)SE framework.
 
-**Association analysis.** Differential Abundance Analysis (DAA)
+**Association analyses.** Differential Abundance Analysis (DAA)
 and Differential Prevalence Analysis (DPA) methods are used to
 identify indicator microbial features whose abundances vary across study groups
 or continuous gradients, for example in terms of spatial or temporal distance between
@@ -1716,14 +1722,16 @@ microbiome data.
 
 ## Data availability
 
-mia datasets are accessible via mia [@benedetti2026a]. Metagenomic samples from
-the Metalog database is accessible via mia [@kuhn2026].
+All datasets used in this article were made publicly available and can be
+accessed from R through the mia ecosystem [@benedetti2026a].
 
 ## Code availability
 
-This article presented v1.1.1 of the OMA book (2026-05-07), dependent on R v4.6
-and Bioconductor v3.24. Scripts and results of the benchmarking analysis are
-openly available [@benedetti2026b].
+This article presented v1.1.1 of the OMA book (2026-05-07) published at
+[https://bioconductor.org/books/release/OMA](https://bioconductor.org/books/release/OMA),
+which is dependent on R v4.6 and Bioconductor v3.24. Analytical scripts and
+related results of the benchmarking analysis were deposited on Zenodo
+[@benedetti2026b].
 
 # References
 <!-- the pattern below controls the placement of the references -->
