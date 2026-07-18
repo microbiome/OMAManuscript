@@ -371,8 +371,8 @@ ecosystem of quality-controlled, interoperable methods. This allows the analyst
 to invest more time in core analytical tasks.
 
 Bioconductor data structures support statistical analysis of complex
-data combinations [@huber2015] and are widely adopted by various
-research communities. They have been implemented through specialized
+data combinations [@huber2015] and are widely adopted in various
+research fields (@fig-bioc_packages). They have been implemented through specialized
 object-oriented classes that integrate multiple data elements into
 a single structure known as a *data container*
 [@chambers2014]. The SummarizedExperiment (SE) class [@huber2015; @morgan2025] is
@@ -380,7 +380,7 @@ the primary data container underlying the Bioconductor ecosystem
 (Figure \ref{fig:datacontainers} a and @tbl-elements).
 Its position among the top 1\% most-downloaded
 packages in Bioconductor reflects its widespread recognition and
-increasing adoption among developers (@fig-bioc_packages). SE provides a
+increasing adoption among developers. SE provides a
 standardized solution to store tabular data by linking numeric abundance
 matrices with side information on features or rows  (*e.g.*, taxonomy),
 and samples or columns (*e.g.*, origin, collection time, host health).
@@ -563,7 +563,7 @@ hierarchical side information on the features (rows) and samples (columns).
 Additional slots for reference sequences and experiment metadata are available.
 \textbf{(c) MultiAssayExperiment (MAE)} \cite{ramos2017} facilitates the
 integration of interlinked datasets representing different omics modalities
-linked by potentially non-trivial sample mappings. Reproduced from \cite{ramos2017}.}
+linked by potentially non-trivial sample mappings. Adapted from \cite{ramos2017}.}
 \label{fig:datacontainers}
 :::
 
@@ -645,16 +645,16 @@ encompass taxonomic and functional profiles from thousands of
 published microbiome studies and tens of thousands samples that can
 be accessed with the available tools for research and educational purposes.
 
-| Data resource           | References                | # Studies  | # Samples |
-|-------------------------|:-------------------------:|-----------:|----------:|
-| MGnifyR                 | [@gurbich2023; @mgnifyr]  | 5,616      | 429,108   |
-| Metalog                 | [@kuhn2026]               | 1,074      | 157,483   |
-| curatedMetagenomicData  | [@pasolli2017]            | 93         | 22,588    |
-| miaData                 | [@benedetti2026a]         | 9          | 20,404    |
-| microbiomeDataSets      | [@microbiomedatasets]     | 6          | 19,100    |
-| HMP2data                | [@hmp2data]               | 3          | 11,493    |
-| HoloFoodR$^a$           | [@rogers2024; @holofoodr] | 9          | 9,990     |
-| MicrobiomeBenchmarkData | [@gamboa-tuz2025]         | 6          | 1,125     |
+| Data resource           | References                 | # Studies  | # Samples |
+|-------------------------|:--------------------------:|-----------:|----------:|
+| MGnifyR                 | [@gurbich2023; @mgnifyr]   | 5,616      | 429,108   |
+| Metalog                 | [@kuhn2026]                | 1,074      | 157,483   |
+| curatedMetagenomicData  | [@pasolli2017]             | 93         | 22,588    |
+| miaData                 | [@benedetti2026a]          | 9          | 20,404    |
+| microbiomeDataSets      | [@microbiomedatasets]      | 6          | 19,100    |
+| HMP2data                | [@hmp2data]                | 3          | 11,493    |
+| HoloFoodR$^a$           | [@rogers2024; @borman2025] | 9          | 9,990     |
+| MicrobiomeBenchmarkData | [@gamboa-tuz2025]          | 6          | 1,125     |
 
 : Open microbiome data resources (last accessed on 05/07/2026).
 {#tbl-dataresources tbl-colwidths="[40,20,20,20]"}
@@ -912,15 +912,14 @@ direct comparison within a unified, coherent framework
 data from common tabular data types, certain non-standard file formats may
 require additional data wrangling. To streamline data
 import, we provide importers for a variety of standard microbiome file
-formats including BIOM [@mcdonald2012], MetaPhlAn/HUMAnN (MetaPhlAn
-v2&ndash;4, HUMAnN v3) [@mciver2017], Mothur [@schloss2009], QIIME 2
-[@bolyen2019] and the TAXonomic Profile Aggregation and
-standardization format (taxpasta) [@beber2023]. These importers bridge the gap
+formats, including BIOM [@mcdonald2012], MetaPhlAn
+v2&ndash;4 and HUMAnN v3 [@mciver2017], Mothur [@schloss2009], QIIME 2
+[@bolyen2019], and TAXPASTA [@beber2023]. These importers bridge the gap
 between the raw sequence processing and downstream statistical analysis in R,
 allowing researchers to focus on interpreting biological patterns rather than
 wrangling file formats. Moreover, converters between alternative data
 structures in R are available supporting seamless conversions between TreeSE
-and BIOM, DADA2 [@callahan2016] and phyloseq (the mia::convert\* functions).
+and BIOM, DADA2 [@callahan2016], and phyloseq (the mia::convert\* functions).
 Similarly, microbiome data stored in TreeSE objects can also be
 exported to external services
 such as MicrobiomeDB [@oliveira2018] and other languages
@@ -1000,8 +999,8 @@ provenance of the integrated data object.
 \captionof{figure}{\textbf{Multi-modal data integration workflow.} Following
 data generation and preprocessing (top two panels), the integrative framework
 covers five steps of microbiome data integration and analysis: 1) Data is
-wrapped into a TreeSE data object (Figure~\ref{fig-datacontainers}),
-containing information on the samples (tube icons) and their features
+wrapped into a TreeSE data container,
+storing information on the samples (tube icons) and their features
 (\textit{e.g.}, taxonomic, functional, or resistome profiles; colored circles).
 TreeSE objects can accommodate multiple assay tables as well as additional
 hierarchical structures. 2) The TreeSE data object can then be processed to get
@@ -1107,10 +1106,10 @@ or continuous gradients, for example in terms of spatial or temporal distance be
 samples (@fig-downstream_analyses). Most DAA methods used in microbiome research
 support the (Tree)SE framework, such as
 ANCOM-BC2 [@lin2024], LimROTS [@anwar2025], MaAsLin3
-[@nickols2024], and radEmu [@clausen2024]. Leveraging the interoperability of
+[@nickols2026], and radEmu [@clausen2024]. Leveraging the interoperability of
 this framework, several of these methods have also found
 applications with other omics modalities, including transcriptomics
-[@love2014], metabolomics [@nickols2024], and proteomics [@anwar2025].
+[@love2014], metabolomics [@nickols2026], and proteomics [@anwar2025].
 Importantly, recent studies have indicated that elementary methods, such as log-transformed
 Total Sum Scaled (TSS) counts coupled with a linear model, or
 presence/absence data with logistic regression, often yield the most consistent

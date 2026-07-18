@@ -27,7 +27,6 @@
   doi           = {10.1101/2025.02.06.636801},
   publisher     = {Cold Spring Harbor Laboratory},
   abstract      = {Differential expression analysis plays a vital role in proteomics research, as it enables the precise identification of proteins that are specifically associated with different phenotypes. This process is critical for uncovering biological differences between conditions, such as disease versus healthy states. In proteomics, several statistical methods have been used, ranging from simple t-tests to more sophisticated methods like limma. In this study, we introduce LimROTS, which extends Empirical Bayes from limma into an optimization framework using reproducibility-optimized statistics, enabling differential expression analysis that accounts for technical and biological variation. To validate LimROTS performance, 22 proteomics gold standard spike-in datasets with different protein mixtures, MS instruments, and techniques were used for benchmarking. This hybrid approach improves the accuracy and reproducibility in proteomics studies, making LimROTS a powerful tool for high-dimensional omics data analysis.Competing Interest StatementThe authors have declared no competing interest.},
-  eprint        = {https://www.biorxiv.org/content/early/2025/02/08/2025.02.06.636801.full.pdf},
   journal       = {{bioRxiv}}
 }
 @article{argelaguet2020,
@@ -70,9 +69,8 @@
 @article{aton2025,
   title = {Scikit-bio: a fundamental Python library for biological omic data analysis},
   volume = {23},
-  ISSN = {1548-7105},
-  url = {http://dx.doi.org/10.1038/s41592-025-02981-z},
-  DOI = {10.1038/s41592-025-02981-z},
+  issn = {1548-7105},
+  doi = {10.1038/s41592-025-02981-z},
   number = {2},
   journal = {Nature Methods},
   publisher = {Springer Science and Business Media LLC},
@@ -85,6 +83,10 @@
   title         = {Foundation models defining a new era in vision: a survey and outlook},
   author        = {Awais, Muhammad and Naseer, Muzammal and Khan, Salman and Anwer, Rao Muhammad and Cholakkal, Hisham and Shah, Mubarak and Yang, Ming-Hsuan and Khan, Fahad Shahbaz},
   journal       = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume        = {47},
+  number        = {4},
+  pages         = {2245--2264},
+  doi           = {10.1109/TPAMI.2024.3506283},
   year          = {2025},
   publisher     = {IEEE}
 }
@@ -168,7 +170,7 @@
 @misc{benedetti2026a,
   author        = {Giulio Benedetti and Leo Lahti and Eetu Tammi and Geraldson Muluh and Tuomas Borman},
   title         = {{miaData}},
-  month         = {jul},
+  month         = {Jul},
   year          = {2026},
   publisher     = {Zenodo},
   version       = {v1.0.0},
@@ -178,7 +180,7 @@
 @misc{benedetti2026b,
     author      = {Giulio Benedetti and Leo Lahti},
     title       = {microbiome/benchmarking: Benchmarking alternative frameworks for microbiome data science},
-    month       = {jul},
+    month       = {Jul},
     year        = {2026},
     publisher   = {Zenodo},
     version     = {v0.1.0},
@@ -247,13 +249,6 @@
   issn          = {1548-7105},
   doi           = {10.1038/nmeth.3869}
 }
-@manual{callan2024,
-  title         = {{MicrobiomeDB}: Curated Data and Analysis Tools from {MicrobiomeDB.org}},
-  author        = {Danielle Callan},
-  year          = {2024},
-  note          = {R package version 1.1.1, https://microbiomedb.github.io/MicrobiomeDB/},
-  url           = {https://github.com/microbiomeDB/MicrobiomeDB}
-}
 @article{calle2023,
   author        = {M. Luz Calle and Meritxell Pujolassos and Antoni Susin},
   title         = {{coda4microbiome}: compositional data analysis for microbiome cross-sectional and longitudinal studies},
@@ -300,16 +295,6 @@
   year          = {2019},
   publisher     = {Nature Publishing Group UK London}
 }
-@article{ching2018opportunities,
-  title         = {Opportunities and obstacles for deep learning in biology and medicine},
-  author        = {Ching, Travers and Himmelstein, Daniel S and Beaulieu-Jones, Brett K and Kalinin, Alexandr A and Do, Brian T and Way, Gregory P and Ferrero, Enrico and Agapow, Paul-Michael and Zietz, Michael and Hoffman, Michael M and others},
-  journal       = {Journal of the royal society interface},
-  volume        = {15},
-  number        = {141},
-  pages         = {20170387},
-  year          = {2018},
-  publisher     = {The Royal Society}
-}
 @article{clausen2024,
   title         = {Estimating fold changes from partially observed Outcomes with applications in microbial metagenomics},
   author        = {Clausen, David S and Teichman, Sarah and Willis, Amy D},
@@ -331,8 +316,10 @@
   year          = {2023},
   month         = {Sep},
   volume        = {14},
+  pages         = {1257002},
   issn          = {1664-302X},
   doi           = {10.3389/fmicb.2023.1257002},
+  publisher     = {Frontiers Media SA},
   keywords      = {bioscience}
 }
 @article{digiulio2015,
@@ -385,9 +372,8 @@
 @article{field2008,
   title         = {The minimum information about a genome sequence (MIGS) specification},
   volume        = {26},
-  ISSN          = {1546-1696},
-  url           = {http://dx.doi.org/10.1038/nbt1360},
-  DOI           = {10.1038/nbt1360},
+  issn          = {1546-1696},
+  doi           = {10.1038/nbt1360},
   number        = {5},
   journal       = {Nature Biotechnology},
   publisher     = {Springer Science and Business Media LLC},
@@ -417,9 +403,7 @@
   doi           = {10.1101/2025.02.13.638109},
   publisher     = {Cold Spring Harbor Laboratory},
   abstract      = {Previous benchmarking of differential abundance (DA) analysis methods in microbiome studies have employed synthetic data, simulations, and {\textquotedblleft}real data{\textquotedblright} examples, but to the best of our knowledge, none have yet employed experimental data with known {\textquotedblleft}ground truth{\textquotedblright} differential abundance. A key debate in the field centers on whether compositional methods are necessary for DA analysis, which is challenging to answer due to the lack of ground truth data. To address this gap, we created the Bioconductor data package MicrobiomeBenchmarkData, featuring three microbiome datasets with established biological ground truths: 1) diverse oral microbiomes from supragingival and subgingival plaques, expected to favor aerobic and anaerobic bacteria, respectively, 2) low-diversity microbiomes from healthy vaginas and bacterial vaginosis, conditions that have been well-characterized through cell culture and microscopy, and 3) a spike-in dataset with constant, known absolute abundances of three bacteria. We benchmarked 17 DA approaches and demonstrated that compositional DA methods are not beneficial but rather lack sensitivity, show increased variability in constant-abundance spike-ins, and, most surprisingly, more frequently produce paradoxical results with DA in the wrong direction for the low-diversity microbiome. Conversely, commonly used methods in microbiome literature, such as LEfSe, the Wilcoxon test, and RNA-seq-derived methods, performed best. We conclude that researchers continue using widely adopted non-parametric or RNA-seq DA methods and that further development of compositional methods includes benchmarking against datasets with known biological ground truth.Competing Interest StatementThe authors have declared no competing interest.},
-  url           = {https://doi.org/10.1101/2025.02.13.638109},
-  eprint        = {https://www.biorxiv.org/content/early/2025/02/17/2025.02.13.638109.full.pdf},
-  journal       = {bioRxiv}
+  journal       = {{bioRxiv}}
 }
 @article{gao2023,
   title         = {{miaSim}: an {R/Bioconductor} package to easily simulate microbial community dynamics},
@@ -458,8 +442,8 @@
   month         = {04},
   publisher     = {Zenodo},
   version       = {20250409},
-  doi           = {10.5281/zenodo.15180830},
-  url           = {https://zenodo.org/record/15180830}
+  doi           = {10.5281/zenodo.15180829},
+  url           = {https://doi.org/10.5281/zenodo.15180829}
 }
 @article{geistlinger2024,
   author        = {Geistlinger, Ludwig and Mirzayi, Chloe and Zohra, Fatima and Azhar, Rimsha and Elsafoury, Shaimaa and Grieve, Clare and Wokaty, Jennifer and Gamboa-Tuz, Samuel David and Sengupta, Pratyay and Hecht, Issac and Ravikrishnan, Aarthi and Gon{\c{c}}alves, Rafael S. and Franzosa, Eric and Raman, Karthik and Carey, Vincent and Dowd, Jennifer B. and Jones, Heidi E. and Davis, Sean and Segata, Nicola and Huttenhower, Curtis and Waldron, Levi},
@@ -480,7 +464,7 @@
   title         = {{Bioconductor}: Open Software Development for Computational Biology and Bioinformatics},
   journal       = {Genome Biology},
   year          = {2004},
-  month         = {09},
+  month         = {Sep},
   volume        = {5},
   number        = {10},
   pages         = {R80},
@@ -594,13 +578,16 @@
   publisher     = {Public Library of Science},
   abstract      = {We introduce Dirichlet multinomial mixtures (DMM) for the probabilistic modelling of microbial metagenomics data. This data can be represented as a frequency matrix giving the number of times each taxa is observed in each sample. [...] We verify this by showing that in a study of inflammatory bowel disease (IBD) phenotypes, ileal Crohn's disease (ICD) is associated with a more variable community.}
 }
-@article{holofoodr,
-  author        = {Tuomas Borman and Artur Sannikov and Robert D. Finn  and Morten T\o{}nsberg Limborg and Alexander B. Rogers and Varsha Kale and Kati Hanhineva and Leo Lahti},
+@article{borman2025,
   title         = {{HoloFoodR}: a statistical programming framework for holo-omics data integration workflows},
+  author        = {Borman, Tuomas and Sannikov, Artur and Finn, Robert D and Limborg, Morten T{\o}nsberg and Rogers, Alexander B and Kale, Varsha and Hanhineva, Kati and Lahti, Leo},
   journal       = {Bioinformatics},
-  note          = {In press.},
+  volume        = {41},
+  number        = {11},
+  pages         = {btaf605},
   year          = {2025},
-  keywords      = {bioscience}
+  publisher     = {Oxford University Press},
+  doi           = {10.18129/B9.bioc.HoloFoodR}
 }
 @article{huang2021,
   author        = {Huang, Ruizhu and Soneson, Charlotte and Ernst, Felix G.M. and Rue-Albrecht, Kevin C. and Yu, Guangchuang and Hicks, Stephanie C. and Robinson, Mark D.},
@@ -792,15 +779,14 @@
 @article{love2014,
   title         = {Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2},
   volume        = {15},
-  ISSN          = {1474-760X},
-  url           = {http://dx.doi.org/10.1186/s13059-014-0550-8},
-  DOI           = {10.1186/s13059-014-0550-8},
+  issn          = {1474-760X},
+  doi           = {10.1186/s13059-014-0550-8},
   number        = {12},
   journal       = {Genome Biology},
   publisher     = {Springer Science and Business Media LLC},
   author        = {Love,  Michael I and Huber,  Wolfgang and Anders,  Simon},
   year          = {2014},
-  month         = Dec
+  month         = {Dec}
 }
 @article{lozupone2005,
   title         = {{UniFrac}: a New Phylogenetic Method for Comparing Microbial Communities},
@@ -852,15 +838,14 @@
 @article{mangnier2025,
   title = {A systematic benchmark of integrative strategies for microbiome-metabolome data},
   volume = {8},
-  ISSN = {2399-3642},
-  url = {http://dx.doi.org/10.1038/s42003-025-08515-9},
-  DOI = {10.1038/s42003-025-08515-9},
+  issn = {2399-3642},
+  doi = {10.1038/s42003-025-08515-9},
   number = {1},
   journal = {Communications Biology},
   publisher = {Springer Science and Business Media LLC},
   author = {Mangnier,  Loïc and Bodein,  Antoine and Mariaz,  Margaux and Mathieu,  Alban and Scott-Boyer,  Marie-Pier and Vashist,  Neerja and Bramble,  Matthew S. and Droit,  Arnaud},
   year = {2025},
-  month = jul
+  month = {jul}
 }
 @article{manor2020,
   title         = {Health and disease markers correlate with gut microbiome composition across thousands of people},
@@ -977,7 +962,7 @@
   author        = {Tuomas Borman and Ben Allen and Leo Lahti},
   year          = {2025},
   note          = {R package version 1.5.0},
-  url           = {https://github.com/EBI-Metagenomics/MGnifyR}
+  doi           = {10.18129/B9.bioc.MGnifyR}
 }
 @manual{microbiomedatasets,
   title         = {{microbiomeDataSets}: Experiment Hub based microbiome datasets},
@@ -994,6 +979,8 @@
   year          = {2021},
   doi           = {10.3389/fmicb.2021.635781},
   issn          = {1664-302X},
+  pages         = {635781},
+  publisher     = {Frontiers},
   abstract      = {{\textless}p{\textgreater}The human microbiome has emerged as a central research topic in human biology and biomedicine. Current microbiome studies generate high-throughput omics data across different body sites, populations, and life stages. Many of the challenges in microbiome research are similar to other high-throughput studies, the quantitative analyses need to address the heterogeneity of data, specific statistical properties, and the remarkable variation in microbiome composition across individuals and body sites. This has led to a broad spectrum of statistical and machine learning challenges that range from study design, data processing, and standardization to analysis, modeling, cross-study comparison, prediction, data science ecosystems, and reproducible reporting. Nevertheless, although many statistics and machine learning approaches and tools have been developed, new techniques are needed to deal with emerging applications and the vast heterogeneity of microbiome data. We review and discuss emerging applications of statistical and machine learning techniques in human microbiome studies and introduce the {COST} Action {CA}18131 ``{ML}4Microbiome'' that brings together microbiome researchers and machine learning experts to address current challenges such as standardization of analysis pipelines for reproducibility of data analysis results, benchmarking, improvement, or development of existing and new tools and ontologies.{\textless}/p{\textgreater}},
   keywords      = {machine learning, microbiome, biomarker identification, {ML}4microbiome, personalized medicine},
   file          = {Moreno-Indias et al_2021_Statistical and Machine Learning Techniques in Human Microbiome Studies.pdf:/home/artur/Documents/00-09_Meta/02-zotero/University of Turku/PhD/Moreno-Indias et al_2021_Statistical and Machine Learning Techniques in Human Microbiome Studies.pdf:application/pdf}
@@ -1009,7 +996,8 @@
   title         = {A Comprehensive Guide to Combining {R} and {Python} code for Data Science, Machine Learning and Reinforcement Learning},
   author        = {Navarro, Alejandro L Garc{\'\i}a and Koneva, Nataliia and S{\'a}nchez-Maci{\'a}n, Alfonso and Hern{\'a}ndez, Jos{\'e} Alberto},
   journal       = {arXiv preprint arXiv:2407.14695},
-  year          = {2024}
+  year          = {2024},
+  doi           = {arXiv:2407.14695}
 }
 @article{nearing2022,
   author        = {Nearing, Jacob T. and Douglas, Gavin M. and Hayes, Molly G. and MacDonald, Jocelyn and Desai, Dhwani K. and Allward, Nicole and Jones, Casey M. A. and Wright, Robyn J. and Dhanani, Akhilesh S. and Comeau, Andr\'{e} M. and Langille, Morgan G. I.},
@@ -1022,14 +1010,16 @@
   doi           = {10.1038/s41467-022-28034-z},
   issn          = {2041-1723}
 }
-@article{nickols2024,
+@article{nickols2026,
   title         = {{MaAsLin} 3: Refining and extending generalized multivariable linear models for meta-omic association discovery},
-  doi           = {10.1101/2024.12.13.628459},
-  journal       = {{bioRxiv}},
-  publisher     = {Cold Spring Harbor Laboratory},
-  author        = {Nickols,  William A. and Kuntz,  Thomas and Shen,  Jiaxian and Maharjan,  Sagun and Mallick,  Himel and Franzosa,  Eric A. and Thompson,  Kelsey N. and Nearing,  Jacob T. and Huttenhower,  Curtis},
-  year          = {2024},
-  month         = dec
+  author        = {Nickols, William A and Kuntz, Thomas and Shen, Jiaxian and Maharjan, Sagun and Mallick, Himel and Franzosa, Eric A and Thompson, Kelsey N and Nearing, Jacob T and Huttenhower, Curtis},
+  journal       = {Nature Methods},
+  pages         = {1--11},
+  year          = {2026},
+  month         = {Mar},
+  publisher     = {Nature Publishing Group US New York},
+  doi           = {10.1038/s41592-025-02923-9},
+  issn          = {1548-7105}
 }
 @article{nyholm2020,
   author        = {Nyholm, Lasse and Koziol, Adam and Marcos, Sofia and Botnen, Amanda Bolt and Aizpurua, Ostaizka and Gopalakrishnan, Shyam and Limborg, Morten T. and Gilbert, M.Thomas P. and Alberdi, Antton},
@@ -1095,7 +1085,7 @@
   eprint        = {2602.05938},
   archivePrefix = {arXiv},
   primaryClass  = {stat.ME},
-  url           = {https://arxiv.org/abs/2602.05938},
+  doi           = {10.48550/arXiv.2602.05938}
 }
 @article{peschel2021,
   author        = {Peschel, Stefanie and M\"{u}ller, Christian L. and von Mutius, Erika and Boulesteix, Anne-Laure and Depner, Martin},
@@ -1110,15 +1100,15 @@
   abstract      = {Estimating microbial association networks from high-throughput sequencing data is a common exploratory data analysis approach aiming at understanding the complex interplay of microbial communities in their natural habitat. Statistical network estimation workflows comprise several analysis steps, including methods for zero handling, data normalization and computing microbial associations. Since microbial interactions are likely to change between conditions, e.g. between healthy individuals and patients, identifying network differences between groups is often an integral secondary analysis step. Thus far, however, no unifying computational tool is available that facilitates the whole analysis workflow of constructing, analysing and comparing microbial association networks from high-throughput sequencing data. Here, we introduce NetCoMi (Network Construction and comparison for Microbiome data), an R package that integrates existing methods for each analysis step in a single reproducible computational workflow. The package offers functionality for constructing and analysing single microbial association networks as well as quantifying network differences. This enables insights into whether single taxa, groups of taxa or the overall network structure change between groups. NetCoMi also contains functionality for constructing differential networks, thus allowing to assess whether single pairs of taxa are differentially associated between two groups. Furthermore, NetCoMi facilitates the construction and analysis of dissimilarity networks of microbiome samples, enabling a high-level graphical summary of the heterogeneity of an entire microbiome sample collection. We illustrate NetCoMi's wide applicability using data sets from the GABRIELA study to compare microbial associations in settled dust from children's rooms between samples from two study centers (Ulm and Munich).}
 }
 @article{pham2025,
-  title={TaxSEA: rapid interpretation of microbiome alterations using taxon set enrichment analysis and public databases},
-  author={Pham, Cong M and Rankin, Timothy J and Stinear, Timothy P and Walsh, Calum J and Ryan, Feargal J},
-  journal={Briefings in Bioinformatics},
-  volume={26},
-  number={2},
-  pages={bbaf173},
-  year={2025},
-  doi={10.1093/bib/bbaf173},
-  publisher={Oxford University Press}
+  title         = {{TaxSEA}: rapid interpretation of microbiome alterations using taxon set enrichment analysis and public databases},
+  author        = {Pham, Cong M and Rankin, Timothy J and Stinear, Timothy P and Walsh, Calum J and Ryan, Feargal J},
+  journal       = {Briefings in Bioinformatics},
+  volume        = {26},
+  number        = {2},
+  pages         = {bbaf173},
+  year          = {2025},
+  doi           = {10.1093/bib/bbaf173},
+  publisher     = {Oxford University Press}
 }
 @article{qin2022,
   author        = {Qin, Youwen and Havulinna, Aki S. and Liu, Yang and Jousilahti, Pekka and Ritchie, Scott C. and Tokolyi, Alex and Sanders, Jon G. and Valsta, Liisa and Bro\.{z}y\'{n}ska, Marta and Zhu, Qiyun and Tripathi, Anupriya and V\'{a}zquez-Baeza, Yoshiki and Loomba, Rohit and Cheng, Susan and Jain, Mohit and Niiranen, Teemu and Lahti, Leo and Knight, Rob and Salomaa, Veikko and Inouye, Michael and M\'{e}ric, Guillaume},
@@ -1178,11 +1168,10 @@
   number        = {11},
   pages         = {3128--3131},
   year          = {2022},
-  month         = {04},
+  month         = {Apr},
   abstract      = {SpatialExperiment is a new data infrastructure for storing and accessing spatially-resolved transcriptomics data, implemented within the R/Bioconductor framework, which provides advantages of modularity, interoperability, standardized operations and comprehensive documentation. Here, we demonstrate the structure and user interface with examples from the 10x Genomics Visium and seqFISH platforms, and provide access to example datasets and visualization tools in the STexampleData, TENxVisiumData and ggspavis packages.The SpatialExperiment, STexampleData, TENxVisiumData and ggspavis packages are available from Bioconductor. The package versions described in this manuscript are available in Bioconductor version 3.15 onwards.Supplementary data are available at Bioinformatics online.},
   issn          = {1367-4803},
-  doi           = {10.1093/bioinformatics/btac299},
-  eprint        = {https://academic.oup.com/bioinformatics/article-pdf/38/11/3128/49878643/btac299.pdf}
+  doi           = {10.1093/bioinformatics/btac299}
 }
 @article{rogers2024,
   author        = {Rogers,  Alexander B and Kale,  Varsha and Baldi,  Germana and Alberdi,  Antton and Gilbert,  M Thomas P and Gupta,  Dipayan and Limborg,  Morten T and Li,  Sen and Payne,  Thomas and Petersen,  Bent and Rasmussen,  Jacob A and Richardson,  Lorna and Finn,  Robert D},
@@ -1264,8 +1253,7 @@
   number        = {1},
   pages         = {e00355--23},
   year          = {2024},
-  doi           = {10.1128/msphere.00355-23},
-  eprint        = {https://journals.asm.org/doi/pdf/10.1128/msphere.00355-23}
+  doi           = {10.1128/msphere.00355-23}
 }
 @article{schloss2024b,
   author        = {Schloss, Patrick D.},
@@ -1289,9 +1277,7 @@
   month         = {10},
   abstract      = {Recent developments in data generation have opened up unprecedented insights into living systems. It has been recognized that integrating and characterizing temporal variation simultaneously across multiple scales, from specific molecular interactions to entire ecosystems, is crucial for uncovering biological mechanisms and understanding the emergence of complex phenotypes. With the increasing number of studies incorporating multi-omics data sampled over time, it has become clear that integrated approaches are pivotal for these efforts. However, standard data analytical practices in longitudinal multi-omics are still shaping up and many of the available methods have not yet been widely evaluated and adopted. To address this gap, we performed the first systematic literature review that comprehensively categorizes, compares, and evaluates computational methods for longitudinal multi-omics integration, with a particular emphasis on four categories of the studies: (i) host and host-associated microbiome studies, (ii) microbiome-free host studies, (iii) host-free microbiome studies, and (iv) methodological framework studies. Our review highlights current methodological trends, identifies widely used and high-performing frameworks, and assesses each method across performance, interpretability, and ease of use. We further organize these methods into thematic groups--such as statistical modeling, machine learning, dimensionality reduction, and latent factor approaches--to provide a clear roadmap for future research and application. This work offers a critical foundation for advancing integrative longitudinal data science and supporting reproducible, scalable analysis in this rapidly evolving field.},
   issn          = {1477-4054},
-  doi           = {10.1093/bib/bbaf502},
-  url           = {https://doi.org/10.1093/bib/bbaf502},
-  eprint        = {https://academic.oup.com/bib/article-pdf/26/5/bbaf502/64521521/bbaf502.pdf}
+  doi           = {10.1093/bib/bbaf502}
 }
 @article{shetty2019,
   title         = {Microbiome data science},
@@ -1306,13 +1292,12 @@
   issn          = {0973-7138}
 }
 @article{silverman2017,
-  article_type  = {journal},
   title         = {A phylogenetic transform enhances analysis of compositional microbiota data},
   author        = {Silverman, Justin D and Washburne, Alex D and Mukherjee, Sayan and David, Lawrence A},
   editor        = {Fodor, Anthony},
   volume        = {6},
   year          = {2017},
-  month         = {feb},
+  month         = {Feb},
   pub_date      = {2017-02-15},
   pages         = {e21887},
   citation      = {eLife 2017;6:e21887},
@@ -1334,9 +1319,7 @@
     month = {09},
     abstract = {In the continuously expanding omics era, novel computational and statistical strategies are needed for data integration and identification of biomarkers and molecular signatures. We present Data Integration Analysis for Biomarker discovery using Latent cOmponents (DIABLO), a multi-omics integrative method that seeks for common information across different data types through the selection of a subset of molecular features, while discriminating between multiple phenotypic groups.Using simulations and benchmark multi-omics studies, we show that DIABLO identifies features with superior biological relevance compared with existing unsupervised integrative methods, while achieving predictive performance comparable to state-of-the-art supervised approaches. DIABLO is versatile, allowing for modular-based analyses and cross-over study designs. In two case studies, DIABLO identified both known and novel multi-omics biomarkers consisting of mRNAs, miRNAs, CpGs, proteins and metabolites.DIABLO is implemented in the mixOmics R Bioconductor package with functions for parameters’ choice and visualization to assist in the interpretation of the integrative analyses, along with tutorials on http://mixomics.org and in our Bioconductor vignette.Supplementary data are available at Bioinformatics online.},
     issn = {1367-4803},
-    doi = {10.1093/bioinformatics/bty1054},
-    url = {https://doi.org/10.1093/bioinformatics/bty1054},
-    eprint = {https://academic.oup.com/bioinformatics/article-pdf/35/17/3055/50720026/bioinformatics_35_17_3055.pdf},
+    doi = {10.1093/bioinformatics/bty1054}
 }
 
 @article{sprockett2020,
@@ -1345,19 +1328,22 @@
   journal       = {Nature Communications},
   year          = {2020},
   volume        = {11},
+  number        = {1},
   pages         = {3772},
+  publisher     = {Nature Publishing Group UK London},
   doi           = {10.1038/s41467-020-17541-6}
 }
 @article{straub2020,
   title         = {Interpretations of Environmental Microbial Community Studies Are Biased by the Selected {16S} {rRNA} (Gene) Amplicon Sequencing Pipeline},
   volume        = {11},
+  pages         = {550420},
   issn          = {1664-302X},
   doi           = {10.3389/fmicb.2020.550420},
   journal       = {Frontiers in Microbiology},
   publisher     = {Frontiers Media SA},
   author        = {Straub,  Daniel and Blackwell,  Nia and Langarica-Fuentes,  Adrian and Peltzer,  Alexander and Nahnsen,  Sven and Kleindienst,  Sara},
   year          = {2020},
-  month         = oct
+  month         = {Oct}
 }
 @article{subramanian2014,
   author        = {Subramanian, S. and Huq, S. and Yatsunenko, T. and others},
@@ -1365,8 +1351,10 @@
   journal       = {Nature},
   year          = {2014},
   volume        = {510},
+  number        = {7505},
   pages         = {417--421},
-  doi           = {10.1038/nature13421}
+  doi           = {10.1038/nature13421},
+  publisher     = {Nature Publishing Group UK London}
 }
 @article{timmis2024,
   author        = {Timmis, Kenneth and Hallsworth, John E. and McGenity, Terry J. and Armstrong, Rachel and Colom, Mar\'{\i}a Francisca and Karahan, Zeynep Ceren and Chavarr\'{\i}a, Max and Bernal, Patricia and Boyd, Eric S. and Ramos, Juan Luis and Kaltenpoth, Martin and Pruzzo, Carla and Clarke, Gerard and L\'{o}pez-Garcia, Purificaci\'{o}n and Yakimov, Michail M. and Perlmutter, Jessamyn and Greening, Chris and Eloe-Fadrosh, Emiley and Verstraete, Willy and Nunes, Olga C. and Kotsyurbenko, Oleg and Nikel, Pablo Iv\'{a}n and Scavone, Paola and H\"{a}ggblom, Max M. and Lavigne, Rob and Le Roux, Fr\'{e}d\'{e}rique and Timmis, James K. and Parro, Victor and Mich\'{a}n, Carmen and Garc\'{\i}a, Jos\'{e} Luis and Casadevall, Arturo and Payne, Shelley M. and Frey, Joachim and Koren, Omry and Prosser, James I. and Lahti, Leo and Lal, Rup and Anand, Shailly and Sood, Utkarsh and Offre, Pierre and Bryce, Casey C. and Mswaka, Allen Y. and Jores, J\"{o}rg and Ka\c{c}ar, Bet\"{u}l and Blank, Lars Mathias and Maa\ss{}en, Nicole and Pope, Phillip B. and Banciu, Horia L. and Armitage, Judith and Lee, Sang Yup and Wang, Fengping and Makhalanyane, Thulani P. and Gilbert, Jack A. and Wood, Thomas K. and Vasiljevic, Branka and Sober\'{o}n, Mario and Udaondo, Zulema and Rojo, Fernando and Tamang, Jyoti Prakash and Giraud, Tatiana and Ropars, Jeanne and Ezeji, Thaddeus and M\"{u}ller, Volker and Danbara, Hirofume and Averhoff, Beate and Sessitsch, Angela and Partida-Mart\'{\i}nez, Laila Pamela and Huang, Wei and Molin, S\o{}ren and Junier, Pilar and Amils, Ricardo and Wu, Xiao-Lei and Ron, Eliora and Erten, Huseyin and de Martinis, Elaine Cristina Pereira and Rapoport, Alexander and \"{O}pik, Maarja and Pokatong, W. Donald R. and Stairs, Courtney and Amoozegar, Mohammad Ali and Serna, J\'{e}ssica Gil},
@@ -1431,8 +1419,10 @@
   journal       = {Cell},
   year          = {2016},
   volume        = {165},
+  number        = {4},
   pages         = {842--853},
-  doi           = {10.1016/j.cell.2016.04.007}
+  doi           = {10.1016/j.cell.2016.04.007},
+  publisher     = {Elsevier}
 }
 @article{velten2022,
   author        = {Velten, Britta and Braunger, Jana M. and Argelaguet, Ricard and Arnol, Damien and Wirbel, Jakob and Bredikhin, Danila and Zeller, Georg and Stegle, Oliver},
@@ -1487,7 +1477,8 @@
   volume        = {10},
   pages         = {2407},
   year          = {2019},
-  doi           = {10.3389/fmicb.2019.02407}
+  doi           = {10.3389/fmicb.2019.02407},
+  publisher     = {Frontiers Media SA}
 }
 @article{wilson2017,
   author        = {Greg Wilson and Jennifer Bryan and Karen Cranston and Justin Kitzes and Lex Nederbragt and Tracy K. Teal},
@@ -1516,8 +1507,9 @@
   journal       = {Briefings in Bioinformatics},
   volume        = {25},
   number        = {4},
+  pages         = {bbae264},
   year          = {2024},
-  publisher     = {Oxford Academic}
+  publisher     = {Oxford University Press}
 }
 @article{xu2022,
   title         = {Diagonal integration of multimodal single-cell data: potential pitfalls and paths forward},
@@ -1542,12 +1534,11 @@
 @article{zuur2010,
   author        = {Zuur, Alain F. and Ieno, Elena N. and Elphick, Chris S.},
   title         = {A protocol for data exploration to avoid common statistical problems},
-  journal       = {Methods in  Ecology and Evolution},
+  journal       = {Methods in Ecology and Evolution},
   year          = {2010},
   volume        = {1},
   number        = {1},
   pages         = {3--14},
   doi           = {10.1111/j.2041-210X.2009.00001.x},
-  eprint        = {https://besjournals.onlinelibrary.wiley.com/doi/pdf/10.1111/j.2041-210X.2009.00001.x},
   keywords      = {collinearity, data exploration, independence, transformations, type I and II errors, zero inflation}
 }
