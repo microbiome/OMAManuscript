@@ -31,15 +31,15 @@
      inkscape:snap-grids="true"
      inkscape:snap-text-baseline="true"
      inkscape:snap-others="true"
-     inkscape:zoom="4.7377842"
-     inkscape:cx="909.39136"
-     inkscape:cy="881.7413"
+     inkscape:zoom="1.0212535"
+     inkscape:cx="472.4586"
+     inkscape:cy="1694.4862"
      inkscape:window-width="2560"
-     inkscape:window-height="1440"
+     inkscape:window-height="1382"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="30"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg2737"
+     inkscape:current-layer="g45"
      inkscape:object-nodes="false"
      inkscape:snap-nodes="true"
      inkscape:snap-midpoints="true"
@@ -71,6 +71,12 @@
   </sodipodi:namedview>
   <defs
      id="defs1587">
+    <rect
+       x="115.14041"
+       y="2073.2898"
+       width="990.5125"
+       height="59.476501"
+       id="rect2" />
     <rect
        x="-41.639854"
        y="1814.0834"
@@ -4327,8 +4333,8 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif">Agglomeration</tspan></text>
   <text
      xml:space="preserve"
-     style="font-weight:bold;font-size:26.6667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
-     x="218.31761"
+     style="font-weight:bold;font-size:26.6667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle"
+     x="368.23969"
      y="2277.6296"
      id="text575341"><tspan
        sodipodi:role="line"
@@ -4345,8 +4351,8 @@
    id="tspan98638">e.g.</tspan>, with Quarto)</tspan></text>
   <text
      xml:space="preserve"
-     style="font-weight:bold;font-size:26.6667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
-     x="708.31763"
+     style="font-weight:bold;font-size:26.6667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle"
+     x="892.13293"
      y="2277.7012"
      id="text577249"><tspan
        sodipodi:role="line"
@@ -5048,12 +5054,12 @@
      font-size="24px"
      id="text2459-2"
      x="882.31763"
-     y="2111.636"
+     y="2119.636"
      style="font-size:26.6667px"><tspan
        sodipodi:role="line"
        id="tspan2841"
        x="882.31763"
-       y="2111.636"
+       y="2119.636"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif">Joint analysis</tspan></text>
   <text
      fill="#a6a6a6"
@@ -5583,7 +5589,7 @@
      font-size="24px"
      id="text2727-9"
      x="496.38681"
-     y="2111.7012"
+     y="2119.7012"
      style="font-size:26.6667px"><tspan
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif"
        id="tspan694775">Metabolic profiles</tspan></text>
@@ -5802,7 +5808,7 @@
        font-size="24px"
        id="text2729-6"
        x="168.31761"
-       y="2107.7012"
+       y="2115.7012"
        style="font-size:26.6667px"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif"
          id="tspan691791">Taxonomic profiles</tspan></text>
@@ -6271,4 +6277,8 @@
      xml:space="preserve"
      id="text46"
      style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect46);display:inline;fill:#000000;fill-opacity:0;stroke:#ffb380;stroke-width:0.264;stroke-dasharray:1.056, 0.792" />
+  <text
+     xml:space="preserve"
+     id="text2"
+     style="font-weight:bold;font-size:24px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2);display:inline;fill:#000000;fill-opacity:0;stroke:#ffb380;stroke-width:0.264;stroke-dasharray:1.056, 0.792" />
 </svg>
