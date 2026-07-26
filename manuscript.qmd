@@ -999,23 +999,23 @@ provenance of the integrated data object.
 \captionof{figure}{\textbf{Multi-modal data integration workflow.} Following
 data generation and preprocessing (top two panels), the integrative framework
 covers five steps of microbiome data integration and analysis: 1) Data is
-wrapped into a TreeSE data container,
+combined into a TreeSummarizedExperiment (TreeSE) data container,
 storing information on the samples (tube icons) and their features
 (\textit{e.g.}, taxonomic, functional, or resistome profiles; colored circles).
 TreeSE objects can accommodate multiple assay tables as well as additional
-hierarchical structures. 2) The TreeSE data object can then be processed to get
-cleaner data. This can include filtering out low-quality samples and features,
-transforming assay data for example by normalizing it to enhance the
-comparability of sample-specific abundances, or agglomerating the feature data
+hierarchical structures. 2) The TreeSE data object can then be processed to clean
+the data. This involves filtering out low-quality samples and features,
+transforming assays for example by normalizing feature-wise to enhance the
+comparability of sample-specific abundances, or agglomerating features
 to specific taxonomic levels or functional categories. 3) The cleaned data can
 then be analyzed using statistical models to uncover relations among samples
 (\textit{e.g.}, with ordination methods), analyze drivers of variation in community diversity
-and composition or test for differential abundance (\textit{e.g.} between
+and composition, or test for differential abundance (\textit{e.g.} between
 sampling time or location). 4) The framework supports the integration of
-various types of omics modalities through MAE and 
-omic-specific data containers provided by Bioconductor. Here,
-for example, the taxonomic and metabolomic profiles of samples can be summarized
-and compared with joint analysis among features. 5) Finally, Quarto notebooks
+various types of omics modalities through the MultiAssayExperiment and 
+omic-specific data containers provided by Bioconductor.
+For example, the taxonomic and metabolomic profiles of samples can be summarized
+and compared in a joint analysis among features. 5) Finally, Quarto notebooks
 can aid reproducible analysis and reporting.}
 \label{fig:workflow}
 :::
@@ -1356,7 +1356,7 @@ saveRDS(tse, file.path("data", "tse.rds"))
 #| fig-height: 10
 
 # Load packages
-pkgs <- c("ggpubr", "miaViz", "patchwork", "scater")
+pkgs <- c("miaViz", "patchwork", "scater")
 temp <- sapply(pkgs, function(x) {
     suppressMessages(require(x, character.only = TRUE))
 })
@@ -1421,7 +1421,6 @@ p_alpha2 <- plotColData(
     tse, y = "faith", x = "Age_Months", colour_by = "Country"
 ) +
     geom_smooth(method = "lm") +
-    stat_cor(method = "kendall", cor.coef.name = "tau", label.x.npc = 0.9) +
     labs(y = "Faith", x = "Age in months") +
     theme(
         axis.title.x = element_text(size = title_size),
