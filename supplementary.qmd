@@ -40,7 +40,8 @@ temp <- sapply(pkgs, function(pkg) {
 })
 
 # Import results
-df <- read.table("data/benchmark_metadata.csv", sep = ",", header = TRUE)
+df <- file.path("data", "benchmark_metadata.csv") |>
+  read.table(sep = ",", header = TRUE)
 
 sample_levels <- c("human", "environment", "animal", "ocean")
 

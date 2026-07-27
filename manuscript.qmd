@@ -672,7 +672,7 @@ Each of these frameworks was designed to tackle recurring challenges in
 microbiome data science&mdash;a field where no single solution yet provides the
 most complete, coherent, and efficient approach.
 
-Compared to its alternatives, the (Tree)SE framework relies on a more compact,
+Compared to its alternatives, the (Tree)SE framework relies on a shared, more
 efficient data structure that is fully interoperable with the larger
 Bioconductor ecosystem. This way, it provides an evidence-based, accessible
 solution for developing end-to-end microbiome analysis workflows that can
@@ -757,7 +757,8 @@ methods <- c(
 )
 
 # Import results
-df <- read.table("data/benchmark_results.csv", sep = ",", header = TRUE)
+df <- file.path("data", "benchmark_results.csv") |>
+  read.table(sep = ",", header = TRUE)
 
 # Convert object and method vars to factors
 df$object <- factor(df$object, levels = names(classes))
