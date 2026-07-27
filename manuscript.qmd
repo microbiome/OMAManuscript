@@ -332,7 +332,7 @@ extend the capacities far beyond the underlying technical framework [@katz2019].
 However, frameworks focused solely on microbiome data science fall short on
 addressing the need to integrate data across multiple modalities, such as
 metagenomics, metabolomics, and host genomics.
-The Bioconductor ecosytem integrates the methods of microbiome data science
+The Bioconductor ecosystem integrates the methods of microbiome data science
 into a wider statistical programming framework, where
 interoperable methods and
 workflows for single-cell omics [@amezquita2020], spatial transcriptomics [@crowell2025],
