@@ -1732,7 +1732,7 @@ related results of the benchmarking analysis were deposited on Zenodo
 
 ## Consortia {#sec-consortium}
 
-OMA consortium: Bastiaanssen, Thomaz; Beber, Moritz E.; Bektanov, Aituar;
+OMA consortium: Arora, Nalin; Bastiaanssen, Thomaz; Beber, Moritz E.; Bektanov, Aituar;
 Benedetti, Giulio; Borman, Tuomas; Braccia, Domenick J.; Calgaro, Matteo;
 Callan, Danielle; Chaudhary, Jiya; Corrada Bravo, Héctor; Courbayre Dussau,
 Basil; Das, Sneha; Eckermann, Henrik; Erawijantari, Pande; Ernst, Felix G.M.;
