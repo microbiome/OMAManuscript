@@ -267,11 +267,11 @@ abstract: |
   interlinked datasets encompassing versatile taxonomic and functional
   assays. The analysis of increasingly large and heterogeneous multi-modal
   microbiome data would benefit from unified approaches supporting the design
-  of modular data science workflows through interoperable methods. Building upon
-  the optimized statistical programming framework for multi-assay data
-  integration recently developed by the Bioconductor project,
-  we introduce a community-developed open source framework
-  for microbiome data science. In contrast to the previous alternatives,
+  of modular data science workflows through interoperable methods. The
+  Bioconductor project recently developed an optimized statistical programming
+  framework for multi-assay data integration. Building on this foundation, we
+  introduce a community-developed, open-source framework for microbiome data
+  science. In contrast to the previous alternatives,
   the methodology is specifically designed to support joint analysis
   of hierarchical, interlinked, and heterogeneous multi-table datasets that
   are increasingly common in modern microbiome research. This
@@ -522,23 +522,16 @@ the broader Bioconductor ecosystem, the TreeSummarizedExperiment
 (TreeSE) class [@huang2021] extends the SE and SCE data structures to
 hierarchical datasets by incorporating both feature and sample organizations
 as tree structures (Figure \ref{fig:datacontainers} b and @tbl-elements).
-Moreover, TreeSE supports the
-storage of other common elements of microbiome data, for example, reference
-sequences, and incorporates results from common analytical procedures such as
-dimensionality reduction, statistical transformations, and agglomeration by
-taxonomic, functional or other information. The interoperability with other
-Bioconductor classes facilitates scalable analysis and the design of modular
-yet flexible workflows, as TreeSE inherits full compatibility with methods
-designed for SE and SCE. In particular, the direct interoperability with the
-widely adopted SE data science ecosystem distinguishes the (Tree)SE
-framework from phyloseq, which is another popular Bioconductor data container
-initially developed with a focus on 16S amplicon data analysis [@mcmurdie2012].
-In contrast, TreeSE provides a more general framework, as it not only
-accommodates the typical components of a phyloseq object
-(taxa abundances, sample metadata, phylogenetic tree, and reference sequences),
-but also extends to multi-modal datasets encompassing
-parallel taxonomic levels, functional predictions, and resistome, metabolome or
-other profiles and alternative feature representations.
+Beyond the core components of microbiome datasets, including taxa abundances,
+sample metadata, phylogenetic trees, and reference sequences, TreeSE provides a
+flexible foundation for multi-modal data integration, encompassing
+functional predictions, resistome, metabolome, and other
+molecular profiles, as well as alternative feature representations.
+It also stores results from common analytical procedures, such as dimensionality
+reduction, statistical transformations, and agglomeration by taxonomic,
+functional, or other information. By inheriting full compatibility with SE and
+SCE, TreeSE enables scalable analyses and the development of modular,
+interoperable workflows across the Bioconductor ecosystem.
 
 ::: {.figure}
 \begin{center}
@@ -665,19 +658,19 @@ HMP, Human Microbiome Project.
 # Alternative frameworks {#sec-data_frameworks}
 
 The (Tree)SE framework is one of several approaches to microbiome analysis.
-Common alternatives include phyloseq [@mcmurdie2012]&mdash;with its extension
-speedyseq&mdash;, which is also part of Bioconductor, and the command-line
-toolkits Mothur [@schloss2009], QIIME 2 [@bolyen2019], and Anvi'o [@eren2021].
-Each of these frameworks was designed to tackle recurring challenges in
-microbiome data science&mdash;a field where no single solution yet provides the
-most complete, coherent, and efficient approach.
-
-Compared to its alternatives, the (Tree)SE framework relies on a shared, more
-efficient data structure that is fully interoperable with the larger
-Bioconductor ecosystem. This way, it provides an evidence-based, accessible
-solution for developing end-to-end microbiome analysis workflows that can
-integrate concurrent Bioconductor development efforts, without being limited
-exclusively to methods for microbiome data analysis.
+Within Bioconductor, the well-established phyloseq [@mcmurdie2012] framework and
+its extension speedyseq provide a mature ecosystem for 16S amplicon data
+analysis. TreeSE accommodates all core components of phyloseq objects, including
+abundance tables, taxonomic annotations, phylogenetic trees, reference
+sequences, and sample metadata, while extending the data container to support
+the additional elements discussed in @sec-infra. Other widely used frameworks
+include the command-line toolkits Mothur [@schloss2009], QIIME 2 [@bolyen2019],
+and Anvi'o [@eren2021], each supported by active user and developer communities
+and primarily focused on taxonomic microbiome analyses. In contrast, TreeSE
+builds on the shared infrastructure, enabling direct interoperability
+with the broader Bioconductor ecosystem and facilitating hierarchical and
+multi-modal analyses, while leveraging statistical methods developed beyond
+microbiome research.
 
 This integrative approach to bioinformatics is also found in the Python library
 scikit-bio, which provides general methods for various omics modalities
