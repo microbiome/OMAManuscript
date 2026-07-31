@@ -140,15 +140,11 @@ author:
     orcid: 0000-0002-8732-7692
     affiliations:
       - ref: 1
-    attributes:
-      equal-contributor: true
 
   - name: Geraldson Muluh
     orcid: 0000-0002-9721-5192
     affiliations:
       - ref: 1
-    attributes:
-      equal-contributor: true
 
   - name: Aura Raulo
     orcid: 0000-0003-4860-7840
