@@ -187,7 +187,7 @@ integration},
 Bioconductor]{Orchestrating Microbiome Analysis with Bioconductor}
 
 % author setup
-\author*[1]{\fnm{Tuomas} \sur{Borman}}\email{tuomas.v.borman@utu.fi}\author[1]{\fnm{Giulio} \sur{Benedetti}}\equalcont{These authors contributed equally to this work.}\author[1]{\fnm{Geraldson} \sur{Muluh}}\equalcont{These authors contributed equally to this work.}\author[3,4]{\fnm{Aura} \sur{Raulo}}\author[5,6]{\fnm{Benjamin} \sur{Valderrama}}\author[2]{\fnm{Artur} \sur{Sannikov}}\author[7]{\fnm{Stefanie} \sur{Peschel}}\author[8,9,10,11,12]{\fnm{Yihan} \sur{Liu}}\author[1]{\fnm{Rasmus} \sur{Hindström}}\author[19]{\fnm{OMA} \sur{consortium}}\author[13]{\fnm{Katariina} \sur{Pärnänen}}\author[7,14,15]{\fnm{Christian L.} \sur{Müller}}\author[1,16]{\fnm{Aki S.} \sur{Havulinna}}\author[17]{\fnm{Sudarshan} \sur{Shetty}}\author[18]{\fnm{Marcel} \sur{Ramos}}\author[19]{\fnm{Domenick J.} \sur{Braccia}}\author[19]{\fnm{Héctor Corrada} \sur{Bravo}}\author[19]{\fnm{Felix M.} \sur{Ernst}}\author[18]{\fnm{Levi} \sur{Waldron}}\author[20,21]{\fnm{Thomaz F. S.} \sur{Bastiaanssen}}\equalcont{These authors contributed equally to this work.}\author[8,22,23]{\fnm{Himel} \sur{Mallick}}\equalcont{These authors contributed equally to this work.}\author*[1]{\fnm{Leo} \sur{Lahti}}\email{leo.lahti@utu.fi}
+\author*[1]{\fnm{Tuomas} \sur{Borman}}\email{tuomas.v.borman@utu.fi}\author[1]{\fnm{Giulio} \sur{Benedetti}}\author[1]{\fnm{Geraldson} \sur{Muluh}}\author[3,4]{\fnm{Aura} \sur{Raulo}}\author[5,6]{\fnm{Benjamin} \sur{Valderrama}}\author[2]{\fnm{Artur} \sur{Sannikov}}\author[7]{\fnm{Stefanie} \sur{Peschel}}\author[8,9,10,11,12]{\fnm{Yihan} \sur{Liu}}\author[1]{\fnm{Rasmus} \sur{Hindström}}\author[19]{\fnm{OMA} \sur{consortium}}\author[13]{\fnm{Katariina} \sur{Pärnänen}}\author[7,14,15]{\fnm{Christian L.} \sur{Müller}}\author[1,16]{\fnm{Aki S.} \sur{Havulinna}}\author[17]{\fnm{Sudarshan} \sur{Shetty}}\author[18]{\fnm{Marcel} \sur{Ramos}}\author[19]{\fnm{Domenick J.} \sur{Braccia}}\author[19]{\fnm{Héctor Corrada} \sur{Bravo}}\author[19]{\fnm{Felix M.} \sur{Ernst}}\author[18]{\fnm{Levi} \sur{Waldron}}\author[20,21]{\fnm{Thomaz F. S.} \sur{Bastiaanssen}}\equalcont{These authors contributed equally to this work.}\author[8,22,23]{\fnm{Himel} \sur{Mallick}}\equalcont{These authors contributed equally to this work.}\author*[1]{\fnm{Leo} \sur{Lahti}}\email{leo.lahti@utu.fi}
 % affil setup
 \affil[1]{\orgdiv{Department of Computing}, \orgname{University of
 Turku}, \orgaddress{\street{Turku, Finland}}}
@@ -403,7 +403,7 @@ and user support \citep{drnevich2025}. In particular, the SE framework
 has been extended to similar data integration tasks, notably in
 single-cell and spatial omics through the SingleCellExperiment (SCE)
 \citep{amezquita2020} and SpatialExperiment
-\citep[\citet{righelli2022}]{crowell2025} classes.
+\citep{crowell2025, righelli2022} classes.
 
 \begin{figure}
 
@@ -476,7 +476,7 @@ between them. Whereas the TreeSE data container is broadly applicable to
 different modalities such as taxonomic, resistome, transcriptome,
 proteome, and metabolome profiling data, dedicated data containers have
 been developed for certain modalities by the Bioconductor community to
-address their specific characteristics; examples include single cell
+address their specific characteristics; examples include single-cell
 sequencing \citep{amezquita2020} and host genomics \citep{lawrence2013}.
 Linking data across modalities presents an additional technical
 challenge, as multi-omics datasets are often sparse and only a subset of
@@ -756,7 +756,7 @@ formats, including BIOM \citep{mcdonald2012}, MetaPhlAn/HUMAnN (versions
 standardization format (taxpasta) \citep{beber2023}. External to
 Bioconductor, the qiime2R package provides additional functionality to
 create TreeSE objects directly from QIIME 2 artifacts. These importers
-bridge the gap between the originl data processing, other tools, and
+bridge the gap between the original data processing, other tools, and
 downstream statistical analysis in R, allowing researchers to focus on
 interpreting biological patterns rather than wrangling file formats.
 Moreover, converters between alternative data structures in R are
@@ -989,7 +989,7 @@ other covariation among feature abundances. Thus, we support covariation
 analyses. While agglomerating collinear features as a preprocessing step
 can reduce multiple testing, increase statistical power, and improve
 interpretability, it is also prone to subjective parameterization and
-limited generalizability. Feature can be grouped based on clustering
+limited generalizability. Features can be grouped based on clustering
 results from abundance profiles or on external information drawn from
 phylogenetic relations, taxonomic classifications or functional
 properties (\emph{e.g.}, aggregating based on metabolite production
@@ -1006,10 +1006,10 @@ assays. Our framework not only supports the incorporation of functional
 abundance tables within the same data objects, but many statistical
 methods are generic and can therefore be applied across different omics
 data types. Where appropriate, specialized methods are also available;
-for instance, for instance, MaAsLin3 \citep{nickols2026} and many other
-Bioconductor libraries support metatranscriptomics analysis, notame
-package \citep{klavus2020} for metabolome analyses recently added SE
-support, and the R for Mass Spectrometry (R4MS) project provides many
+for instance, MaAsLin3 \citep{nickols2026} and many other Bioconductor
+libraries support metatranscriptomics analysis, notame package
+\citep{klavus2020} for metabolome analyses recently added SE support,
+and the R for Mass Spectrometry (R4MS) project provides many
 interoperable tools. The framework has found recent applications in
 extended analyses of metagenomic features, for instance, antimicrobial
 resistome composition \citep{salehi2025}. We also converted a
@@ -1050,11 +1050,11 @@ from 585 wild baboons over 14 years \citep{grieneisen2021} into the
 TreeSE format to support research and training on longitudinal
 microbiome collections.
 
-\textbf{Multi-modal integration.} Key feature of the ecosystem is to
-provide the infrastructure supporting the integration microbial
+\textbf{Multi-modal integration.} A key feature of the ecosystem is to
+provide the infrastructure supporting the integration of microbial
 abundance data with other omics modalities, such as transcriptomes,
 proteomes, or metabolomes \citep{hintikka2021, mangnier2025}, resistomes
-\citep[\citet{lee2023}]{salehi2025}, host genomes \citep{qin2022}, or
+\citep{salehi2025, lee2023}, host genomes \citep{qin2022}, or
 environmental exposomes (Figure~\ref{fig-downstream_analyses}). By
 leveraging standardized containers
 (Fig.\textasciitilde{}\ref{fig:datacontainers}), users get fluent access
@@ -1064,7 +1064,7 @@ sample mismatches or data formatting), and support modular and
 reproducible workflows. They also facilitate incorporation of further
 downstream tools. Multi-omic methods are particularly relevant for the
 present ecosystem given its enhanced support for integrative analysis.
-Examplesinclude association-based approaches, latent variable models,
+Examples include association-based approaches, latent variable models,
 and Machine Learning (ML)-based prediction
 \citep{sankaran2019, sankaran2019b, sherwani2025}. Our framework is
 supported by many common multi-omic libraries in Bioconductor:
@@ -1089,8 +1089,8 @@ development, benchmarking, and standardization.
 
 \textbf{Other methods and programming environments.} Several other
 methods and workflows have been employed in microbiome data science. In
-general, mia supports flexible statistical programming framework. Thus,
-it can be used to incorporate more specialized microbiome analysis
+general, mia supports a flexible statistical programming framework.
+Thus, it can be used to incorporate more specialized microbiome analysis
 workflows such as SIAMCAT for association testing \citep{wirbel2021} or
 mikropml for machine-learning based prediction and classification
 \citep{topcuoglu2021}, network analysis \citep{peschel2021}, and
@@ -1100,7 +1100,7 @@ multi-omic feature selection offered by dedicated integration methods
 discussed in the previous section. The adoption of interoperable
 containers and shared methodology between related fields can
 significantly expand the transfer of existing toolkits to adjacent or
-emerging disciplines. Importantly, our framework can be also linked to
+emerging disciplines. Importantly, our framework can also be linked to
 external microbiome data analysis pipelines using tools such as
 bioBakery \citep{beghini2021}, and foreign platforms through
 language-specific interfaces, namely Rcpp for C++, reticulate for
@@ -1209,17 +1209,16 @@ how standard data containers can support statistical programming on
 interlinked multi-table datasets.
 
 \textbf{Interactive applications.} Graphical user interfaces provide
-accessible entry points to the framework. The iSEEtree and miaDash
-packages provide interactive analysis and visualization tools for
-microbiome data \citep{benedetti2025}. The former extends iSEE to
-provide support for TreeSE objects, while the latter builds on iSEEtree
-to enable analyses without requiring any programming. Their interface
-supports automatic generation of source code and replicable workflows as
-well as analysis templates for users without strong programming
-expertise. Moreover, the tidy R paradigm, available through tidyomics,
-simplifies the syntax and streamlines analytical workflows
-\citep{hutchison2024}. These tools allow users to analyze and visualize
-complex data combinations with ease.
+accessible entry points. The iSEEtree and miaDash packages provide
+interactive analysis and visualization tools for microbiome data
+\citep{benedetti2025}. The former extends iSEE to provide support for
+TreeSE objects, while the latter builds on iSEEtree to enable analyses
+without requiring any programming. Their interface supports automatic
+generation of source code and replicable workflows and analysis
+templates for non-technical users. Moreover, the tidy R paradigm,
+available through tidyomics, simplifies the syntax and streamlines
+analytical workflows \citep{hutchison2024}. These tools allow users to
+analyze and visualize complex data combinations with ease.
 
 \textbf{Community.} Its widespread adoption has made R one of the most
 cited software resources of our time \citep{pearson2025} and the
