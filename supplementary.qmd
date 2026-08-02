@@ -86,8 +86,8 @@ p <- ggplot(df, aes(x = Value, y = seed, fill = Name)) +
         labels = seq(0, 100, by = 25),
         #expand = 0,
         sec.axis = sec_axis(~ ., name = "# Samples")) +
-    scale_fill_discrete(
-        palette = c("#CC7A5C", "#009E73", "#8B4513", "#0072B2"),
+    scale_fill_manual(
+        values = c("#CC7A5C", "#009E73", "#8B4513", "#0072B2"),
         limits = sample_levels
     ) +
     labs(x = "Percent composition", y = "# Features", fill = "Sample origin") +
