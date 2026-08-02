@@ -172,7 +172,7 @@
 \urlstyle{same}
 \hypersetup{
   pdftitle={Orchestrating Microbiome Analysis with Bioconductor},
-  pdfauthor={Tuomas Borman; Giulio Benedetti; Geraldson Muluh; Aura Raulo; Benjamin Valderrama; Artur Sannikov; Stefanie Peschel; Yihan Liu; Rasmus Hindström; OMA consortium; Katariina Pärnänen; Christian L. Müller; Aki S. Havulinna; Sudarshan Shetty; Marcel Ramos; Domenick J. Braccia; Héctor Corrada Bravo; Felix M. Ernst; Levi Waldron; Thomaz F. S. Bastiaanssen; Himel Mallick; Leo Lahti},
+  pdfauthor={Tuomas Borman; Giulio Benedetti; Geraldson Muluh; Aura Raulo; Benjamin Valderrama; Artur Sannikov; Stefanie Peschel; Yihan Liu; Rasmus Hindström; OMA consortium; Katariina Pärnänen; Christian L. Müller; Aki S. Havulinna; Sudarshan Shetty; Marcel Ramos; Domenick J. Braccia; Héctor Corrada Bravo; Felix G.M. Ernst; Levi Waldron; Thomaz F. S. Bastiaanssen; Himel Mallick; Leo Lahti},
   pdfkeywords={microbiome, Bioconductor, data science, data
 integration},
   colorlinks=true,
@@ -187,7 +187,7 @@ integration},
 Bioconductor]{Orchestrating Microbiome Analysis with Bioconductor}
 
 % author setup
-\author*[1]{\fnm{Tuomas} \sur{Borman}}\email{tuomas.v.borman@utu.fi}\author[1]{\fnm{Giulio} \sur{Benedetti}}\author[1]{\fnm{Geraldson} \sur{Muluh}}\author[3,4]{\fnm{Aura} \sur{Raulo}}\author[5,6]{\fnm{Benjamin} \sur{Valderrama}}\author[2]{\fnm{Artur} \sur{Sannikov}}\author[7]{\fnm{Stefanie} \sur{Peschel}}\author[8,9,10,11,12]{\fnm{Yihan} \sur{Liu}}\author[1]{\fnm{Rasmus} \sur{Hindström}}\author[19]{\fnm{OMA} \sur{consortium}}\author[13]{\fnm{Katariina} \sur{Pärnänen}}\author[7,14,15]{\fnm{Christian L.} \sur{Müller}}\author[1,16]{\fnm{Aki S.} \sur{Havulinna}}\author[17]{\fnm{Sudarshan} \sur{Shetty}}\author[18]{\fnm{Marcel} \sur{Ramos}}\author[19]{\fnm{Domenick J.} \sur{Braccia}}\author[19]{\fnm{Héctor Corrada} \sur{Bravo}}\author[19]{\fnm{Felix M.} \sur{Ernst}}\author[18]{\fnm{Levi} \sur{Waldron}}\author[20,21]{\fnm{Thomaz F. S.} \sur{Bastiaanssen}}\equalcont{These authors contributed equally to this work.}\author[8,22,23]{\fnm{Himel} \sur{Mallick}}\equalcont{These authors contributed equally to this work.}\author*[1]{\fnm{Leo} \sur{Lahti}}\email{leo.lahti@utu.fi}
+\author*[1]{\fnm{Tuomas} \sur{Borman}}\email{tuomas.v.borman@utu.fi}\author[1]{\fnm{Giulio} \sur{Benedetti}}\author[1]{\fnm{Geraldson} \sur{Muluh}}\author[3,4]{\fnm{Aura} \sur{Raulo}}\author[5,6]{\fnm{Benjamin} \sur{Valderrama}}\author[2]{\fnm{Artur} \sur{Sannikov}}\author[7]{\fnm{Stefanie} \sur{Peschel}}\author[8,9,10,11,12]{\fnm{Yihan} \sur{Liu}}\author[1]{\fnm{Rasmus} \sur{Hindström}}\author[19]{\fnm{OMA} \sur{consortium}}\author[13]{\fnm{Katariina} \sur{Pärnänen}}\author[7,14,15]{\fnm{Christian L.} \sur{Müller}}\author[1,16]{\fnm{Aki S.} \sur{Havulinna}}\author[17]{\fnm{Sudarshan} \sur{Shetty}}\author[18]{\fnm{Marcel} \sur{Ramos}}\author[19]{\fnm{Domenick J.} \sur{Braccia}}\author[19]{\fnm{Héctor Corrada} \sur{Bravo}}\author[19]{\fnm{Felix G. M.} \sur{Ernst}}\author[18]{\fnm{Levi} \sur{Waldron}}\author[20,21]{\fnm{Thomaz F. S.} \sur{Bastiaanssen}}\equalcont{These authors contributed equally to this work.}\author[8,22,23]{\fnm{Himel} \sur{Mallick}}\equalcont{These authors contributed equally to this work.}\author*[1]{\fnm{Leo} \sur{Lahti}}\email{leo.lahti@utu.fi}
 % affil setup
 \affil[1]{\orgdiv{Department of Computing}, \orgname{University of
 Turku}, \orgaddress{\street{Turku, Finland}}}
@@ -304,8 +304,9 @@ into tabular data sets whose typical sizes range up to thousands of
 selected features and samples for downstream statistical analyses.
 
 Microbiome data scientists are thus increasingly facing the practical
-challenges of integrating heterogeneous and high-dimensional obsevations
-across multiple data modalities into scalable and reproducible workflows
+challenges of integrating heterogeneous and high-dimensional
+observations across multiple data modalities into scalable and
+reproducible workflows
 \citep{ragan-kelley2013, callahan2016, holmes2019}. The unique
 statistical properties and complexity of microbiome data necessitate
 specialized approaches
@@ -387,7 +388,7 @@ through specialized object-oriented classes that integrate multiple data
 elements into a single structure known as a \emph{data container}. The
 SummarizedExperiment (SE) class \citep{huber2015} is the primary data
 container underlying the Bioconductor ecosystem (Figure
-\ref{fig:datacontainers} a and Table~\ref{tbl-elements}). Its position
+\ref{fig:datacontainers}a and Table~\ref{tbl-elements}). Its position
 among the top 1\% most-downloaded packages in Bioconductor reflects its
 widespread recognition and increasing adoption among developers. SE
 provides a standardized solution to store tabular data by linking
@@ -402,8 +403,8 @@ science methods and ultimately yielding improved overall quality control
 and user support \citep{drnevich2025}. In particular, the SE framework
 has been extended to similar data integration tasks, notably in
 single-cell and spatial omics through the SingleCellExperiment (SCE)
-\citep{amezquita2020} and SpatialExperiment
-\citep{crowell2025, righelli2022} classes.
+\citep{amezquita2020} and SpatialExperiment \citep{righelli2022}
+classes.
 
 \begin{figure}
 
@@ -429,7 +430,7 @@ microbiome data. While maintaining interoperability with the broader
 Bioconductor ecosystem, the TreeSummarizedExperiment (TreeSE) class
 \citep{huang2021} extends the SE and SCE data structures to hierarchical
 datasets by incorporating both feature and sample organizations as tree
-structures (Figure \ref{fig:datacontainers} b and
+structures (Figure \ref{fig:datacontainers}b and
 Table~\ref{tbl-elements}). Beyond the core components of microbiome
 datasets, including taxa abundances, sample metadata, phylogenetic
 trees, and reference sequences, TreeSE provides a flexible foundation
@@ -489,7 +490,7 @@ object and create flexible sample mappings across them. The
 MultiAssayExperiment (MAE) data container \citep{ramos2017} addresses
 these challenges by introducing a formal mapping layer (sampleMap) that
 links biological samples to their corresponding measurements in each
-modality (Figure \ref{fig:datacontainers} c and
+modality (Figure \ref{fig:datacontainers}c and
 Table~\ref{tbl-elements}). This design supports one-to-one, one-to-many,
 and partially overlapping sample relationships across experiments.
 Importantly, this mapping is also accessible for downstream operations.
@@ -591,7 +592,7 @@ for research and educational purposes.
   >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2000}}
   >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2000}}
   >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2000}}@{}}
-\caption{Open microbiome data resources (last accessed on 05/07/2026).
+\caption{Open microbiome data resources (last accessed on 2026-07-05).
 }\label{tbl-dataresources}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -653,7 +654,7 @@ for 16S amplicon analysis and less well suited for generic microbiome
 and integrative multi-omic analyses. QIIME 2 \citep{bolyen2019} is a
 Python-based, AI-ready microbiome multi-omics data science platform. It
 primarily targets amplicon and metagenomic analyses, and incorporates
-methods from scikit-bio Python library \citep{aton2025} which supports
+methods from scikit-bio Python library \citep{aton2026} which supports
 multi-omic integration tasks. The overall interoperability with
 independently developed omics tools may remain more limited, however. A
 particular and timely advantage of these frameworks is their direct
@@ -676,8 +677,8 @@ allocated memory as feature and sample sizes increase. It is applicable
 to abundance matrices of up to 100,000 samples and 10,000 features on a
 standard laptop, except the heaviest operations such as phylogenetic
 beta diversity (Unifrac) calculation, where the general break point is
-reached around 10,000 samples with all methods. At a feature set size to
-10,000 the break point is additionally reached for phILR transformation
+reached around 10,000 samples with all methods. At a feature set size of
+10,000 the break point is additionally reached for PhILR transformation
 and melting operation. At smaller sample sizes phyloseq or its
 accelerated extension speedyseq are occasionally faster but these
 differences are practically negligible (few seconds on a standard
@@ -807,7 +808,7 @@ efficient management of interlinked multi-modal datasets.
 
 \textbf{Transformation.} Statistical transformations commonly used in
 microbiome research include relative abundance \citep{gloor2017},
-tree-aware phylogenetic ILR (phILR) \citep{silverman2017}, centered
+tree-aware phylogenetic ILR (PhILR) \citep{silverman2017}, centered
 log-ratio (CLR), and robust CLR (rCLR) \citep{martino2019}. The latter
 three aim to mitigate compositionality bias. A related concept that
 controls for unequal sampling depth is data rarefaction. Rarefaction is
@@ -975,7 +976,7 @@ benchdamic benchmarking pipeline \citep{calgaro2022}. More recently, DPA
 methods have seen increasing adoption in microbiome research. They
 ignore abundance data, and focus on comparing feature prevalence
 i.e.~presence/absence profiles. Recent implementations include MaAsLin3
-\{\citet{nickols2026}{]} and the probabilistic DiPPER \citep{pelto2026}.
+\citep{nickols2026} and the probabilistic DiPPER \citep{pelto2026}.
 Leveraging the interoperability of this framework, several of these
 methods have also found applications with other omics modalities,
 including transcriptomics \citep{love2014}, metabolomics
@@ -1109,7 +1110,7 @@ combine the most suitable tools across multiple frameworks, while
 ensuring cross-language interoperability of structured data through
 standard containers such as (Tree)SE and MAE. The overall data
 analytical paradigm of Bioconductor is similar to that of scikit-bio
-\citep{aton2025}, a Python-based ecosystem. Whereas scikit-bio benefits
+\citep{aton2026}, a Python-based ecosystem. Whereas scikit-bio benefits
 from the rapidly evolving machine learning and artificial intelligence
 tools in Python, Bioconductor's strengths lie in its vast statistical
 ecosystem and interoperability with dedicated omics research tools. We
@@ -1322,7 +1323,7 @@ specified sources.
 
 \subsection{Code availability}\label{code-availability}
 
-This article presented v1.1.1 of the OMA book (2026-05-07) published at
+This article presented v1.1.1 of the OMA book (2026-07-05) published at
 \url{https://bioconductor.org/books/release/OMA}, which depends on R
 v4.6 and Bioconductor v3.24. Analysis scripts and results of the
 benchmarking analysis are available on Zenodo (mia community).
@@ -1346,7 +1347,7 @@ L.; Muluh, Geraldson; Nynäs, Signe; Pasanen, Jesse; Paulo Casucci dos
 Santos, Joao; Pelto, Juho; Peschel, Stefanie; Potbhare, Renuka; Pralas,
 Théotime; Ramos, Marcel; Raulo, Aura; Sannikov, Artur; Seraidarian, Ely;
 Serizay, Jacques; Shetty, Sudarshan; Shigdel, Rajesh; Suksi, Vilhelm;
-Tammi, Eetu; Valderamma, Benjamin; Waldron, Levi; Yang, Lu.
+Tammi, Eetu; Valderrama, Benjamin; Waldron, Levi; Yang, Lu.
 
 \subsection{Author contributions}\label{sec-contributions}
 
@@ -1368,7 +1369,7 @@ Horizon 2020 research and innovation programme under grant agreement No
 952914 and Research Council of Finland (decision 374944). TB was
 additionally supported by the University of Turku Graduate School. We
 thank Christopher Quince and Kihyun Lee for providing resistome
-profiling data, Justin Silverman for philr support, Ben Allen and Sandy
+profiling data, Justin Silverman for PhILR support, Ben Allen and Sandy
 Rogers for MGnifyR support, Elizabeth Archie and Johannes Björk for
 support with the wild baboon data set, Sabuj Bhowmick, Liat Shenhav,
 Bianca Cordazzo Vargas, Cameron Martino for support with the Joint-RPCA
