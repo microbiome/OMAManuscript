@@ -140,15 +140,11 @@ author:
     orcid: 0000-0002-8732-7692
     affiliations:
       - ref: 1
-    attributes:
-      equal-contributor: true
 
   - name: Geraldson Muluh
     orcid: 0000-0002-9721-5192
     affiliations:
       - ref: 1
-    attributes:
-      equal-contributor: true
 
   - name: Aura Raulo
     orcid: 0000-0003-4860-7840
@@ -228,7 +224,7 @@ author:
     affiliations:
       - ref: 19
 
-  - name: Felix M. Ernst
+  - name: Felix G.M. Ernst
     orcid: 0000-0001-5064-0928
     affiliations:
       - ref: 19
@@ -313,7 +309,7 @@ that combine different types of molecular data. These interlinked datasets
 encompass diverse taxonomic and functional assays, ranging from microbial
 abundances and phylogenetic relationships to functional profiles. These are summarized into tabular data sets whose typical sizes range up to thousands of selected features and samples for downstream statistical analyses.
 
-Microbiome data scientists are thus increasingly facing the practical challenges of integrating heterogeneous and high-dimensional obsevations across multiple data modalities into scalable and reproducible workflows [@ragan-kelley2013;@callahan2016;@holmes2019].
+Microbiome data scientists are thus increasingly facing the practical challenges of integrating heterogeneous and high-dimensional observations across multiple data modalities into scalable and reproducible workflows [@ragan-kelley2013;@callahan2016;@holmes2019].
 The unique statistical properties and complexity of microbiome data
 necessitate specialized approaches [@moreno-indias2021; @jeganathan2021; @willis2019; @bastiaanssen_bugs1_2023; @bastiaanssen_bugs2_2023], yet the diversity of proposed solutions and inconsistent outcomes
 [@nearing2022; @pelto2025; @gamboa-tuz2025] can make it
@@ -372,7 +368,7 @@ They have been implemented through specialized
 object-oriented classes that integrate multiple data elements into
 a single structure known as a *data container*. The SummarizedExperiment (SE) class [@huber2015] is
 the primary data container underlying the Bioconductor ecosystem
-(Figure \ref{fig:datacontainers} a and @tbl-elements).
+(Figure \ref{fig:datacontainers}a and @tbl-elements).
 Its position among the top 1\% most-downloaded
 packages in Bioconductor reflects its widespread recognition and
 increasing adoption among developers. SE provides a
@@ -387,7 +383,7 @@ and ultimately yielding improved overall quality control and user support [@drne
 In particular, the SE framework has been extended to
 similar data integration tasks, notably in single-cell
 and spatial omics through the SingleCellExperiment (SCE) [@amezquita2020] and
-SpatialExperiment [@crowell2025; @righelli2022] classes.
+SpatialExperiment [@righelli2022] classes.
 
 ```{r}
 #| label: bioc_packages
@@ -516,7 +512,7 @@ While maintaining interoperability with
 the broader Bioconductor ecosystem, the TreeSummarizedExperiment
 (TreeSE) class [@huang2021] extends the SE and SCE data structures to
 hierarchical datasets by incorporating both feature and sample organizations
-as tree structures (Figure \ref{fig:datacontainers} b and @tbl-elements).
+as tree structures (Figure \ref{fig:datacontainers}b and @tbl-elements).
 Beyond the core components of microbiome datasets, including taxa abundances,
 sample metadata, phylogenetic trees, and reference sequences, TreeSE provides a
 flexible foundation for multi-modal data integration, encompassing
@@ -574,7 +570,7 @@ data modalities into a single object and create flexible sample mappings across 
 The MultiAssayExperiment (MAE) data container [@ramos2017] addresses these
 challenges by introducing a formal mapping layer (sampleMap) that links
 biological samples to their corresponding measurements in each modality
-(Figure \ref{fig:datacontainers} c and @tbl-elements).
+(Figure \ref{fig:datacontainers}c and @tbl-elements).
 This design supports one-to-one, one-to-many, and
 partially overlapping sample relationships across experiments. Importantly, this
 mapping is also accessible for downstream operations. For instance, when
@@ -644,7 +640,7 @@ be accessed with the available tools for research and educational purposes.
 | HoloFoodR$^{a,d}$           | [@rogers2024; @borman2025] | 9          | 9,990     |
 | MicrobiomeBenchmarkData$^a$ | [@gamboa-tuz2025]          | 6          | 1,125     |
 
-: Open microbiome data resources (last accessed on 05/07/2026). 
+: Open microbiome data resources (last accessed on 2026-07-05). 
 {#tbl-dataresources tbl-colwidths="[40,20,20,20]"}
 
 $^a$Bioconductor package with the corresponding name.
@@ -661,7 +657,7 @@ Within Bioconductor, phyloseq [@mcmurdie2012] provides widely adopted tools with
 
 Widely used frameworks beyond R/Bioconductor include several command-line toolkits. Mothur [@schloss2009] is primarily designed for 16S amplicon analysis and less well suited for generic microbiome and integrative multi-omic analyses. QIIME 2 [@bolyen2019] is a Python-based, AI-ready microbiome multi-omics data science platform. It primarily targets amplicon and metagenomic analyses, and incorporates methods from scikit-bio Python library [@aton2025] which supports multi-omic integration tasks. The overall interoperability with independently developed omics tools may remain more limited, however. A particular and timely advantage of these frameworks is their direct connection with the strong machine learning and AI ecosystem in Python. Anvi'o [@eren2021] is a complementary, community-driven analysis and visualization platform for microbial 'omics with a distinct focus on genome-resolved metagenomics and detailed sequence-level analyses. Whereas each of these tools is supported by active user and developer communities, their overall design is different. In contrast, Bioconductor emphasizes broad interoperability and shared statistical programming infrastructure with other areas of omics research, primarily serving the R community. 
 
-Benchmarking the scalability of routine operations applied to subsets of the Metalog database [@kuhn2026] shows substantial performance gains for the (Tree)SE framework over alternatives (@fig-benchmarking and Supplementary Figure 1). Overall, (Tree)SE tends to scale most efficiently in terms of execution time and allocated memory as feature and sample sizes increase. It is applicable to abundance matrices of up to 100,000 samples and 10,000 features on a standard laptop, except the heaviest operations such as phylogenetic beta diversity (Unifrac) calculation, where the general break point is reached around 10,000 samples with all methods. At a feature set size to 10,000 the break point is additionally reached for phILR transformation and melting operation. At smaller sample sizes phyloseq or its accelerated extension speedyseq are occasionally faster but these differences are practically negligible (few seconds on a standard laptop). QIIME 2 is generally slower but the differences become smaller with increasing sample sizes. The enhanced scalability in (Tree)SE benefits, for instance, from the built-in support for sparse and delayed matrices in SE-based data containers. Despite these advantages, further optimizing time and memory consumption represents a key area for further development as discussed in @sec-analysis.
+Benchmarking the scalability of routine operations applied to subsets of the Metalog database [@kuhn2026] shows substantial performance gains for the (Tree)SE framework over alternatives (@fig-benchmarking and Supplementary Figure 1). Overall, (Tree)SE tends to scale most efficiently in terms of execution time and allocated memory as feature and sample sizes increase. It is applicable to abundance matrices of up to 100,000 samples and 10,000 features on a standard laptop, except the heaviest operations such as phylogenetic beta diversity (Unifrac) calculation, where the general break point is reached around 10,000 samples with all methods. At a feature set size of 10,000 the break point is additionally reached for PhILR transformation and melting operation. At smaller sample sizes phyloseq or its accelerated extension speedyseq are occasionally faster but these differences are practically negligible (few seconds on a standard laptop). QIIME 2 is generally slower but the differences become smaller with increasing sample sizes. The enhanced scalability in (Tree)SE benefits, for instance, from the built-in support for sparse and delayed matrices in SE-based data containers. Despite these advantages, further optimizing time and memory consumption represents a key area for further development as discussed in @sec-analysis.
 
 To facilitate migration from alternative frameworks, the OMA book provides conversion tables and utility functions to convert between TreeSE and many external data formats.
 
@@ -924,7 +920,7 @@ efficient management of interlinked multi-modal datasets.
 
 **Transformation.** Statistical transformations commonly used in microbiome
 research include relative abundance [@gloor2017],
-tree-aware phylogenetic ILR (phILR) [@silverman2017], centered log-ratio (CLR),
+tree-aware phylogenetic ILR (PhILR) [@silverman2017], centered log-ratio (CLR),
 and robust CLR (rCLR) [@martino2019]. The latter three aim to mitigate
 compositionality bias. A related concept that controls for
 unequal sampling depth is data rarefaction. Rarefaction is
@@ -1061,7 +1057,7 @@ and benchdamic benchmarking pipeline [@calgaro2022].
 More recently, DPA methods have seen increasing adoption in microbiome
 research. They ignore abundance data, and focus on comparing feature
 prevalence i.e. presence/absence profiles. Recent implementations
-include MaAsLin3 {@nickols2026] and the probabilistic DiPPER
+include MaAsLin3 [@nickols2026] and the probabilistic DiPPER
 [@pelto2026].
 Leveraging the interoperability of
 this framework, several of these methods have also found
@@ -1585,7 +1581,7 @@ an open source license from the specified sources.
 
 ## Code availability
 
-This article presented v1.1.1 of the OMA book (2026-05-07) published at
+This article presented v1.1.1 of the OMA book (2026-07-05) published at
 [https://bioconductor.org/books/release/OMA](https://bioconductor.org/books/release/OMA),
 which depends on R v4.6 and Bioconductor v3.24. Analysis scripts and
 results of the benchmarking analysis are available on Zenodo (mia community).
@@ -1608,7 +1604,7 @@ Mongad, Dattatray; Müller, Christian L.; Muluh, Geraldson; Nynäs, Signe;
 Pasanen, Jesse; Paulo Casucci dos Santos, Joao; Pelto, Juho; Peschel, Stefanie; Potbhare, Renuka;
 Pralas, Théotime; Ramos, Marcel; Raulo, Aura; Sannikov, Artur; Seraidarian, Ely;
 Serizay, Jacques; Shetty, Sudarshan; Shigdel, Rajesh; Suksi, Vilhelm;
-Tammi, Eetu; Valderamma, Benjamin; Waldron, Levi; Yang, Lu.
+Tammi, Eetu; Valderrama, Benjamin; Waldron, Levi; Yang, Lu.
 
 ## Author contributions {#sec-contributions}
 
@@ -1628,7 +1624,7 @@ Research Council of Finland (decision 374944). TB was additionally
 supported by the University of Turku Graduate School. 
 We thank 
 Christopher Quince and Kihyun Lee for providing resistome profiling data, 
-Justin Silverman for philr support, 
+Justin Silverman for PhILR support, 
 Ben Allen and Sandy Rogers for MGnifyR support, 
 Elizabeth Archie and Johannes Björk for support with the wild baboon data set, 
 Sabuj Bhowmick, Liat Shenhav, Bianca Cordazzo Vargas, Cameron Martino for support with the Joint-RPCA algorithm,
