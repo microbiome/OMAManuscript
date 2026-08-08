@@ -1038,7 +1038,6 @@ Our framework can be linked to external microbiome data analysis pipelines using
 
 ```{r}
 #| label: downstream_analyses
-#| eval: false
 #| echo: false
 #| message: false
 #| warning: false
@@ -1175,7 +1174,6 @@ model <- IntegratedLearner(
 
 ```{r}
 #| label: fig-downstream_analyses
-#| eval: false
 #| echo: false
 #| message: false
 #| warning: false
