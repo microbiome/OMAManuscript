@@ -1190,7 +1190,7 @@ model <- IntegratedLearner(
 #| message: false
 #| warning: false
 #| fig-cap: "**Microbiome analysis workflows in the Bioconductor ecosystem.** The figure demonstrates a range of single-omic and multi-omic analytical approaches available for microbiome research. Using a publicly available multi-omics mouse dataset (taxonomic and metabolomic measurements) [@hintikka2021], we illustrate: **(a)** taxonomic visualization through phylogenetic trees and abundance heatmaps; **(b–d)** common single-omic analyses including Faith's phylogenetic diversity [@armstrong2021], community composition ordination (dbRDA based on UniFrac dissimilarities [@lozupone2005]), and differential prevalence testing [@nickols2026]; and **(e–f)** multi-omic integration strategies combining microbiota and metabolomics data through unsupervised dimensionality reduction (Joint-RPCA [@vargas2026]) to identify shared variation across data layers, and supervised machine learning (IntegratedLearner [@mallick2024]) to rank features by their strength of association with experimental conditions or phenotypes of interest."
-#| 
+#|
 #| fig-width: 15
 #| fig-height: 11
 
@@ -1336,8 +1336,8 @@ p_feature_importances <- p_feature_importances + common_theme
 # Fine-tune individual panels --------------------------------------------------
 
 # Remove sample names from heatmap
-p_heatmap <- p_heatmap + 
-  theme(axis.text.x = element_blank())
+p_heatmap <- p_heatmap +
+    theme(axis.text.x = element_blank())
 
 # Remove redundant legends and harmonize axis labels
 p_alpha <- p_alpha +
