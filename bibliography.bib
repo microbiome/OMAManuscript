@@ -1,12 +1,11 @@
 @Article{landau2021,
-    title = {The targets R package: a dynamic Make-like function-oriented pipeline toolkit for reproducibility and high-performance computing},
+    title = {The targets {R} package: a dynamic Make-like function-oriented pipeline toolkit for reproducibility and high-performance computing},
     author = {William Michael Landau},
     journal = {Journal of Open Source Software},
     year = {2021},
     volume = {6},
     number = {57},
-    pages = {2959},
-    url = {https://doi.org/10.21105/joss.02959},
+    pages = {2959}
   }
 @article{abakumov2024,
   title         = {{DynaMAP}: Dynamic Microbiome Abundance Profiling through high density optical mapping},
@@ -431,6 +430,32 @@
   doi           = {10.1371/journal.pcbi.1012925},
   publisher     = {Public Library of Science}
 }
+No — as of now it's still a **bioRxiv preprint**, not formally published in a journal.
+
+According to PubMed, "Orchestrating Spatial Transcriptomics Analysis with Bioconductor" (Crowell, Dong, Billato, … Gottardo, Robinson, Hicks, Weber) was posted to bioRxiv on 21 Nov 2025, PMID 41332620, [DOI: 10.1101/2025.11.20.688607](https://doi.org/10.1101/2025.11.20.688607). PubMed lists it with article type "Preprint," and I found no journal version in a search covering up to now. The book's own [citation appendix](https://bioconductor.org/books/release/OSTA/pages/apx-citation.html) still gives the bioRxiv reference as the recommended citation, which is a good sign nothing newer exists.
+
+So cite the preprint (and optionally the book URL):
+
+@article{crowell2025OSTA,
+  author  = {Crowell, Helena L. and Dong, Yixing and Billato, Ilaria and Cai, Peiying
+             and Emons, Martin and Gunz, Samuel and Guo, Boyi and Li, Mengbo
+             and Mahmoud, Alexandru and Manukyan, Art{\"u}r and Pag{\`e}s, Herv{\'e}
+             and Panwar, Pratibha and Rao, Shreya and Sargeant, Callum J.
+             and Shepherd Kern, Lori and Ramos, Marcel and Sun, Jieran
+             and Totty, Michael and Carey, Vincent J. and Chen, Yunshun
+             and Collado-Torres, Leonardo and Ghazanfar, Shila and Hansen, Kasper D.
+             and Martinowich, Keri and Maynard, Kristen R. and Patrick, Ellis
+             and Righelli, Dario and Risso, Davide and Tiberi, Simone
+             and Waldron, Levi and Gottardo, Raphael and Robinson, Mark D.
+             and Hicks, Stephanie C. and Weber, Lukas M.},
+  title   = {Orchestrating Spatial Transcriptomics Analysis with {Bioconductor}},
+  journal = {bioRxiv},
+  year    = {2025},
+  doi     = {10.1101/2025.11.20.688607},
+  url     = {https://www.bioconductor.org/books/OSTA/},
+  note    = {Preprint}
+}
+
 @article{eren2021,
   author        = {Eren, A. Murat and Kiefl, Evan and Shaiber, Alon and Veseli, Iva and Miller, Samuel E. and Schechter, Matthew S. and Fink, Isaac and Pan, Jessica N. and Yousef, Mahmoud and Fogarty, Emily C. and Trigodet, Florian and Watson, Andrea R. and Esen, \"{O}zcan C. and Moore, Ryan M. and Clayssen, Quentin and Lee, Michael D. and Kivenson, Veronika and Graham, Elaina D. and Merrill, Bryan D. and Karkman, Antti and Blankenberg, Daniel and Eppley, John M. and Sj\"{o}din, Andreas and Scott, Jarrod J. and V\'{a}zquez-Campos, Xabier and McKay, Luke J. and McDaniel, Elizabeth A. and Stevens, Sarah L. R. and Anderson, Rika E. and Fuessel, Jessika and Fernandez-Guerra, Antonio and Maignien, Lois and Delmont, Tom O. and Willis, Amy D.},
   title         = {Community-led, integrated, reproducible multi-omics with {A}nvi'o},
@@ -454,6 +479,19 @@
   author        = {Daniel P. Faith},
   abstract      = {Protecting biological diversity with limited resources may require placing conservation priorities on different taxa. A system of priorities that reflects the value of taxonomic diversity can be achieved by setting priorities such that the subset of taxa that is protected has maximum underlying feature diversity. Such feature diversity of taxon subsets is difficult to estimate directly, but can be predicted by the cladistic/phylogenetic relationships among the taxa. In this study, a simple measure of phylogenetic diversity is defined based on cladistic information. The measure of phylogenetic diversity, PD, is contrasted with a measure of taxic diversity recently developed by Vane-Wright et al. (Biol. Conserv., 55, 1991). In re-examining reserve-selection scenarios based on a phylogeny of bumble bees (Apidae), PD produces quite different priorities for species conservation, relative to taxic diversity. The potential application of PD at levels below that of the species is then illustrated using a mtDNA phylogeny for populations of crested newts Triturus cristatus. Calculation of PD for different population subsets shows that protection of populations at either of two extremes of the geographic range of the group can significantly increase the phylogenetic diversity that is protected.}
 }
+
+@article{zhao2026,
+  author  = {Zhao, Jianshu and McDonald, Daniel and Sfiligoi, Igor and Lladser, Manuel E. and Patel, Lucas and Weng, Yuhan and Khatib, Lora and Degregori, Samuel and Gonzalez, Antonio and Lozupone, Catherine A. and Knight, Rob},
+  title   = {Megascale microbiome analysis with {DartUniFrac}},
+  journal = {Nature Biotechnology},
+  year    = {2026},
+  note    = {Advance online publication},
+  doi     = {10.1038/s41587-026-03260-8}
+
+}
+
+No volume, issue, or page numbers assigned yet — it's still advance online publication (28 Aug 2026). Drop the `note` field if your bibliography style doesn't want it.
+
 @article{frioux2023,
   author        = {Frioux, Cl\'{e}mence and Ansorge, Rebecca and \"{O}zkurt, Ezgi and Ghassemi Nedjad, Chabname and Fritscher, Joachim and Quince, Christopher and Waszak, Sebastian M. and Hildebrand, Falk},
   title         = {Enterosignatures define common bacterial guilds in the human gut microbiome},
@@ -780,6 +818,28 @@
   issn          = {2045-2322},
   abstract      = {The commensal microbiome is known to influence a variety of host phenotypes. Microbiome profiling followed by differential abundance analysis has been established as an effective approach to study the mechanisms of host-microbiome interactions. However, it is challenging to interpret the collective functions of the resultant microbe-sets due to the lack of well-organized functional characterization of commensal microbiome. We developed microbe-set enrichment analysis (MSEA) to enable the functional interpretation of microbe-sets by examining the statistical significance of their overlaps with annotated groups of microbes that share common attributes such as biological function or phylogenetic similarity. We then constructed microbe-set libraries by query PubMed to find microbe-mammalian gene associations and disease associations by parsing the Disbiome database. To demonstrate the utility of our novel MSEA methodology, we carried out three case studies using publicly available curated knowledge resource and microbiome profiling datasets focusing on human diseases. We found MSEA not only yields consistent findings with the original studies, but also recovers insights about disease mechanisms that are supported by the literature. Overall, MSEA is a useful knowledge-based computational approach to interpret the functions of microbes, which can be integrated with microbiome profiling pipelines to help reveal the underlying mechanism of host-microbiome interactions.}
 }
+@article{ross2026,
+  author  = {Ross, Chandler and Laitinen, Ville and Khalighi, Moein and Saloj{\"a}rvi, Jarkko and de Vos, Willem M. and Sommeria-Klein, Guilhem and Lahti, Leo},
+  title   = {Reconstructing community dynamics from limited observations},
+  journal = {Microbiome},
+  year    = {2026},
+  volume  = {14},
+  number  = {1},
+  pages   = {209},
+  doi     = {10.1186/s40168-026-02449-y}
+}
+@Article{lindgren2026,
+  author    = {Himmi Lindgren and Chandler Ross and Matti Ruuskanen and Veikko Salomaa and Rob Knight and Teemu Niiranen and Aki Havulinna and Leo Lahti},
+  title     = {A spectrum of gut microbiota signatures predicts long-term health status},
+  journal   = {Bioinformatics},
+  year      = {2026},
+  month     = {08},
+  volume    = {42},
+  number    = {Supplement 2},
+  pages     = {btag484},
+  doi       = {10.1093/bioinformatics/btag484},
+  issn      = {1367-4811}
+}
 @article{kuhn2026,
   title         = {Metalog: curated and harmonised contextual data for global metagenomics samples},
   author        = {Kuhn, Michael and Schmidt, Thomas Sebastian B and Ferretti, Pamela and G{\l}azek, Anna and Robbani, Shahriyar Mahdi and Akanni, Wasiu and Fullam, Anthony and Schudoma, Christian and Cetin, Ela and Hassan, Mariam and others},
@@ -838,7 +898,7 @@
   issn          = {1548-7105}
 }
 @article{love2014,
-  title         = {Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2},
+  title         = {Moderated estimation of fold change and dispersion for {RNA-seq} data with {DESeq2},
   volume        = {15},
   issn          = {1474-760X},
   doi           = {10.1186/s13059-014-0550-8},
@@ -1444,6 +1504,30 @@
   doi           = {10.1038/nature13421},
   publisher     = {Nature Publishing Group UK London}
 }
+@article{martino2021,
+  author  = {Martino, Cameron and Shenhav, Liat and Marotz, Clarisse A. and Armstrong, George and McDonald, Daniel and V{\'a}zquez-Baeza, Yoshiki and Morton, James T. and Jiang, Lingjing and Dominguez-Bello, Maria Gloria and Swafford, Austin D. and Halperin, Eran and Knight, Rob},
+  title   = {Context-aware dimensionality reduction deconvolutes gut microbial community dynamics},
+  journal = {Nature Biotechnology},
+  year    = {2021},
+  volume  = {39},
+  number  = {2},
+  pages   = {165--168},
+  doi     = {10.1038/s41587-020-0660-7},
+  pmid    = {32868914},
+  pmcid   = {PMC7878194}
+}
+@article{shi2024,
+  author  = {Shi, Pixu and Martino, Cameron and Han, Rungang and Janssen, Stefan and Buck, Gregory and Serrano, Myrna and Owzar, Kouros and Knight, Rob and Shenhav, Liat and Zhang, Anru R.},
+  title   = {{TEMPTED}: time-informed dimensionality reduction for longitudinal microbiome studies},
+  journal = {Genome Biology},
+  year    = {2024},
+  volume  = {25},
+  number  = {1},
+  pages   = {317},
+  doi     = {10.1186/s13059-024-03453-x},
+  pmid    = {39696594},
+  pmcid   = {PMC11657513}
+}
 @article{bastiaanssen2023,
   title         = {Knowledge-based Integration of Multi-Omic Datasets with {Anansi}: Annotation-based Analysis of Specific Interactions},
   author        = {Thomaz F S Bastiaanssen and Thomas P Quinn and John F Cryan},
@@ -1514,7 +1598,7 @@
   title         = {{Joint-RPCA}: Domain-Aware Multi-Omics Integration for Systems Microbiology},
   journal       = {Molecular Systems Biology},
   year          = {2026},
-  note          = {In press}
+  doi           = {10.1038/s44320-026-00236-3}
 }
 @article{vatanen2016,
   author        = {Vatanen, T. and Kostic, A.D. and d'Hennezel, E. and others},

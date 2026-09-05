@@ -21,7 +21,7 @@ bibliography: bibliography.bib
 #| warning: false
 #| fig-cap: "**Sample composition of benchmarking subsets.** The barplot depicts
 #|   the percent composition by sample origin for the subsets of the Metalog
-#|   dataset used in the benchmarking analysis [@kuhn2026; @benedetti2026b].
+#|   dataset used in the benchmarking analysis [@kuhn2026].
 #|   Each facet corresponds to one combination of feature (rows) and sample
 #|   sizes (columns). The bars within each facet represent the ten different
 #|   replicates generated using random states 0-9. Sample origin is encoded by
