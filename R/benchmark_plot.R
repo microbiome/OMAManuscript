@@ -33,7 +33,8 @@ methods <- c(
 # Import results
 df_list <- lapply(
     list.files("out", full.names = TRUE, recursive = TRUE),
-    read.table, sep = "\t", header = TRUE
+    read.table,
+    sep = "\t", header = TRUE
 )
 
 df <- do.call(rbind, df_list)
@@ -71,14 +72,14 @@ write.table(df, "inst/extdata/benchmark.tsv", sep = "\t", row.names = FALSE)
 # Specify plot layouts
 scientific_10 <- function(y) {
     sapply(y, function(z) {
-        if( is.character(z) ){
+        if (is.character(z)) {
             z <- as.numeric(z)
         }
-        if( is.na(z) ){
+        if (is.na(z)) {
             NA
-        }else if( z %in% c(1, 10) ){
+        } else if (z %in% c(1, 10)) {
             as.character(z)
-        }else{
+        } else {
             paste0("10^", log10(z))
         }
     })
@@ -105,30 +106,27 @@ cus_theme <- theme(
 )
 
 # Visualise benchmarking results: time
-plot_bench <- function(df, bench.var, error.var = "SE"){
-    
+plot_bench <- function(df, bench.var, error.var = "SE") {
     var_name <- toTitleCase(bench.var)
     df$Mean <- df[[var_name]]
     df$Err <- df[[paste0(var_name, error.var)]]
-    
-    axis_title <- switch(
-        bench.var,
+
+    axis_title <- switch(bench.var,
         time = "Execution time (s)",
         memory = "Allocated memory (MB)"
     )
-    
-    y.breaks <- switch(
-        bench.var,
+
+    y.breaks <- switch(bench.var,
         time = 10^seq(-1, 3),
         memory = 10^seq(0, 4)
     )
-    
+
     y.lims <- range(y.breaks)
     y.lims <- c(min(y.lims[1], min(df$Mean)), max(y.lims[2], max(df$Mean)))
-    
+
     row.breaks <- unique(df$rows[log10(df$rows) %% 1 == 0])
     df$rows <- scientific_10(df$rows)
-    
+
     p <- ggplot(df, aes(x = cols, y = Mean, colour = object)) +
         geom_errorbar(
             aes(ymin = Mean - Err, ymax = Mean + Err),
@@ -141,32 +139,33 @@ plot_bench <- function(df, bench.var, error.var = "SE"){
             labels = label_scientific,
             breaks = y.breaks,
             limits = y.lims,
-            sec.axis = sec_axis(~ ., name = "# Features")) +
+            sec.axis = sec_axis(~., name = "# Features")
+        ) +
         scale_colour_manual(
             labels = classes,
             values = c("black", "darkblue", "firebrick", "tomato"),
             drop = FALSE
         )
-    
+
     grid_by <- ". ~ method"
     grid_lab <- list(method = methods)
-    
-    if( length(row.breaks) > 1L ){
+
+    if (length(row.breaks) > 1L) {
         grid_by <- sub(".", "rows", grid_by, fixed = TRUE)
         grid_lab[["rows"]] <- label_parsed
     }
-    
+
     p <- p +
         facet_grid(
             as.formula(grid_by),
             labeller = do.call(labeller, grid_lab)
         )
-    
+
     p <- p +
         labs(x = "# Samples", y = axis_title, colour = "Object") +
         theme_bw() +
         cus_theme
-    
+
     return(p)
 }
 

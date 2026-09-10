@@ -34,8 +34,7 @@ qiime_out <- c(
 )
 
 # Define expression to run
-bench_expr <- switch(
-    key,
+bench_expr <- switch(key,
     # Estimate faith with mia
     tse_alpha = quote(mia::getAlpha(x, index = "faith_diversity")),
     # Estimate unifrac with mia
@@ -67,29 +66,35 @@ bench_expr <- switch(
     # Agglomerate with mothur
     mothur_agg = "#phylotype(taxonomy=taxonomy.tsv, count=counts.tsv, label=2)",
     # Estimate faith with qiime
-    qiime_alpha = paste("
+    qiime_alpha = paste(
+        "
         qiime diversity-lib faith-pd",
-            "--i-table counts.qza",
-            "--i-phylogeny tree.qza",
-            "--o-vector ", qiime_out[["alpha"]], "
-    "),
+        "--i-table counts.qza",
+        "--i-phylogeny tree.qza",
+        "--o-vector ", qiime_out[["alpha"]], "
+    "
+    ),
     # Estimate unifrac from qiime
-    qiime_beta = paste("
+    qiime_beta = paste(
+        "
         qiime diversity-lib unweighted-unifrac",
-            "--i-table counts.qza",
-            "--i-phylogeny tree.qza",
-            "--o-distance-matrix ", qiime_out[["beta"]], "
-    "),
+        "--i-table counts.qza",
+        "--i-phylogeny tree.qza",
+        "--o-distance-matrix ", qiime_out[["beta"]], "
+    "
+    ),
     # Agglomerate qiime
-    qiime_agg = paste("
+    qiime_agg = paste(
+        "
         qiime feature-table group",
-            "--i-table counts.qza",
-            "--m-metadata-file Family.tsv",
-            "--m-metadata-column Family",
-            "--p-mode sum",
-            "--p-axis feature",
-            "--o-grouped-table ", qiime_out[["agg"]], "
-    ")
+        "--i-table counts.qza",
+        "--m-metadata-file Family.tsv",
+        "--m-metadata-column Family",
+        "--p-mode sum",
+        "--p-axis feature",
+        "--o-grouped-table ", qiime_out[["agg"]], "
+    "
+    )
 )
 
 scratch_dir <- "/scratch/project_2014893/"
@@ -99,15 +104,12 @@ obj_dir <- ifelse(obj.type == "spseq", "pseq", obj.type)
 obj_file <- paste(row.size, col.size, rand.state, sep = "_")
 obj_path <- paste0(data_dir, obj_dir, "/", obj_file)
 
-if( obj.type %in% c("tse", "pseq", "spseq") ){
-    
+if (obj.type %in% c("tse", "pseq", "spseq")) {
     # Import dataset
     x <- readRDS(paste0(obj_path, ".rda"))
-    
-}else if( obj.type == "qiime" ){
-    
+} else if (obj.type == "qiime") {
     setwd(obj_path)
-    
+
     bench_expr <- call("system", bench_expr)
 }
 
@@ -118,11 +120,14 @@ bench_fun <- eval(parse(text = paste0("bench_", bench.var)))
 out <- bench_fun(eval(bench_expr))
 
 # Ensure qiime was successful
-if( obj.type == "qiime" && !qiime_out[[obj.fun]] %in% list.files(obj_path) ){
+if (obj.type == "qiime" && !qiime_out[[obj.fun]] %in% list.files(obj_path)) {
     stop("Error: ", qiime_out[[obj.fun]], "' not found.", call. = FALSE)
 }
 
-bench_col <- switch(bench.var, time = "real", memory = "mem_alloc")
+bench_col <- switch(bench.var,
+    time = "real",
+    memory = "mem_alloc"
+)
 
 out <- out[[bench_col]]
 
@@ -137,14 +142,16 @@ df <- data.frame(
 setwd(main_wd)
 
 file_name <- paste(
-    obj.type, obj.fun, row.size, col.size, sep = "_"
+    obj.type, obj.fun, row.size, col.size,
+    sep = "_"
 )
 
 dir_name <- paste(
-    "out", bench.var, rand.state, sep = "/"
+    "out", bench.var, rand.state,
+    sep = "/"
 )
 
-if( !dir.exists(dir_name) ) dir.create(dir_name, recursive = TRUE)
+if (!dir.exists(dir_name)) dir.create(dir_name, recursive = TRUE)
 
 write.table(
     df,

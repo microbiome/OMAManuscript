@@ -27,17 +27,17 @@ grid_df <- expand.grid(
 
 stypes <- levels(colData(x)$collection)
 
-for( stype in stypes ){
+for (stype in stypes) {
     grid_df[stype] <- NA
 }
 
 out_dir <- paste0(scratch_dir, "objects/")
 
-for( i in seq_len(nrow(grid_df)) ){
+for (i in seq_len(nrow(grid_df))) {
     # Retrieve step params
     row.size <- grid_df[i, "rows"]
     col.size <- grid_df[i, "cols"]
-    rand.state <- grid_df[i , "seed"]
+    rand.state <- grid_df[i, "seed"]
     # Set output name
     out_name <- paste(
         format(row.size, scientific = FALSE),
@@ -50,9 +50,9 @@ for( i in seq_len(nrow(grid_df)) ){
     # Select a random subset of features
     tse <- x[sample(nrow(x), row.size), ]
     # Remove samples with only zeros
-    tse <- tse[ , colSums(assay(tse)) != 0L]
+    tse <- tse[, colSums(assay(tse)) != 0L]
     # Select a random subset of samples
-    tse <- tse[ , sample(ncol(tse), col.size, replace = TRUE)]
+    tse <- tse[, sample(ncol(tse), col.size, replace = TRUE)]
     # Make sample names unique for repeated samples
     colnames(tse) <- make.unique(colnames(tse))
     # Prune tree to match subset
@@ -64,7 +64,7 @@ for( i in seq_len(nrow(grid_df)) ){
     # Compute sample type proportions
     stable <- table(colData(tse)$collection)
     tabsum <- sum(stable)
-    for( stype in stypes ){
+    for (stype in stypes) {
         grid_df[i, stype] <- stable[[stype]] / tabsum
     }
     # Recalculate relative abundance
@@ -73,30 +73,26 @@ for( i in seq_len(nrow(grid_df)) ){
     pseudocount <- min(assay(tse)[assay(tse) != 0]) / 2
     # Add pseudocount
     assay(tse) <- assay(tse) + pseudocount
-    
+
     tse_file <- paste0(out_dir, "tse/", out_name, ".rda")
-    
-    if( !file.exists(tse_file) ){
-        
+
+    if (!file.exists(tse_file)) {
         saveRDS(tse, tse_file)
-        
     }
-    
+
     pseq_file <- paste0(out_dir, "pseq/", out_name, ".rda")
-    
-    if( !file.exists(pseq_file) ){
+
+    if (!file.exists(pseq_file)) {
         # Convert TreeSE to phyloseq
         pseq <- mia::convertToPhyloseq(tse)
         # Export object
         saveRDS(pseq, pseq_file)
     }
-    
-    qiime_dir <- paste0(out_dir, "qiime/", out_name) 
-    
-    if( !dir.exists(qiime_dir) ){
-        
+
+    qiime_dir <- paste0(out_dir, "qiime/", out_name)
+
+    if (!dir.exists(qiime_dir)) {
         mia::exportQIIME2(tse, qiime_dir, group.var = "Family")
-    
     }
 }
 

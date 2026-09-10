@@ -1,4 +1,3 @@
-
 # Import libraries
 pkgs <- c("dplyr", "ggplot2", "tidyr")
 
@@ -26,14 +25,14 @@ df <- df |>
 # Specify plot layouts
 scientific_10 <- function(y) {
     sapply(y, function(z) {
-        if( is.character(z) ){
+        if (is.character(z)) {
             z <- as.numeric(z)
         }
-        if( is.na(z) ){
+        if (is.na(z)) {
             NA
-        }else if( z %in% c(1, 10) ){
+        } else if (z %in% c(1, 10)) {
             as.character(z)
-        }else{
+        } else {
             paste0("10^", log10(z))
         }
     })
@@ -47,14 +46,15 @@ text_col <- get_theme()$axis.text$colour
 p <- ggplot(df, aes(x = Value, y = seed, fill = Name)) +
     geom_bar(stat = "identity", orientation = "y") +
     geom_errorbar(
-      aes(x = sparsity, ymin = seed - 0.5, ymax = seed + 0.5),
-      orientation = "x", width = 0, colour = "darkgrey"
+        aes(x = sparsity, ymin = seed - 0.5, ymax = seed + 0.5),
+        orientation = "x", width = 0, colour = "darkgrey"
     ) +
     facet_grid(rows ~ cols, switch = "y", labeller = label_parsed) +
     scale_x_continuous(
         breaks = seq(0, 1, by = 1 / 4),
         labels = seq(0, 100, by = 25),
-        sec.axis = sec_axis(~ ., name = "# Samples")) +
+        sec.axis = sec_axis(~., name = "# Samples")
+    ) +
     scale_fill_discrete(
         palette = c("#CC7A5C", "#009E73", "#8B4513", "#0072B2"),
         limits = sample_levels
@@ -77,4 +77,3 @@ p <- ggplot(df, aes(x = Value, y = seed, fill = Name)) +
 
 # Save plot to file
 ggsave("inst/assets/composition.png", width = 250, height = 200, units = "mm")
-
