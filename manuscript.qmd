@@ -687,7 +687,7 @@ be accessed with the available tools for research and educational purposes.
 
 $^a$Bioconductor package with the corresponding name.
 $^b$Data retrieval to TreeSE format instructed in the manuscript source code.
-$^c$Zenodo mia community.
+$^c$Deposited in the Zenodo mia community.
 $^d$HoloFood microbiome datasets are deposited in the MGnify database.
 HMP, Human Microbiome Project.
 
@@ -1899,8 +1899,9 @@ digital object identifier and an open source license from the specified sources.
 
 This article presented v1.1.1 of the OMA book (2026-07-05) published at
 [https://bioconductor.org/books/release/OMA](https://bioconductor.org/books/release/OMA),
-which depends on R v4.6 and Bioconductor v3.24. Analysis scripts and
-results of the benchmarking analysis are available on Zenodo (mia community).
+which depends on R v4.6 and Bioconductor v3.24. Analytical scripts to reproduce
+this work were deposited in the Zenodo mia community:
+https://doi.org/10.5281/zenodo.22691743
 
 # References
 <!-- the pattern below controls the placement of the references -->

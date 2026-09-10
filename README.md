@@ -1,9 +1,15 @@
 # Orchestrating Microbiome Analysis with Bioconductor &mdash; article <img src="figures/mia_logo.png" align="right" width="120" />
 
+[![DOI](https://zenodo.org/badge/1035571385.svg)](https://doi.org/10.5281/zenodo.22691742)
+
 This repository includes all the source files to used to generate article on
 _Orchestrating Microbiome Analysis with Bioconductor_. This article is written
 only using Quarto files, based on the
 [Nature Quarto template](https://github.com/christopherkenny/nature).
+
+Benchmark scripts were adapted from
+[this separate repository](https://github.com/microbiome/benchmarking) which
+contains further details on the benchmark execution and reproducibility.
 
 ## Project structure
 
