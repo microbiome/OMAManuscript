@@ -1,6 +1,7 @@
 ---
 format:
   nature-pdf:
+    fig-dpi: 300
     journal:
       cite-style: sn-nature
     cite-method: natbib
