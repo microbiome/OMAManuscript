@@ -731,7 +731,8 @@ Quantitative comparisons indicate enhanced scalability over commonly used
 alternatives (@fig-benchmarking and Supplementary Figure 1). We executed routine
 operations on increasingly large subsets of the Metalog database [@kuhn2026],
 and measured the execution time and memory consumption with (Tree)SE, phyloseq,
-speedyseq, and QIIME 2. Overall, (Tree)SE scaled most efficiently in execution
+speedyseq, and QIIME 2, based on comparable default settings for all methods.
+Overall, (Tree)SE scaled most efficiently in execution
 time and memory allocation with increasing feature and sample sizes. It is
 applicable to abundance matrices of up to 100,000 samples and 10,000 features on
 a standard laptop, except for the heaviest operations such as phylogenetic beta
@@ -741,16 +742,16 @@ points drop down to 10,000 samples with agglomeration and Faith diversity
 calculation, and to 1,000 samples with the PhILR transformation and melting
 operation. At smaller sample sizes phyloseq or its accelerated extension
 speedyseq are occasionally faster but these differences are moderate
-(few seconds on a standard laptop). The standard QIIME 2 implementation is
+(a few seconds on a standard laptop). The standard QIIME 2 implementation is
 generally slower on smaller sample sizes but scales well with increasing sample
-sizes. It should be noted that these benchmarks focus on methods that are
+sizes. It should be noted that our benchmark analysis focuses on methods that are
 currently accessible via R/Bioconductor, and thus benefit from the broader
-interoperability with this framework. The users could benefit from the
-incorporation of the most recent developments in accelerated methods, such as
+interoperability of this framework. In addition, we plan to incorporate
+other recently developed, highly optimized methods, such as
 DartUniFrac [@zhao2026], which provides massive scalability enhancements for
-Unifrac-based phylogenetic distance calculation. Optimizing time and memory
-consumption represents a key area for further development in microbiome data
-science.
+Unifrac-based phylogenetic distance calculation. In the future, optimizing time
+and memory consumption will represent a key area of further development in the
+(Tree)SE framework for microbiome data science.
 
 ```{r}
 #| label: fig-benchmarking
@@ -760,14 +761,15 @@ science.
 #| fig-cap: "**Execution time and allocated memory for routine microbiome data
 #|   operations.** TreeSummarizedExperiment, QIIME 2 and phyloseq&mdash;with its
 #|   extension speedyseq&mdash;are three popular frameworks for microbiome
-#|   analysis. We benchmarked them for five routine operations applied to random
-#|   subsets of features (rows) and samples (columns) from the Metalog database
-#|   [@kuhn2026]. Both execution time (s) and allocated memory (MB) were
+#|   analysis. We benchmarked them for five routine operations (with default settings)
+#|   applied to random subsets of features (rows) and samples (columns) from the
+#|   Metalog database [@kuhn2026]. Both execution time (s) and allocated memory (MB) were
 #|   measured as the mean value over ten replicates with varying subsets of the
 #|   same dimension. Errorbars show the 95% confidence interval of the
-#|   performance estimate. The benchmarking was conducted in R using the bench
-#|   library with 4 CPU cores and 16 GB RAM. QIIME 2 lacks allocated memory
-#|   estimates because memory cannot be monitored for external processes."
+#|   performance estimate. The benchmarking was conducted in R v4.6 based on
+#|   Bioconductor v3.24 and QIIME 2 v2026.4, using the bench library v1.1.4 with
+#|   4 CPU cores and 16 GB RAM. QIIME 2 lacks allocated memory estimates because
+#|   memory cannot be monitored for external processes."
 #| fig-width: 12
 #| fig-height: 14
 
@@ -1898,7 +1900,7 @@ digital object identifier and an open source license from the specified sources.
 
 This article presented v1.1.1 of the OMA book (2026-07-05) published at
 [https://bioconductor.org/books/release/OMA](https://bioconductor.org/books/release/OMA),
-which depends on R v4.6 and Bioconductor v3.24. Analytical scripts to reproduce
+which depends on R v4.6, Bioconductor v3.24. Analytical scripts to reproduce
 this work were deposited in the Zenodo mia community at
 [https://doi.org/10.5281/zenodo.22691742](https://doi.org/10.5281/zenodo.22691742).
 
