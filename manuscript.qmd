@@ -290,7 +290,7 @@ software ecosystems have become central innovation hubs, driving
 technological and cultural transformation [@hocquet2024]. The
 Bioconductor project is a significant distribution
 channel for open data science methods in computational life sciences.
-Its vast developer community maintains over 2,300 quality-controlled R
+Its vast developer community maintains over 2,400 quality-controlled R
 packages for various fields of life science informatics [@gentleman2004].
 Additionally, Bioconductor has evolved into a global community that supports
 data science collaboration and training [@drnevich2025], playing an increasingly
@@ -1759,7 +1759,7 @@ strengths include minimal documentation standards, portability across operating
 platforms, quality control (*e.g.* peer-review, unit testing, and continuous
 integration), usability (APIs), robustness (dependency testing and deprecation
 mechanisms), and a biannual release cycle with semantic versioning. Over the
-past two decades Bioconductor has grown into a repository of more than 2,300
+past two decades Bioconductor has grown into a repository of more than 2,400
 actively maintained software packages, including
 `r sum(bioc_pkgs$Field == "Microbiome")` packages related to microbiome
 research. At the core of the Bioconductor's data science strategy has been the
