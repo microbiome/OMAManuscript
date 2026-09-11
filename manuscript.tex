@@ -273,7 +273,7 @@ software ecosystems have become central innovation hubs, driving
 technological and cultural transformation \citep{hocquet2024}. The
 Bioconductor project is a significant distribution channel for open data
 science methods in computational life sciences. Its vast developer
-community maintains over 2,300 quality-controlled R packages for various
+community maintains over 2,400 quality-controlled R packages for various
 fields of life science informatics \citep{gentleman2004}. Additionally,
 Bioconductor has evolved into a global community that supports data
 science collaboration and training \citep{drnevich2025}, playing an
@@ -666,9 +666,9 @@ Within Bioconductor, phyloseq \citep{mcmurdie2012} provides widely
 adopted tools with a primary focus on 16S amplicon data analysis. TreeSE
 accommodates all core components of phyloseq objects, including
 abundance tables, taxonomic annotations, phylogenetic trees, reference
-sequences, and sample metadata. The advantages of newer TreeSE container
-\citep{huber2015} include many additional data elements, a better
-integration with the overall Bioconductor ecosystem, and enhanced
+sequences, and sample metadata. The advantages of the newer TreeSE
+container \citep{huber2015} include many additional data elements, a
+better integration with the overall Bioconductor ecosystem, and enhanced
 support for multi-assay analyses (see \hyperref[sec-infra]{Data
 infrastructure}). Thus, some originally phyloseq-based tools, such as
 microbiome R/Bioconductor package \citep{shetty2019}, have been recently
@@ -683,7 +683,7 @@ platform. It primarily targets amplicon and metagenomic analyses, and
 incorporates methods from the scikit-bio Python library
 \citep{aton2026}, which supports multi-omic integration tasks. A
 particular advantage of these frameworks is their direct connection with
-the strong machine learning and AI ecosystem in Python, while the
+the strong Machine Learning (ML) and AI ecosystem in Python, while the
 interoperability with independently developed omics tools may remain
 more limited. Anvi'o \citep{eren2021} is a complementary,
 community-driven analysis and visualization platform for microbial omics
@@ -703,27 +703,29 @@ used alternatives (Figure~\ref{fig-benchmarking} and Supplementary
 Figure 1). We executed routine operations on increasingly large subsets
 of the Metalog database \citep{kuhn2026}, and measured the execution
 time and memory consumption with (Tree)SE, phyloseq, speedyseq, and
-QIIME 2. Overall, (Tree)SE scaled most efficiently in execution time and
-memory allocation with increasing feature and sample sizes. It is
-applicable to abundance matrices of up to 100,000 samples and 10,000
-features on a standard laptop, except for the heaviest operations such
-as phylogenetic beta diversity (UniFrac) calculation, where the general
-break point is reached around 10,000 samples with all methods. At a
-feature set size of 10,000 the break points drop down to 10,000 samples
-with agglomeration and Faith diversity calculation, and to 1,000 samples
-with the PhILR transformation and melting operation. At smaller sample
-sizes phyloseq or its accelerated extension speedyseq are occasionally
-faster but these differences are moderate (few seconds on a standard
-laptop). The standard QIIME 2 implementation is generally slower on
-smaller sample sizes but scales well with increasing sample sizes. It
-should be noted that these benchmarks focus on methods that are
-currently accessible via R/Bioconductor, and thus benefit from the
-broader interoperability with this framework. The users could benefit
-from the incorporation of the most recent developments in accelerated
-methods, such as DartUniFrac \citep{zhao2026}, which provides massive
-scalability enhancements for Unifrac-based phylogenetic distance
-calculation. Optimizing time and memory consumption represents a key
-area for further development in microbiome data science.
+QIIME 2, based on comparable default settings across frameworks.
+Overall, (Tree)SE scaled most efficiently in execution time and memory
+allocation with increasing feature and sample sizes. It is applicable to
+abundance matrices of up to 100,000 samples and 10,000 features on a
+standard laptop, except for the heaviest operations such as phylogenetic
+beta diversity (UniFrac) calculation, where the general break point is
+reached around 10,000 samples with all methods. At a feature set size of
+10,000 the break points drop down to 10,000 samples with agglomeration
+and Faith diversity calculation, and to 1,000 samples with the PhILR
+transformation and melting operation. At smaller sample sizes phyloseq
+or its accelerated extension speedyseq are occasionally faster but these
+differences are moderate (a few seconds on a standard laptop). The
+standard QIIME 2 implementation is generally slower on smaller sample
+sizes but scales well with increasing sample sizes. It should be noted
+that our benchmark analysis focuses on methods that are currently
+accessible via R/Bioconductor, and thus benefit from the broader
+interoperability of this framework. In addition, we plan to incorporate
+other recently developed, highly optimized methods, such as DartUniFrac
+\citep{zhao2026}, which provides massive scalability enhancements for
+Unifrac-based phylogenetic distance calculation. In the future,
+optimizing time and memory consumption will represent a key area of
+further development in the (Tree)SE framework for microbiome data
+science.
 
 \begin{figure}
 
@@ -737,15 +739,16 @@ area for further development in microbiome data science.
 memory for routine microbiome data operations.}
 TreeSummarizedExperiment, QIIME 2 and phyloseq---with its extension
 speedyseq---are three popular frameworks for microbiome analysis. We
-benchmarked them for five routine operations applied to random subsets
-of features (rows) and samples (columns) from the Metalog database
-\citep{kuhn2026}. Both execution time (s) and allocated memory (MB) were
-measured as the mean value over ten replicates with varying subsets of
-the same dimension. Errorbars show the 95\% confidence interval of the
-performance estimate. The benchmarking was conducted in R using the
-bench library with 4 CPU cores and 16 GB RAM. QIIME 2 lacks allocated
-memory estimates because memory cannot be monitored for external
-processes.}
+benchmarked them for five routine operations (with default settings)
+applied to random subsets of features (rows) and samples (columns) from
+the Metalog database \citep{kuhn2026}. Both execution time (s) and
+allocated memory (MB) were measured as the mean value over ten
+replicates with varying subsets of the same dimension. Errorbars show
+the 95\% confidence interval of the performance estimate. The
+benchmarking was conducted in R v4.6 based on Bioconductor v3.24 and
+QIIME 2 v2026.4, using the bench library v1.1.4 with 4 CPU cores and 16
+GB RAM. QIIME 2 lacks allocated memory estimates because memory cannot
+be monitored for external processes.}
 
 \end{figure}%
 
@@ -842,7 +845,7 @@ efficient management of interlinked datasets.
 
 \textbf{Transformation.} Statistical transformations commonly used in
 microbiome research include relative abundance \citep{gloor2017},
-phylogenetic ILR (PhILR) \citep{silverman2017}, centered log-ratio
+Phylogenetic ILR (PhILR) \citep{silverman2017}, Centered Log-Ratio
 (CLR), and robust CLR (rCLR) \citep{martino2019}. The latter three aim
 to mitigate compositionality bias. A related concept that controls for
 unequal sampling depth is data rarefaction, \emph{i.e.} repeatedly
@@ -980,40 +983,39 @@ benefit from these and other standardized methods.
 
 \textbf{Association analyses.} Differential Abundance Analysis (DAA) and
 Differential Prevalence Analysis (DPA) methods identify indicator
-microbial features whose abundances (DAA) or prevalences (DPA) vary
-across study groups or continuous gradients, for example in terms of
-spatial or temporal dissimilarity between samples
+microbial features whose abundances (former) or prevalences (latter)
+vary across study groups or continuous gradients, for example in terms
+of spatial or temporal dissimilarity between samples
 (Figure~\ref{fig-downstream_analyses}). Many widely used DAA methods
-support the (Tree)SE framework, including for instance ANCOM-BC2
-\citep{lin2024}, LimROTS \citep{anwar2025}, MaAsLin3
-\citep{nickols2026}, and radEmu \citep{clausen2026}, and benchdamic
-benchmarking pipeline \citep{calgaro2022}. More recently, DPA methods
-have seen increasing adoption in microbiome research. They ignore
-abundance data, and focus on comparing feature prevalence \emph{i.e.}
-presence/absence profiles. Recent implementations include MaAsLin3
-\citep{nickols2026} and the probabilistic DiPPER \citep{pelto2026}.
-Leveraging the interoperability of the framework, several of these
-methods have also found applications with other omics modalities,
-including transcriptomics \citep{love2014}, metabolomics
-\citep{nickols2026}, and proteomics \citep{anwar2025}. Standard DAA
-typically focuses on individual features, ignoring interactions or other
-covariation among feature abundances. Thus, we support covariation
-analyses. Recent studies have indicated that elementary methods, such as
-log-transformed Total Sum Scaled (TSS) counts coupled with a linear
-model, or presence/absence data with logistic regression, often yield
-the most consistent results \citep{pelto2025, gamboa-tuz2025}. While
-agglomerating collinear features as a preprocessing step can reduce
-multiple testing, increase statistical power, and improve
-interpretability, it is also prone to subjective parameterization and
-limited generalizability. Features can be grouped based on clustering
-results from abundance profiles or on external information drawn from
-phylogenetic relations, taxonomic classifications or functional
-properties (\emph{e.g.}, aggregating based on metabolite production
-\citep{kullberg2024} or disease associations \citep{geistlinger2024}).
-Beyond these, recent multi-modal causal mediation analysis for
-microbiome data have been implemented for SE in the multimedia package
-\citep{jiang2025}, highlighting the readiness to support the adoption of
-the rapidly developing multi-omic methodology.
+support the (Tree)SE framework, including ANCOM-BC2 \citep{lin2024},
+LimROTS \citep{anwar2025}, MaAsLin3 \citep{nickols2026}, and radEmu
+\citep{clausen2026}, and benchdamic benchmarking pipeline
+\citep{calgaro2022}. More recently, DPA methods have seen increasing
+adoption in microbiome research. They ignore abundance data, and focus
+on comparing feature prevalence \emph{i.e.} presence/absence profiles.
+Recent implementations include MaAsLin3 \citep{nickols2026} and the
+probabilistic DiPPER \citep{pelto2026}. Leveraging the interoperability
+of the framework, several of these methods have also found applications
+with other omics modalities, including transcriptomics \citep{love2014},
+metabolomics \citep{nickols2026}, and proteomics \citep{anwar2025}.
+Standard DAA typically focuses on individual features, ignoring
+interactions or other covariation among feature abundances. Thus, we
+support covariation analyses. Recent studies have indicated that
+elementary methods, such as log-transformed Total Sum Scaled (TSS)
+counts coupled with a linear model, or presence/absence data with
+logistic regression, often yield the most consistent results
+\citep{pelto2025, gamboa-tuz2025}. While agglomerating collinear
+features as a preprocessing step can reduce multiple testing, increase
+statistical power, and improve interpretability, it is also prone to
+subjective parameterization and limited generalizability. Features can
+be grouped based on clustering results from abundance profiles or on
+external information drawn from phylogenetic relations, taxonomic
+classifications or functional properties (\emph{e.g.}, aggregating based
+on metabolite production \citep{kullberg2024} or disease associations
+\citep{geistlinger2024}). Beyond these, recent multi-modal causal
+mediation analysis for microbiome data have been implemented for SE in
+the multimedia package \citep{jiang2025}, highlighting the readiness to
+support the adoption of the rapidly developing multi-omic methodology.
 
 \textbf{Function- and sequence-level analyses.} Taxonomic analysis is
 frequently complemented by functional analyses, either based on
@@ -1053,8 +1055,8 @@ estimating temporally or spatially resolved metrics, such as divergence
 (dissimilarity between consecutive time points), autocorrelation
 (similarity of closely related samples), and feature modality (whether a
 feature exhibits multiple abundance states). Methods such as
-compositional tensor factorization (CTF) \citep{martino2021} and
-temporal tensor decomposition (TEMPTED) \citep{shi2024} were recently
+Compositional Tensor Factorization (CTF) \citep{martino2021} and
+TEMPoral TEnsor Decomposition (TEMPTED) \citep{shi2024} were recently
 proposed in a single-omic setting to model community-level shifts in
 microbiome composition while accounting for the subject-specific
 variation, and to characterize community dynamics by aggregating
@@ -1089,31 +1091,30 @@ support modular and reproducible workflows. They also facilitate
 incorporation of further downstream tools. Multi-omic methods are
 particularly relevant for the present ecosystem given its enhanced
 support for integrative analysis. Examples include association-based
-approaches, latent variable models, and machine learning (ML)-based
-prediction \citep{sankaran2019, sankaran2019b, sherwani2025}. Our
-framework is supported by many common multi-omic libraries in
-Bioconductor: Cross-correlation analysis, provided by mia, is commonly
-used to capture direct associations of samples or features between two
-datasets but it does not explicitly account for potential co-variation
-between microbial features, and methods such as anansi
-\citep{bastiaanssen2023} can additionally incorporate known functional
-relations into association analyses. Unsupervised latent variable
-methods such as multi-omics factor analysis (MOFA+)
-\citep{argelaguet2020} and joint robust PCA (Joint-RPCA)
-\citep{vargas2026} model shared latent structure across modalities,
-enabling the exploration and visualization of coordinated variation
-across multiple features and data sources. Supervised methods include,
-for instance, IntegratedLearner \citep{mallick2024}, which can leverage
-dependencies between omics layers to improve prediction performance.
-These and other methods natively support Bioconductor's multi-assay
-framework. Additional tools are provided by multi-omic toolkits such as
-mixOmics \citep{rohart2017}, including the discriminant analysis method
-DIABLO \citep{singh2019} and other integration techniques. These tools
-do not yet support the same data containers but can be used seamlessly
-by using converters or a straightforward extraction of the abundance
-tables, sample metadata, or other relevant data elements. The unified
-integrative framework that we have adopted can accelerate methods
-development, benchmarking, and standardization.
+approaches, latent variable models, and ML-based prediction
+\citep{sankaran2019, sankaran2019b, sherwani2025}. Our framework is
+supported by many common multi-omic libraries in Bioconductor:
+Cross-correlation analysis, provided by mia, is commonly used to capture
+direct associations of samples or features between two datasets but it
+does not explicitly account for potential co-variation between microbial
+features, and methods such as anansi \citep{bastiaanssen2023} can
+additionally incorporate known functional relations into association
+analyses. Unsupervised latent variable methods such as Multi-Omics
+Factor Analysis (MOFA+) \citep{argelaguet2020} and Joint Robust PCA
+(Joint-RPCA) \citep{vargas2026} model shared latent structure across
+modalities, enabling the exploration and visualization of coordinated
+variation across multiple features and data sources. Supervised methods
+include, for instance, IntegratedLearner \citep{mallick2024}, which can
+leverage dependencies between omics layers to improve prediction
+performance. These and other methods natively support Bioconductor's
+multi-assay framework. Additional tools are provided by multi-omic
+toolkits such as mixOmics \citep{rohart2017}, including the discriminant
+analysis method DIABLO \citep{singh2019} and other integration
+techniques. These tools do not yet support the same data containers but
+can be used seamlessly by using converters or a straightforward
+extraction of the abundance tables, sample metadata, or other relevant
+data elements. The unified integrative framework that we have adopted
+can accelerate methods development, benchmarking, and standardization.
 
 \textbf{Other methods and programming environments.} Several other
 methods and workflows have been employed in microbiome data science. Our
@@ -1121,14 +1122,14 @@ multi-assay framework provides a flexible statistical programming
 ecosystem dedicated to microbiome data science. It supports the
 incorporation of more targeted analysis methods and workflows such as
 SIAMCAT for association testing \citep{wirbel2021}, mikropml for
-machine-learning based prediction and classification
-\citep{topcuoglu2021}, NetCoMi for network analysis \citep{peschel2021},
-or microbe-set enrichment analyses \citep{kou2020, pham2025}. These and
-other similar tools are complementary and they operate primarily on a
-single feature matrix, lacking the multi-omic feature selection offered
-by dedicated integration methods discussed in the previous section.
-Interoperable containers facilitate the translation of existing tools to
-adjacent or emerging disciplines.
+ML-based prediction and classification \citep{topcuoglu2021}, NetCoMi
+for network analysis \citep{peschel2021}, or microbe-set enrichment
+analyses \citep{kou2020, pham2025}. These and other similar tools are
+complementary and they operate primarily on a single feature matrix,
+lacking the multi-omic feature selection offered by dedicated
+integration methods discussed in the previous section. Interoperable
+containers facilitate the translation of existing tools to adjacent or
+emerging disciplines.
 
 Our framework can be linked to external microbiome data analysis
 pipelines using tools such as bioBakery \citep{beghini2021}, and foreign
@@ -1136,15 +1137,14 @@ platforms through language-specific interfaces, namely Rcpp for C++,
 reticulate for Python, and JuliaCall for Julia. The overall data
 analytical paradigm of Bioconductor is similar to that of scikit-bio
 \citep{aton2026}, a Python-based ecosystem. Whereas scikit-bio benefits
-from the rapidly evolving machine learning and artificial intelligence
-tools in Python, Bioconductor's strengths lie in its vast statistical
-ecosystem and interoperability with dedicated omics tools and other
-computational environments. We anticipate that the ongoing developments
-in cross-language integration will further lower the barriers for
-cross-utilizing tools across complementary environments. This can be
-enhanced by additional workflow management tools such as targets in R
-\citep{landau2021} or Nextflow for cross-language operations
-\citep{di2017}.
+from the rapidly evolving ML and AI tools in Python, Bioconductor's
+strengths lie in its vast statistical ecosystem and interoperability
+with dedicated omics tools and other computational environments. We
+anticipate that the ongoing developments in cross-language integration
+will further lower the barriers for cross-utilizing tools across
+complementary environments. This can be enhanced by additional workflow
+management tools such as targets in R \citep{landau2021} or Nextflow for
+cross-language operations \citep{di2017}.
 
 \begin{figure}
 
@@ -1252,7 +1252,7 @@ standards, portability across operating platforms, quality control
 usability (APIs), robustness (dependency testing and deprecation
 mechanisms), and a biannual release cycle with semantic versioning. Over
 the past two decades Bioconductor has grown into a repository of more
-than 2,300 actively maintained software packages, including 62 packages
+than 2,400 actively maintained software packages, including 62 packages
 related to microbiome research. At the core of the Bioconductor's data
 science strategy has been the idea of shared data representations that
 can enhance the transparency, trustworthiness, and explainability of
@@ -1299,7 +1299,7 @@ refinement, enrichment, and validation methods for community standards
 \citep{field2008, mirzayi2021, kelliher2025}. Our framework provides the
 structured input necessary for probabilistic inference and scalable
 computation as the recent developments increasingly rely on advanced
-statistical and ML techniques such as Bayesian modeling and Gaussian
+statistical and ML methods such as Bayesian modeling and Gaussian
 processes to accommodate uncertainty and temporal or spatial structures
 \citep{jeganathan2021, moreno-indias2021}.
 
@@ -1349,8 +1349,8 @@ specified sources.
 This article presented v1.1.1 of the OMA book (2026-07-05) published at
 \url{https://bioconductor.org/books/release/OMA}, which depends on R
 v4.6 and Bioconductor v3.24. Analytical scripts to reproduce this work
-were deposited in the Zenodo mia community:
-\url{https://doi.org/10.5281/zenodo.22691742}
+were deposited in the Zenodo mia community at
+\url{https://doi.org/10.5281/zenodo.22691742}.
 
 \section{References}\label{references}
 
