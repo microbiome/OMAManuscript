@@ -1017,7 +1017,7 @@ efficient management of interlinked datasets.
 
 **Transformation.** Statistical transformations commonly used in microbiome
 research include relative abundance [@gloor2017],
-phylogenetic ILR (PhILR) [@silverman2017], centered log-ratio (CLR),
+Phylogenetic ILR (PhILR) [@silverman2017], Centered Log-Ratio (CLR),
 and robust CLR (rCLR) [@martino2019]. The latter three aim to mitigate
 compositionality bias. A related concept that controls for
 unequal sampling depth is data rarefaction, *i.e.* repeatedly subsampling data
