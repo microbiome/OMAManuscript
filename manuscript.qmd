@@ -698,7 +698,7 @@ Bioconductor, phyloseq [@mcmurdie2012] provides widely adopted tools with a
 primary focus on 16S amplicon data analysis. TreeSE accommodates all core
 components of phyloseq objects, including abundance tables, taxonomic
 annotations, phylogenetic trees, reference sequences, and sample metadata. The
-advantages of newer TreeSE container [@huber2015] include many additional
+advantages of the newer TreeSE container [@huber2015] include many additional
 data elements, a better integration with the overall Bioconductor ecosystem,
 and enhanced support for multi-assay analyses
 (see [Data infrastructure](#sec-infra)). Thus, some originally phyloseq-based
@@ -712,8 +712,8 @@ metagenomics and multi-omics. QIIME 2 [@bolyen2019] is a Python-based microbiome
 multi-omics data science platform. It primarily targets amplicon and metagenomic
 analyses, and incorporates methods from the scikit-bio Python library
 [@aton2026], which supports multi-omic integration tasks. A particular advantage
-of these frameworks is their direct connection with the strong machine learning
-and AI ecosystem in Python, while the interoperability with independently
+of these frameworks is their direct connection with the strong Machine Learning
+(ML) and AI ecosystem in Python, while the interoperability with independently
 developed omics tools may remain more limited. Anvi'o [@eren2021] is a
 complementary, community-driven analysis and visualization platform for
 microbial omics with a distinct focus on genome-resolved metagenomics and
@@ -1249,7 +1249,7 @@ support modular and reproducible workflows. They also facilitate incorporation
 of further downstream tools. Multi-omic methods are particularly relevant for
 the present ecosystem given its enhanced support for integrative analysis.
 Examples include association-based approaches, latent variable models, and
-machine learning (ML)-based prediction
+ML-based prediction
 [@sankaran2019; @sankaran2019b; @sherwani2025]. Our framework is supported by
 many common multi-omic libraries in Bioconductor: Cross-correlation analysis,
 provided by mia, is commonly used to capture direct associations of samples or
@@ -1290,8 +1290,8 @@ tools such as bioBakery [@beghini2021], and foreign platforms through
 language-specific interfaces, namely Rcpp for C++, reticulate for Python, and
 JuliaCall for Julia. The overall data analytical paradigm of Bioconductor is
 similar to that of scikit-bio [@aton2026], a Python-based ecosystem. Whereas
-scikit-bio benefits from the rapidly evolving machine learning and artificial
-intelligence tools in Python, Bioconductor's strengths lie in its vast
+scikit-bio benefits from the rapidly evolving ML and AI
+tools in Python, Bioconductor's strengths lie in its vast
 statistical ecosystem and interoperability with dedicated omics tools and other
 computational environments. We anticipate that the ongoing developments in
 cross-language integration will further lower the barriers for cross-utilizing
@@ -1853,7 +1853,7 @@ support for the FAIR data principles [@wilkinson2016], for instance, by adding
 built-in refinement, enrichment, and validation methods for community standards
 [@field2008; @mirzayi2021; @kelliher2025]. Our framework provides the structured
 input necessary for probabilistic inference and scalable computation as the
-recent developments increasingly rely on advanced statistical and ML techniques
+recent developments increasingly rely on advanced statistical and ML methods
 such as Bayesian modeling and Gaussian processes to accommodate uncertainty and
 temporal or spatial structures [@jeganathan2021; @moreno-indias2021].
 
