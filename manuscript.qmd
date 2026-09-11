@@ -1219,7 +1219,7 @@ temporally or spatially resolved metrics, such as divergence (dissimilarity
 between consecutive time points), autocorrelation (similarity of closely
 related samples), and feature modality (whether a feature exhibits multiple
 abundance states). Methods such as Compositional Tensor Factorization (CTF)
-[@martino2021] and TEMporal TEnsor Decomposition (TEMPTED) [@shi2024] were
+[@martino2021] and TEMPoral TEnsor Decomposition (TEMPTED) [@shi2024] were
 recently proposed in a single-omic setting to model community-level shifts in
 microbiome composition while accounting for the subject-specific variation, and
 to characterize community dynamics by aggregating information across short time series [@ross2026].
