@@ -1151,10 +1151,10 @@ and other standardized methods.
 
 **Association analyses.** Differential Abundance Analysis (DAA)
 and Differential Prevalence Analysis (DPA) methods identify indicator microbial
-features whose abundances (DAA) or prevalences (DPA) vary across study groups
+features whose abundances (former) or prevalences (latter) vary across study groups
 or continuous gradients, for example in terms of spatial or temporal dissimilarity between
 samples (@fig-downstream_analyses). Many widely used DAA methods support the
-(Tree)SE framework, including for instance ANCOM-BC2 [@lin2024], LimROTS
+(Tree)SE framework, including ANCOM-BC2 [@lin2024], LimROTS
 [@anwar2025], MaAsLin3 [@nickols2026], and radEmu [@clausen2026],
 and benchdamic benchmarking pipeline [@calgaro2022].
 More recently, DPA methods have seen increasing adoption in microbiome
@@ -1218,8 +1218,8 @@ incorporated as a covariate (*e.g.*, location or time) or by estimating
 temporally or spatially resolved metrics, such as divergence (dissimilarity
 between consecutive time points), autocorrelation (similarity of closely
 related samples), and feature modality (whether a feature exhibits multiple
-abundance states). Methods such as compositional tensor factorization (CTF)
-[@martino2021] and temporal tensor decomposition (TEMPTED) [@shi2024] were
+abundance states). Methods such as Compositional Tensor Factorization (CTF)
+[@martino2021] and TEMporal TEnsor Decomposition (TEMPTED) [@shi2024] were
 recently proposed in a single-omic setting to model community-level shifts in
 microbiome composition while accounting for the subject-specific variation, and
 to characterize community dynamics by aggregating information across short time series [@ross2026].
@@ -1256,8 +1256,8 @@ provided by mia, is commonly used to capture direct associations of samples or
 features between two datasets but it does not explicitly account for potential
 co-variation between microbial features, and methods such as anansi
 [@bastiaanssen2023] can additionally incorporate known functional relations into
-association analyses. Unsupervised latent variable methods such as multi-omics
-factor analysis (MOFA+) [@argelaguet2020] and joint robust PCA (Joint-RPCA)
+association analyses. Unsupervised latent variable methods such as Multi-Omics
+Factor Analysis (MOFA+) [@argelaguet2020] and Joint Robust PCA (Joint-RPCA)
 [@vargas2026] model shared latent structure across modalities, enabling the
 exploration and visualization of coordinated variation across multiple features
 and data sources. Supervised methods include, for instance, IntegratedLearner
