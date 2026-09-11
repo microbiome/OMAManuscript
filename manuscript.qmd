@@ -714,7 +714,8 @@ multi-omics data science platform. It primarily targets amplicon and metagenomic
 analyses, and incorporates methods from the scikit-bio Python library
 [@aton2026], which supports multi-omic integration tasks. A particular advantage
 of these frameworks is their direct connection with the strong Machine Learning
-(ML) and AI ecosystem in Python, while the interoperability with independently
+(ML) and Artificial Intelligence (AI) ecosystem in Python, while the
+interoperability with independently
 developed omics tools may remain more limited. Anvi'o [@eren2021] is a
 complementary, community-driven analysis and visualization platform for
 microbial omics with a distinct focus on genome-resolved metagenomics and
