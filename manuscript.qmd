@@ -731,7 +731,7 @@ Quantitative comparisons indicate enhanced scalability over commonly used
 alternatives (@fig-benchmarking and Supplementary Figure 1). We executed routine
 operations on increasingly large subsets of the Metalog database [@kuhn2026],
 and measured the execution time and memory consumption with (Tree)SE, phyloseq,
-speedyseq, and QIIME 2, based on comparable default settings for all methods.
+speedyseq, and QIIME 2, based on comparable default settings across frameworks.
 Overall, (Tree)SE scaled most efficiently in execution
 time and memory allocation with increasing feature and sample sizes. It is
 applicable to abundance matrices of up to 100,000 samples and 10,000 features on
