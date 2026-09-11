@@ -717,16 +717,15 @@ transformation and melting operation. At smaller sample sizes phyloseq
 or its accelerated extension speedyseq are occasionally faster but these
 differences are moderate (a few seconds on a standard laptop). The
 standard QIIME 2 implementation is generally slower on smaller sample
-sizes but scales well with increasing sample sizes. It should be noted
-that our benchmark analysis focuses on methods that are currently
-accessible via R/Bioconductor, and thus benefit from the broader
-interoperability of this framework. In addition, we plan to incorporate
-other recently developed, highly optimized methods, such as DartUniFrac
-\citep{zhao2026}, which provides massive scalability enhancements for
-Unifrac-based phylogenetic distance calculation. In the future,
-optimizing time and memory consumption will represent a key area of
-further development in the (Tree)SE framework for microbiome data
-science.
+sizes but scales well with increasing sample sizes. Our benchmark
+analysis focuses on methods that are currently accessible via
+R/Bioconductor, and thus benefit from the broader interoperability of
+this framework. In addition, we plan to extend the (Tree)SE framework to
+incorporate other recently developed, highly optimized methods, such as
+DartUniFrac \citep{zhao2026}, which provides substantial scalability
+enhancements for UniFrac-based phylogenetic distance calculation. In the
+future, optimizing time and memory consumption will represent a key area
+of further development within the framework for microbiome data science.
 
 \begin{figure}
 
