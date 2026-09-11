@@ -1276,7 +1276,7 @@ workflows have been employed in microbiome data science. Our multi-assay
 framework provides a flexible statistical programming ecosystem dedicated to
 microbiome data science. It supports the incorporation of more targeted analysis
 methods and workflows such as SIAMCAT for association testing [@wirbel2021],
-mikropml for machine-learning based prediction and classification
+mikropml for ML-based prediction and classification
 [@topcuoglu2021], NetCoMi for network analysis [@peschel2021],
 or microbe-set enrichment analyses
 [@kou2020; @pham2025]. These and other similar tools are complementary and they
