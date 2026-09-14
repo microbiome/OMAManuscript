@@ -400,9 +400,9 @@ The vast adoption and interoperability of SE-based data structures
 enables the transfer of methods across different fields of omics
 research, thereby promoting the development of modular and scalable data
 science methods and yielding improved overall quality control and user
-support \citep{drnevich2025}. The SE framework has been extended to
-similar data integration tasks, notably in single-cell and spatial omics
-through the SingleCellExperiment (SCE) \citep{amezquita2020} and
+support \citep{drnevich2025}. The (Tree)SE framework has been extended
+to similar data integration tasks, notably in single-cell and spatial
+omics through the SingleCellExperiment (SCE) \citep{amezquita2020} and
 SpatialExperiment \citep{righelli2022} classes.
 
 \begin{figure}
@@ -607,7 +607,7 @@ microbiomeDataSets (Bioconductor package), and the EBI/MGnify database
 \citep{gurbich2023}. Bioconductor packages include additional built-in
 demonstration datasets. Collectively, these resources encompass
 taxonomic and functional profiles from thousands of published microbiome
-studies and tens of thousands samples that can be accessed with the
+studies and hundreds of thousands samples that can be accessed with the
 available tools for research and educational purposes.
 
 \begin{longtable}[]{@{}
@@ -887,7 +887,7 @@ comparability of sample-specific abundances, or agglomerating features
 to specific taxonomic levels or functional categories. 3) The cleaned data can
 then be analyzed using statistical models to uncover relations among samples
 (\textit{e.g.}, with ordination methods), analyze drivers of variation in community diversity
-and composition, or test for differential abundance (\textit{e.g.} between
+and composition, or test for differential abundance and/or differential prevalence (\textit{e.g.} between
 sampling time or location). 4) The framework supports the integration of
 various types of omics modalities through the MultiAssayExperiment and
 omic-specific data containers provided by Bioconductor.
@@ -947,7 +947,7 @@ and abundance-based approaches, along with repeated rarefaction
 \citep{schloss2024b} through the \emph{mia} package. Other global
 indices of community state include measures of dominance, rarity,
 skewness, kurtosis, modality, library size (number of reads), or
-absolute abundance quantification. Sample information in the TreeSE
+absolute abundance quantification. Sample information in the (Tree)SE
 object (colData) can be enriched with these derived quantities. By
 default, the mia::addAlpha method returns a set of complementary alpha
 diversity measures \citep{cassol2025}. Alpha diversity indices have been
@@ -1013,9 +1013,10 @@ external information drawn from phylogenetic relations, taxonomic
 classifications or functional properties (\emph{e.g.}, aggregating based
 on metabolite production \citep{kullberg2024} or disease associations
 \citep{geistlinger2024}). Beyond these, recent multi-modal causal
-mediation analysis for microbiome data have been implemented for SE in
-the multimedia package \citep{jiang2025}, highlighting the readiness to
-support the adoption of the rapidly developing multi-omic methodology.
+mediation analysis for microbiome data have been implemented for
+(Tree)SE in the multimedia package \citep{jiang2025}, highlighting the
+readiness to support the adoption of the rapidly developing multi-omic
+methodology.
 
 \textbf{Function- and sequence-level analyses.} Taxonomic analysis is
 frequently complemented by functional analyses, either based on
@@ -1027,8 +1028,8 @@ methods are generic and can therefore be applied across different omics
 data types. Where appropriate, specialized methods are also available;
 for instance, MaAsLin3 \citep{nickols2026} and many other Bioconductor
 libraries support metatranscriptomics analysis, notame package
-\citep{klavus2020} for metabolome analyses recently added SE support,
-and the R for Mass Spectrometry (R4MS) project provides many
+\citep{klavus2020} for metabolome analyses recently added (Tree)SE
+support, and the R for Mass Spectrometry (R4MS) project provides many
 interoperable tools. The framework has found recent applications in
 extended analyses of metagenomic features such as antimicrobial
 resistome composition \citep{salehi2025}. We also converted a

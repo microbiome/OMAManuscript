@@ -410,7 +410,7 @@ The vast adoption and interoperability of SE-based data structures
 enables the transfer of methods across different fields of omics research,
 thereby promoting the development of modular and scalable data science methods
 and yielding improved overall quality control and user support [@drnevich2025].
-The SE framework has been extended to similar data integration tasks, notably in
+The (Tree)SE framework has been extended to similar data integration tasks, notably in
 single-cell and spatial omics through the SingleCellExperiment (SCE)
 [@amezquita2020] and SpatialExperiment [@righelli2022] classes.
 
@@ -670,7 +670,7 @@ Examples include curatedMetagenomicData [@pasolli2017], HoloFood [@rogers2024],
 microbiomeDataSets (Bioconductor package), and the EBI/MGnify database
 [@gurbich2023]. Bioconductor packages include additional built-in demonstration
 datasets. Collectively, these resources encompass taxonomic and functional
-profiles from thousands of published microbiome studies and tens of thousands samples that can
+profiles from thousands of published microbiome studies and hundreds of thousands samples that can
 be accessed with the available tools for research and educational purposes.
 
 | Data resource / Package     | References                 | # Studies  | # Samples |
@@ -1062,7 +1062,7 @@ comparability of sample-specific abundances, or agglomerating features
 to specific taxonomic levels or functional categories. 3) The cleaned data can
 then be analyzed using statistical models to uncover relations among samples
 (\textit{e.g.}, with ordination methods), analyze drivers of variation in community diversity
-and composition, or test for differential abundance (\textit{e.g.} between
+and composition, or test for differential abundance and/or differential prevalence (\textit{e.g.} between
 sampling time or location). 4) The framework supports the integration of
 various types of omics modalities through the MultiAssayExperiment and
 omic-specific data containers provided by Bioconductor.
@@ -1118,7 +1118,7 @@ and abundance-based approaches, along with repeated rarefaction
 [@schloss2024b] through the *mia* package. Other
 global indices of community state include measures of dominance,
 rarity, skewness, kurtosis, modality, library size (number of reads),
-or absolute abundance quantification. Sample information in the TreeSE object
+or absolute abundance quantification. Sample information in the (Tree)SE object
 (colData) can be enriched with these derived quantities. By default,
 the mia::addAlpha method returns a set of complementary alpha
 diversity measures [@cassol2025]. Alpha diversity indices have been frequently
@@ -1184,7 +1184,7 @@ abundance profiles or on external information drawn from phylogenetic
 relations, taxonomic classifications or functional properties
 (*e.g.*, aggregating based on metabolite production [@kullberg2024] or disease
 associations [@geistlinger2024]). Beyond these, recent multi-modal causal
-mediation analysis for microbiome data have been implemented for SE in the
+mediation analysis for microbiome data have been implemented for (Tree)SE in the
 multimedia package [@jiang2025], highlighting the readiness to support the
 adoption of the rapidly developing multi-omic methodology.
 
@@ -1197,7 +1197,7 @@ but many statistical methods are generic and can therefore be applied across
 different omics data types. Where appropriate, specialized methods are also
 available; for instance, MaAsLin3 [@nickols2026] and many other Bioconductor
 libraries support metatranscriptomics analysis, notame package [@klavus2020] for
-metabolome analyses recently added SE support, and the R for Mass Spectrometry
+metabolome analyses recently added (Tree)SE support, and the R for Mass Spectrometry
 (R4MS) project provides many interoperable tools. The framework has found recent
 applications in extended analyses of metagenomic features such as antimicrobial
 resistome composition [@salehi2025]. We also converted a large-scale compilation
