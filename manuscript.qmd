@@ -227,7 +227,7 @@ author:
     affiliations:
       - ref: 19
 
-  - name: Felix G.M. Ernst
+  - name: Felix G. M. Ernst
     orcid: 0000-0001-5064-0928
     affiliations:
       - ref: 19
