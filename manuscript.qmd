@@ -1939,12 +1939,12 @@ this work were deposited in the Zenodo mia community at
 
 ## Consortia {#sec-consortium}
 
-OMA consortium: Arora, Nalin; Bastiaanssen, Thomaz; Beber, Moritz E.;
+OMA consortium: Arora, Nalin; Bastiaanssen, Thomaz F. S.; Beber, Moritz E.;
 Bektanov, Aituar; Benedetti, Giulio; Bhowmick, Sabuj; Borman, Tuomas;
 Braccia, Domenick J.; Calgaro, Matteo; Callan, Danielle; Chaudhary,
 Jiya; Cordazzo Vargas, Bianca; Corrada Bravo, Héctor; Courbayre
 Dussau, Basil; Das, Sneha; Eckermann, Henrik; Erawijantari, Pande;
-Ernst, Felix G.M.; Gaudron-Parry, Elliot; Gopalakrishnan, Shyam;
+Ernst, Felix G. M.; Gaudron-Parry, Elliot; Gopalakrishnan, Shyam;
 Hakula, Maija; Hanhineva, Kati; Havulinna, Aki; Hindström, Rasmus;
 Jeba, Akewak; Lahti, Leo; Limborg, Morten; Lindgren, Himmi; Liu,
 Yihan; Mallick, Himel; Martino, Cameron; Mongad, Dattatray; Müller,
