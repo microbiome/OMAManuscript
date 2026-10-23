@@ -106,24 +106,29 @@ affiliations:
     address: New York, USA
 
   - id: 19
-    name: Consortium member
+    name: University of Maryland
+    address: College Park, USA
 
   - id: 20
+    name: German Centre for Neurodegenerative Diseases (DZNE)
+    address: Bonn, Germany
+
+  - id: 21
     name: Amsterdam University Medical Centres
     department: Department of Psychiatry
     address: Amsterdam, Netherlands
 
-  - id: 21
+  - id: 22
     name: Amsterdam University Medical Centres
     department: Amsterdam Public Health
     address: Amsterdam, Netherlands
 
-  - id: 22
+  - id: 23
     name: Cornell University
     department: Division of Gastroenterology and Hepatology, Weill Cornell Medicine
     address: New York, USA
 
-  - id: 23
+  - id: 24
     name: Cornell University
     department: Department of Statistics and Data Science
     address: New York, USA
@@ -230,7 +235,7 @@ author:
   - name: Felix G. M. Ernst
     orcid: 0000-0001-5064-0928
     affiliations:
-      - ref: 19
+      - ref: 20
 
   - name: Levi Waldron
     orcid: 0000-0003-2725-0694
@@ -240,8 +245,8 @@ author:
   - name: Thomaz F. S. Bastiaanssen
     orcid: 0000-0001-6891-734X
     affiliations:
-      - ref: 20
-      - ref: 21
+      - ref: 22
+      - ref: 22
     attributes:
       equal-contributor: true
 
@@ -249,8 +254,8 @@ author:
     orcid: 0000-0003-4956-2429
     affiliations:
       - ref: 8
-      - ref: 22
       - ref: 23
+      - ref: 24
     attributes:
       equal-contributor: true
 
