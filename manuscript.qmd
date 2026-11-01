@@ -1464,7 +1464,8 @@ model <- IntegratedLearner(
 #|   based on Faith's phylogenetic diversity [@armstrong2021];
 #|   **(c) Community similarity** using dbRDA based on UniFrac dissimilarities
 #|   [@lozupone2005]; **(d) Association analysis** with differential prevalence
-#|   testing [@nickols2026] (log-odds with 95% confidence intervals);
+#|   testing [@nickols2026] of genus presence and high-fat diet (log-odds,
+#|   95% CI);
 #|   **(e) Joint-RPCA biplot** [@vargas2026] and
 #|   **(f) Supervised feature ranking with IntegratedLearner** [@mallick2024]
 #|   (red, positive; blue, negative association with high-fat diet),
