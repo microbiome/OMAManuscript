@@ -1,6 +1,6 @@
 Package: OMAManuscript
 Type: Package
-Version: 1.0.6
+Version: 1.0.7
 Title: Orchestrating Microbiome Analysis with Bioconductor
 Description:
     Repository containing the source files, figures, and supplementary

@@ -1976,11 +1976,6 @@ participated in manuscript preparation and approved the final version.
 ## Acknowledgments {#sec-acknowledgments}
 
 We thank CSC – IT Center for Science, Finland, for computational resources.
-
-This project received funding from the European Union’s Horizon 2020
-research and innovation programme under grant agreement No 952914 and
-Research Council of Finland (decision 374944). TB was additionally
-supported by the University of Turku Graduate School.
 We thank
 Christopher Quince and Kihyun Lee for providing resistome profiling data,
 Justin Silverman for PhILR support,
@@ -1990,3 +1985,10 @@ and the following individuals for supporting the project:
 Richa Ashma; Nitin Bayal; Chouaib Benchraka; Karoline Faust; Robert D. Finn; Samuel Hillman; Ruizhu
 Huang; Lorna Richardson; Daniel Rios Garza; Matti Ruuskanen; Mahkameh Salehi.
 We extend our thanks to all contributors of the open-source resources used in this work.
+
+## Funding {#sec-funding}
+
+This project received funding from the European Union’s Horizon 2020
+research and innovation programme under grant agreement No. 952914 and from
+the Research Council of Finland (decision No. 374944). T.B. was additionally
+supported by the University of Turku Graduate School.
